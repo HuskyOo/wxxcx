@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/singleDetails/singleDetails",
+    "pages/video/video",
+    "pages/welfareDetails/welfareDetails",
+    "pages/mywelfare/mywelfare",
+    "pages/proveRefer/proveRefer",
+    "pages/prove/prove",
+    "pages/dynamic/dynamic",
+    "pages/donation/donation",
+    "pages/member/member",
+    "pages/religion/religion",
+    "pages/indent/indent",
+    "pages/bookorder/bookorder",
+    "pages/bookdetail/bookdetail",
+    "pages/albumDetails/albumDetails",
+    "pages/albumOrders/albumOrders",
+    "pages/history/history",
+    "pages/buy/buy",
+    "pages/my/my",
+    "pages/pendingpayment/pendingpayment",
+    "pages/hotCourse/hotCourse",
+    "pages/historyrecord/historyrecord",
+    "pages/logs/logs",
+    "pages/legalrecord/legalrecord",
+    "pages/aboutus/aboutus",
+    "pages/newCourse/newCourse",
+    "pages/bookList/bookList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff623f",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "གཙོ་ངོས།",
+        "iconPath": "./images/index.png",
+        "selectedIconPath": "./images/SelecteIndex.png"
+      },
+      {
+        "pagePath": "pages/buy/buy",
+        "text": "ཉོས་ཟིན་པ།",
+        "iconPath": "./images/buy.png",
+        "selectedIconPath": "./images/SelecteBuy.png"
+      },
+      {
+        "pagePath": "pages/buy/buy",
+        "text": "唱咏",
+        "iconPath": "./images/buy.png",
+        "selectedIconPath": "./images/SelecteBuy.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "ལྟེ་གནས།",
+        "iconPath": "./images/my.png",
+        "selectedIconPath": "./images/SelecteMy.png"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
+}

@@ -1,0 +1,24 @@
+<!--components/share/share.wxml-->
+<view class="share-box" wx:if="{{shareShow}}">
+    <view class="share-content" wx:if="{{showShare}}">
+        <view class="cancel">
+            <image src="../../images/cancel.png" bindtap="back" />
+        </view>
+        <canvas style="width: 375px;height: 500px;position:fixed;z-index:-6666;opacity:0; left:9999rpx" canvas-id="sharecan"/>
+        <image src="{{shareImg}}" style="width:100%; height:100%" mode="aspectFill"/>
+        <text class="save-btn" bindtap="save">{{page_font.saveLoc[font_index]}}</text>
+    </view>
+    <view class="btm-box" wx:else>
+        <view  class="btns">
+            <button open-type="share" class="share-btn" bindtap="onShareAppMessage">
+                <image src="../../images/wechart.png" />
+                <text >{{page_font.share[font_index]}}</text>
+            </button>
+            <view class="photo-btn" bindtap="createImg">
+                <image src="../../images/photo.png" />
+                <text >{{page_font.save[font_index]}}</text>
+            </view>
+        </view>
+        <text class="close" bindtap="close">{{page_font.close[font_index]}}</text>
+    </view>
+</view>

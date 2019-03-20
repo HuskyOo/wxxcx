@@ -1,0 +1,48 @@
+<!-- pages/religion/religion.wxml 宗教 -->
+<view class="boundary-line-to"></view>
+<view class="tui-tabbar-content">
+  <view class="tui-tabbar-group">
+    <view data-id="{{item.id}}" bindtap="changeTabbar"
+    wx:for="{{pageData}}" wx:key="{{item.id}}"
+    class="tui-tabbar-cell {{currentTab == item.id ? 'active' : ''}}">
+      {{item.title}}
+    </view>
+  </view>
+  <view wx:if="{{type == 0}}">
+    <scroll-view scroll-x class="navigation {{type == 1 ? 'setdisplay' : 'setdisplay1'}}">
+      <view wx:for="{{tabNavL}}" wx:key="{{item.id}}" class="nav-options {{currentTabNav == item.id?'active':''}}" 
+      data-id="{{item.id}}" data-current="{{index}}" bindtap="swichNav">
+        {{item.title}}
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 下面的内容 -->
+<view class='book-content' wx:for="{{tabNavL}}" wx:if="{{item.id == currentTabNav}}">
+  <view class='book-list' wx:for="{{item.defalut}}" wx:key="item.id" bindtap="details" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" id="{{item.id}}">
+    <view class='book-image'>
+      <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+      <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+      <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+      <image src='{{url}}{{item.cover}}'></image>
+    </view>
+    <view class='book-information'>
+      <view class='book-one'>
+        <text class='book-title'>{{item.title}}</text>
+        <text class='book-introduction'>{{item.sub_title}}</text>
+      </view>
+      <view class='book-two interview-two'>
+        <view>
+          <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+          <image src='../../images/peoplenumber.png' wx:else></image>
+          <text>{{item.sales}}</text>
+        </view>
+        <view class='set'>
+          <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+          <image src='../../images/set.png' wx:else></image>
+          <text>{{item.duration ? item.duration : item.media_count}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/dynamic/dynamic.wxml-->
+<view class="dynamic">
+  <view class="container" wx:for="{{data}}">
+    <view class="portrait">
+      <image src="{{item.user.avatarUrl}}" />
+    </view>
+    <view class="content">
+      <text class="title">{{item.user.nickname}}</text>
+      <text class="msg">{{item.content}}</text>
+      <view class="img-list">
+        <image wx:for="{{item.photos}}" mode="aspectFill" data-src="{{url}}{{item}}" bindtap="preview" src="{{url}}{{item}}" />
+        <!-- <image src="../../images/tuijianone.png" />
+        <image src="../../images/tuijianone.png" /> -->
+      </view>
+      <text class="time">{{item.time}}</text>
+    </view>
+  </view>
+</view>

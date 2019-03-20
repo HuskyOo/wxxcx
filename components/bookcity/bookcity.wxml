@@ -1,0 +1,61 @@
+<!-- 书城 -->
+
+<!-- 热门书籍 -->
+<view class='book'>
+  <view class='title' data-title="ཡག་ཤོས།" data-catetype="2" bindtap="jumphistory">
+    <view class='title-one'><text>ཡག་ཤོས།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+  <view class='book-content'>
+    <view class='book-list' wx:for="{{book.hots}}" id="{{item.id}}" bindtap="handlejump">
+        <image src='{{url+item.cover}}'></image>
+        <text>{{item.title}}</text>
+      <view class='book-price'>
+        <text>￥{{item.money}}</text>
+        <view class='book-mailing'>སྐུར་གླ་མི་དགོས།</view>
+      </view>      
+    </view>
+  </view>
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+
+<!-- 最新书籍 -->
+<view class='book'>
+  <view class='title' data-title="གསར་ཤོས།" data-catetype="1" bindtap="jumphistory">
+    <view class='title-one'><text>གསར་ཤོས།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+  <view class='book-content'>
+    <view class='book-list' wx:for="{{book.news}}"  id="{{item.id}}" bindtap="handlejump">
+        <image src='{{url+item.cover}}'></image>
+        <text>{{item.title}}</text>
+      <view class='book-price'>
+        <text>￥{{item.money}}</text>
+        <view class='book-mailing'>སྐུར་གླ་མི་དགོས།</view>
+      </view>      
+    </view>
+  </view>
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+
+<!-- 精品书籍 -->
+<view class='book'>
+  <view class='title' data-title="བྲིན་ཤོས།" data-catetype="6" bindtap="jumphistory">
+    <view class='title-one'><text>བྲིན་ཤོས།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+  <view class='book-content'>
+    <view class='book-list' wx:for="{{book.per}}"  id="{{item.id}}" bindtap="handlejump">
+        <image src='{{url+item.cover}}'></image>
+        <text>{{item.title}}</text>
+      <view class='book-price'>
+        <text>￥{{item.money}}</text>
+        <view class='book-mailing'>སྐུར་གླ་མི་དགོས།</view>
+      </view>      
+    </view>
+  </view>
+</view>

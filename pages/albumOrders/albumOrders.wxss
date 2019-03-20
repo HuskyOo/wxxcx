@@ -1,0 +1,28 @@
+/* pages/albumOrders/albumOrders.wxss */
+.albumOrder-type{
+    font-family: 'Himalaya-G';
+    height:120rpx;
+    padding:0 30rpx;
+    font-size:30rpx;
+    line-height: 120rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid rgb(238,238,238)
+}
+.albumOrder-care{
+    font-family: 'Jomolhari';
+    color: rgb(145,145,145);
+    font-size: 22rpx;
+    margin-top:22rpx;
+    padding-left:30rpx;
+}
+.buy{
+    height:106rpx;
+    margin-top: 106rpx;
+}
+.buy button{
+    width:576rpx;
+    border-radius:53rpx;
+    background-color:rgb(255,98,63);
+    color: #fff
+}

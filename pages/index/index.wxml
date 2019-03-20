@@ -1,0 +1,251 @@
+<!-- 藏语 -->
+
+<!-- 头部导航 -->
+<view>
+  <scroll-view scroll-x="true" class="navigation" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{tab}}" wx:key="item.id" class="nav-options {{item.id == page_index?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.title}}</view>
+  </scroll-view>
+</view>
+<!-- 头部导航对应的页面 -->
+<!-- 推荐页 -->
+<recommend wx:if="{{page_index === 53}}" bindpagejump="pagejump" recommend="{{recommend}}"></recommend>
+<!-- 藏语页 -->
+<view wx:elif="{{page_index === 1}}">
+  <!-- 轮播图 -->
+  <view>
+    <swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
+      <block wx:for="{{carouselImg}}" wx:key="item.id">
+        <swiper-item data-nav="{{item.url}}" bindtap="navjump">
+          <image src="{{url}}{{item.img}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 二级导航 -->
+  <view class='nav'>
+    <view wx:for="{{nav}}" wx:key="item.id" class='nav-content' id="{{item.id}}" bindtap='secondary'>
+      <image src='{{url}}{{item.img}}'></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+
+  <!-- 分界线 -->
+  <view class='boundary-line'></view>
+
+  <!-- 热播课程 -->
+  <view class='book-recommendation'>
+    <view class='title' data-title="ཡག་ཤོས།" bindtap='hotCourse'>
+      <view class='title-one'>
+        <text>ཡག་ཤོས།</text>
+      </view>
+      <view class='title-two'>
+        <image src='../../images/jiantou.png'></image>
+      </view>
+    </view>
+
+    <view class='book-content'>
+      <view class='book-list' wx:for="{{hotCourse}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+        <view class='book-image'>
+          <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+          <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+          <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+          <image src='{{url}}{{item.cover}}'></image>
+        </view>
+        <view class='book-information'>
+          <view class='book-one'>
+            <text class='book-title'>{{item.title}}</text>
+            <text class='book-introduction'>{{item.sub_title}}</text>
+          </view>
+          <view class='book-two interview-two'>
+            <view>
+              <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+              <image src='../../images/peoplenumber.png' wx:else></image>
+              <text>{{item.sales}}</text>
+            </view>
+            <view class='set'>
+              <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+              <image src='../../images/set.png' wx:else></image>
+              <text>{{item.duration ? item.duration : item.media_count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='replace'>
+      <view class='replace-button' data-catetype="2" bindtap="updata">
+        <image src='../../images/replace.png'></image>
+        <text>དེ་ལས་མང་བ།</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分界线 -->
+  <view class='boundary-line'></view>
+
+  <!-- 广告推荐 -->
+  <view class='advertising' data-nav="{{advertising.url}}" bindtap="navjump">
+    <view class='advertising-image'>
+      <image src='{{url}}{{advertising.img}}'></image>
+    </view>
+    <view class='advertising-content'>
+      <text class='advertising-title'>{{advertising.title}}</text>
+      <text class='advertising-introduction'>{{advertising.sub_title}}</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class='boundary-line'></view>
+  <!-- 最新课程 -->
+  <view class='book-recommendation'>
+    <view class='title' data-title="གསར་ཤོས།" bindtap="newCourse">
+      <view class='title-one'>
+        <text>གསར་ཤོས།</text>
+      </view>
+      <view class='title-two'>
+        <image src='../../images/jiantou.png'></image>
+      </view>
+    </view>
+
+    <view class='book-content'>
+      <view class='book-list' wx:for="{{latestCourse}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+       <view class='book-image'>
+          <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+          <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+          <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+          <image src='{{url}}{{item.cover}}'></image>
+        </view>
+        <view class='book-information'>
+          <view class='book-one'>
+            <text class='book-title'>{{item.title}}</text>
+            <text class='book-introduction'>{{item.sub_title}}</text>
+          </view>
+          <view class='book-two interview-two'>
+            <view>
+              <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+              <image src='../../images/peoplenumber.png' wx:else></image>
+              <text>{{item.sales}}</text>
+            </view>
+            <view class='set'>
+              <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+              <image src='../../images/set.png' wx:else></image>
+              <text>{{item.duration ? item.duration : item.media_count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='replace'>
+      <view class='replace-button' data-catetype="1" bindtap="updata">
+        <image src='../../images/replace.png'></image>
+        <text>དེ་ལས་མང་བ།</text>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 分割线 -->
+  <!-- <view class='boundary-line'></view> -->
+  <!-- 商城推荐 -->
+  <!-- <view class='book-recommendation'>
+    <view class='title' data-title="ཚོང་ཁང་།" bindtap="bookNew">
+      <view class='title-one'>
+        <text>ཚོང་ཁང་།</text>
+      </view>
+      <view class='title-two'>
+        <image src='../../images/jiantou.png'></image>
+      </view>
+    </view>
+
+    <view class='bookContent'>
+      <view class='book-list' wx:for="{{book.hots}}" id="{{item.id}}" bindtap="handlejump">
+          <image src='{{url+item.cover}}'></image>
+          <text>{{item.title}}</text>
+        <view class='book-price'>
+          <text>￥{{item.money}}</text>
+          <view class='book-mailing'>སྐུར་གླ་མི་དགོས།</view>
+        </view>      
+      </view>
+    </view> -->
+
+    <!-- <view class='replace'>
+      <view class='replace-button' data-catetype="1" bindtap="updata">
+        <image src='../../images/replace.png'></image>
+        <text>དེ་ལས་མང་བ།</text>
+      </view>
+    </view> -->
+  <!-- </view> -->
+
+  
+  <!-- 分割线 -->
+  <!-- <view class='boundary-line'></view> -->
+  <!-- 汉语推荐 -->
+  <!-- <view class='book-recommendation'>
+    <view class='title' data-title="汉语" bindtap="cnewCourse">
+      <view class='title-one'>
+        <text>汉语</text>
+      </view>
+      <view class='title-two'>
+        <image src='../../images/jiantou.png'></image>
+      </view>
+    </view>
+
+    <view class='book-content'>
+      <view class='book-list' wx:for="{{chineseCommend}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="cdetails">
+       <view class='book-image'>
+          <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+          <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+          <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+          <image src='{{url}}{{item.cover}}'></image>
+        </view>
+        <view class='book-information'>
+          <view class='book-one'>
+            <text class='book-title'>{{item.title}}</text>
+            <text class='book-introduction'>{{item.sub_title}}</text>
+          </view>
+          <view class='book-two interview-two'>
+            <view>
+              <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+              <image src='../../images/peoplenumber.png' wx:else></image>
+              <text>{{item.sales}}</text>
+            </view>
+            <view class='set'>
+              <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+              <image src='../../images/set.png' wx:else></image>
+              <text>{{item.duration ? item.duration : item.media_count}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='replace'>
+      <view class='replace-button' data-catetype="3" bindtap="cupdata">
+        <image src='../../images/replace.png'></image>
+        <text>དེ་ལས་མང་བ།</text>
+      </view>
+    </view>
+  </view> -->
+
+</view>
+
+<chinese wx:elif="{{page_index === 2}}" chinese="{{chinese}}" pageIndex="{{page_index}}"></chinese>
+
+<bookcity wx:elif="{{page_index === 3}}" book="{{book}}" pageIndex="{{page_index}}"></bookcity>
+
+<welfare wx:elif="{{page_index === 5}}" welfare="{{welfare}}" pageIndex="{{page_index}}"></welfare>
+
+<interview wx:elif="{{page_index === 6}}" interview="{{interview}}" pageIndex="{{page_index}}"></interview>
+
+<sing wx:else sing="{{sing}}" pageIndex="{{page_index}}"></sing>
+
+<!-- 历史播放 -->
+<view class='history'>
+  <image src='../../images/bofang.png' bindtap="play"></image>
+</view>
+
+<!-- 授权页面 -->
+<!-- 未授权 -->
+<include src="login.wxml"></include>

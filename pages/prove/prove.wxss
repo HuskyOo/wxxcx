@@ -1,0 +1,81 @@
+/* pages/prove/prove.wxss */
+page{
+    font-family: 'Jomolhari';
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    margin-top:40rpx;
+    padding:40rpx;
+    box-sizing: border-box;
+}
+.top-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+button{
+    border-radius: 40rpx;
+    background-color: rgb(255,98,63);
+    color: #fff;
+    height:50rpx;
+    background:rgb(255,98,63);
+    font-size:28rpx;
+    text-align:center;
+    line-height:60rpx;
+    border-radius:25rpx;
+    padding:0 15rpx;
+}
+.name{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* width:300rpx; */
+}
+.prve{
+    margin-left: 20rpx;
+    background-color: orange;
+    padding:10rpx;
+    border-radius: 30rpx;
+    color: #fff;
+}
+.real{
+    background-color: rgb(255,98,63);
+}
+.prve-content{
+    padding:40rpx;
+}
+.content{
+    margin-top:20rpx;
+    font-size: 28rpx;
+}
+.prve-image{
+    width:65rpx;
+    height:65rpx;
+    border-radius: 65rpx;
+}
+.i-prove{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Himalaya-G';
+    box-sizing: border-box;
+    padding: 50rpx 30rpx;
+}
+.i-prove-right{
+    /* width:150rpx; */
+    height:50rpx;
+    background: rgb(255,98,63);
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 60rpx;
+    border-radius: 25rpx;
+    padding: 0 15rpx;
+}
+.i-prove-right text{
+    /* padding: 10rpx 15rpx;
+    border-radius: 30rpx; */
+    /* font-size: 30rpx; */
+    color: #fff;
+    white-space: nowrap;
+}

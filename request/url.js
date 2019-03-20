@@ -1,0 +1,14 @@
+export default {
+    // 藏语请求
+    zang: "",
+    // 汉语请求
+    chinese: "/index/index/chinese",
+    // 书城请求
+    book: "/index/index/book",
+    // 公益请求
+    commonweal: "/index/index/commonweal",
+    // 访谈请求
+    interview: "/index/index/interview",
+    // 唱咏请求
+    sing: "/index/index/sing",
+}

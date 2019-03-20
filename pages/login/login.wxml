@@ -1,0 +1,12 @@
+<!-- pages/login/login.wxml -->
+<block>
+    <button class="wx_button" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        点击授权进入
+    </button>
+</block>
+<!-- <block wx:else>
+    <view class="wx_info" style="margin:100rpx 0 0 300rpx;">
+        <image style="width:200rpx;heigh:200rpx;margin:auto" src="{{userInfo.avatarUrl}}" />
+        <text style="display:block">{{userInfo.nickName}}</text>
+    </view>
+</block> -->

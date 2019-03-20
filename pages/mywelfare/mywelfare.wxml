@@ -1,0 +1,14 @@
+<!--pages/mywelfare/mywelfare.wxml-->
+<!-- 我的公益 -->
+<view class="welfare">
+  <view class="container" wx:for="{{mywelfare}}" data-id="{{item.id}}" bindtap="godetail">
+    <image src="{{url}}{{item.photos[0]}}" />
+    <view class="content">
+      <text class="title">{{item.title}}</text>
+      <view class="detail">
+        <text class="time">{{item.time}}</text>
+        <text class="help"  data-id="{{item.id}}" catchtap="goCollecting">གནས་ཚུལ་སྤེལ།</text>
+      </view>
+    </view>
+  </view>
+</view>

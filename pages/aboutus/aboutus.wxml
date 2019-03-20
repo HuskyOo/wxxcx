@@ -1,0 +1,8 @@
+<!-- 关于我们 -->
+
+  <view class='header'>
+    <text class='header-title'>{{title}}</text>
+  </view>
+  <view class='content'>
+    <text class=''>{{content}}</text>  
+  </view>

@@ -1,0 +1,51 @@
+<!-- 课程购买 -->
+
+<!-- 头部导航 -->
+<view class='buyNav'>
+  <view bindtap='bookJump' class='buyNav-list'>
+    <text>图书</text>
+  </view>
+  <view bindtap='courseJump' class='buyNav-list selected'>
+    <text>课程</text>
+  </view>
+  <view bindtap='otherJump' class='buyNav-list'>
+    <text>其他</text>
+  </view>
+</view>
+
+<!-- 课程列表 -->
+<view>
+  <view wx:for='{{purchaseCourseList}}' class='buybook-list'>
+    <view class='buybook-list-image'>
+      <image src='{{item.image}}'></image>
+    </view>
+    <view class='buybook-list-text'>
+      <text class='buybook-list-title'>{{item.title}}</text>
+      <text class='buybook-list-description'>{{item.description}}</text>
+    </view>
+    <view class='buybook-list-number'>
+      <text class='buybook-list-price'>￥{{item.price}}</text>
+      <text class='buybook-list-numberone'>×{{item.number}}</text>
+      <text class='buybook-list-time'>{{item.time}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 底部导航 -->
+<view class='tabbar'>
+  <view class='tabbar-list' bindtap='homeJump'>
+    <image src='../../images/index.png'></image>
+    <text class='tabbar-active'>首页</text>
+  </view>
+  <view class='tabbar-list' bindtap='shoppingJump'>
+    <image src='../../images/SelecteBuy.png'></image>
+    <text>购买</text>
+  </view>
+  <view class='tabbar-list' bindtap='myJump'>
+    <image src='../../images/my.png'></image>
+    <text>我的</text>
+  </view>
+</view>
+
+<!-- 高度填充 -->
+<view class='highly-filled'></view>

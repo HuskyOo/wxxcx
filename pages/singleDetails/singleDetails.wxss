@@ -1,0 +1,154 @@
+/* pages/singleDetails/singleDetails.wxss */
+page{
+  font-family: 'Jomolhari';
+}
+@import '../../wxParse/wxParse.wxss';
+.single{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.time{
+    display: flex;
+    justify-content: space-between;
+    width:90%;
+}
+.times{
+  font-size:24rpx;
+}
+.play{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.free-MusicProgress{
+    width:78%;
+    bottom:1px;
+    background:#C3C3C3;
+  }
+.free-MusicProgress>view{
+  background:#48c23d;
+  height:2px;
+}
+.progress {
+  width: 95%;
+  margin: 20rpx;
+}
+
+/* aaa */
+.audiosBox{
+  width: 90%;
+  margin-top:60rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+}
+  
+/*进度条长度  */
+.slid{
+  width:95%;
+}
+.slid view{
+  display: flex;
+  justify-content: space-between;
+}
+.slid view>text{
+  color:rgb(255,98,63);
+}
+
+/* .audio_detail{
+  padding:0 20rpx;
+} */
+.audio_detail .user_head{
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #e5e5e5;
+  height: 120rpx;
+}
+.audio_detail .user_head text{
+  margin-left: 20rpx;
+  /* font-weight: bold; */
+  font-size: 28rpx;
+}
+.audio_detail .user_head image{
+  flex-shrink: 0;
+  width: 78rpx;
+  height: 78rpx;
+}
+.audio_detail .title{
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+}
+.audio_detail .title text{
+  margin: 0 20rpx;
+  padding-bottom: 15rpx;
+  font-size: 36rpx;
+  margin-right: 80rpx;
+}
+.audio_detail .title text.active{
+  border-bottom: 5rpx solid rgb(255,98,63);
+}
+.audio_detail .content{
+  font-size: 16px;
+  padding: 0 50rpx 50rpx 20rpx;
+}
+
+.fixed-box{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  background: rgb(250, 140, 112);
+  color: #fafafa;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  align-items: center;
+}
+.fixed-box .buy-btn{
+  padding: 10rpx 15rpx;
+  border: 2rpx solid #fafafa;
+  border-radius: 5rpx
+}
+
+.vip{
+  /* position: fixed; */
+  width: 100%;
+  left: 0;
+  top: 330rpx;
+  height: 70rpx;
+  background: #FFF5E5;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* padding: 0 30rpx; */
+  color: #CDAB87;
+  font-weight: 500;
+}
+.vip text{
+  line-height: 70rpx;
+  font-family: 'Himalaya-G'; 
+  /* margin-left: 30rpx; */
+  font-size: 24rpx;
+}
+.vip-font{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vip-font image{
+  margin-right: 15rpx;
+}
+.vip-btn{
+  color: #fff;
+  background: #DFA261;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+}

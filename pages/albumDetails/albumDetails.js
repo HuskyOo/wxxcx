@@ -1,0 +1,526 @@
+// pages/albumDetails/albumDetails.js
+var util = require('../../utils/util')
+var WxParse = require('../../wxParse/wxParse')
+var app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    // 排序
+    sort:0,
+    url:app.globalData.pageUrl,
+    // 语言设置
+    lan_index:0,
+    // 当前显示的页码 默认显示第一页
+    pageIndex: 0,
+    showIndex: '1',
+    // 页面文字
+    page_font:null,
+    playType: 0,
+    playNum: 0,
+    shareshow: false
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    util.fontFamily()
+    console.log(options.lan,options.id)
+    let that = this
+    // 初始化语言
+    if(options.lan == 'zang'){
+      this.setData({
+        lan_index:1,
+        lan: 'zang'
+      })
+      wx.setNavigationBarTitle({
+        title:'ཆེད་བསྒྲིགས་རྒྱས་བཤད།'
+      })
+    }
+    // 获取数据
+    // that.getData(options.id)
+    that.setData({id:options.id})
+    
+  },
+  // 介绍和歌单的切换
+  changeShow (e) {
+    var n = e.currentTarget.dataset.show
+    this.setData({
+      showIndex: n
+    })
+  },
+  getMedia(type, id){
+    var that = this
+    if(type === '1'){
+      wx.request({
+        url:that.data.url + '/index/details/mediaurl',
+        data: {
+          id: id,
+          type: 1,
+          token: wx.getStorageSync('token')
+        },
+        success: res => {
+          
+          console.log(res)
+          // if(res.data.media.is_buy === 0){
+          //   that.setData({
+          //     boxShow: true
+          //   })
+          // }
+          that.setData({
+            mediaData:res.data.media
+          })
+          // that.showTab()
+          // that.sethistory()
+          // that.setParse()
+        }
+      })
+    }
+  },
+  // 请求数据
+  getData (id) {
+    var that = this
+    wx.request({
+      url: this.data.url+'/index/details/comdetails',
+      header: {
+        'content-type': 'application/json',
+      },
+      data: {
+        id: id,
+        media_type: -1,
+        token: wx.getStorageSync('token')
+      },
+      success(res) {
+        console.log(res)
+        that.setData({
+          showdata: res.data.media.media,
+          data: res.data.media,
+          media_type: res.data.media.media[0].media_type,
+          listscope:[0,1]
+        })
+        // 获取视频
+        that.getMedia(res.data.media.media[0].media_type, res.data.media.media[0].id)
+        // 初始化页面文字
+        that.setData({
+          page_font:{
+            listen:[that.data.data.sales+'人已收听','ཉན་མཁན་མི'+that.data.data.sales+'ཡོད།'],
+            expect:['共 '+that.data.data.media.length+' 节课程','སློབ་ཚན'+that.data.data.media.length+'ཡོད།'],
+            detail:['详情','རྒྱས་བཤད།'],
+            program:['节目', 'ལེ་ཚན།'],
+            audition:['试听', 'ཚོད་ཉན་བྱེད།'],
+            buy:['立即购买','མྱུར་དུ་ཉོ།'],
+            play:['播放全部', 'མཉམ་གཏོང་།'],
+            selected:['选集','བདམས་སྒྲིག'],
+            order:['正序','རིམ་སྒྲིག'],
+            share:['分享','བརྒྱུད་སྐུར།'],
+            author:['作者介绍', 'ཁྲིད་མཁན་ངོ་སྤྲོད།'],
+            album:['专辑介绍','ནང་དོན་ངོ་སྤྲོད།'],
+            once:['立即播放','ད་ལྟ་ཉན།'],
+            vip_font:['开通会员后即可免费收听/观看', 'ཚོགས་མིར་ཐོ་འགོད་བྱས་རྗེས་རིན་མེད་ཉན་ཆོག'],
+            vip_btn:['立即开通', 'ཚོགས་མིར་ཐོ་འགོད་བྱེད།']
+          }
+        })
+        // 富文本转译
+        that.wxParse()
+        // 初始化页面数据
+        that.setData({
+          // 页数   一页10条数据
+          pageCount: Math.ceil(res.data.media.media.length / 10),
+        })
+        // 设置选集选项卡
+        that.setSelectArr()
+
+        that.sharecar()
+      }
+    })
+  },
+  // 富文本转译
+  wxParse () {
+    var that = this
+    var author = this.data.data.author_describe
+    var album = this.data.data.good_describe
+    WxParse.wxParse('author', 'html', author, this, 0)
+    WxParse.wxParse('album', 'html', album, this, 0)
+  },
+  // 设置选集选项卡
+  setSelectArr () {
+    var that = this
+    var num = that.data.pageCount
+    var arr = []
+    for(var i=1;i<=num;i++){
+      var str = `${(i-1)*10 + 1} ~ ${i*10}`
+      arr.push(str)
+    }
+    that.setData({
+      pageArr: arr
+    })
+    console.log(arr)
+  },
+  // 排序
+  handlesort () {
+    var that = this
+    // console.log()
+    if(that.data.sort === 0){
+      var arr = that.data.showdata.reverse()
+      that.setData({
+        showdata:arr,
+        sort:1
+      })
+    }else{
+      var arr = that.data.showdata.reverse()
+      that.setData({
+        showdata:arr,
+        sort:0
+      })
+    }
+    that.setData({
+      // pageIndex: 0
+      listscope: [0,1]
+    })
+  },
+  // 选集
+  handleSelect (e) {
+    var that = this
+    var sort = that.data.sort
+   
+    console.log(sort)
+    if(sort === 1){ 
+      var arr = that.data.showdata.reverse()
+      that.setData({
+        showdata: arr,
+        sort:0
+      })
+    }
+    
+    var value = parseInt(e.detail.value)
+    console.log(e.detail.value)
+    that.setData({
+      listscope: [value,value+1]
+    })
+  },
+  // 跳转到播放页面
+  jumpDetail (e) {
+    var that = this
+    var free = e.currentTarget.dataset.free
+    var type = e.currentTarget.dataset.type
+    var id = e.currentTarget.id
+    var index = e.currentTarget.dataset.index
+    // console.log(index)
+    this.setData({
+      playNum: parseInt(index)
+    })
+    if(that.data.sort === 0){
+      wx.setStorageSync('playNum',index)
+    } else {
+      wx.setStorageSync('playNum',that.data.showdata.length - index-1)
+    }
+    
+    console.log(e)
+    // 判断用户是否购买专辑
+    if(this.data.data.is_buy === 0){
+      // 判断单曲是否购买
+      if(free === '0'){
+        console.log(1)
+        if(that.data.lan_index === 1){
+          wx.showToast({
+            title: 'ད་དུང་ཉོས་མེད།',
+            icon: 'none',
+            mask: true,
+            duration: 1500
+          })
+        } else {
+          wx.showToast({
+            title: '还没购买',
+            icon: 'none',
+            mask: true,
+            duration: 1500
+          })
+        }
+      } else {
+        // 判断点击的是音频还是视频
+        if(type === '0'){
+          wx.navigateTo({
+            url: '../singleDetails/singleDetails?lan='+that.data.lan+'&type=1&id='+id
+          })
+        } else {
+          wx.navigateTo({
+            url: '../video/video?lan='+that.data.lan+'&type=1&id='+id
+          })
+        }
+      }
+    } else {
+      // 判断点击的是音频还是视频
+      if(type === '0'){
+        wx.navigateTo({
+          url: '../singleDetails/singleDetails?lan='+that.data.lan+'&type=1&id='+id
+        })
+      } else {
+        wx.navigateTo({
+          url: '../video/video?lan='+that.data.lan+'&type=1&id='+id
+        })
+      }
+    }
+    // this.setSto(index)
+  },
+  // 设置缓存
+  setSto (index) {
+    var that = this
+    wx.setStorage({
+      key: 'playType',
+      data: that.data.playType
+    })
+    wx.setStorage({
+      key: 'playNum',
+      data: index
+    })
+    wx.setStorage({
+      key: 'playList',
+      data: that.data.data.media
+    })
+  },
+  // 购买跳转 
+  tobuy:function() {
+    var that = this
+    // 判断用户是否购买该专辑 0-->未购买
+    if(that.data.data.is_buy !== 0){
+      if(that.data.lan_index === 1){
+        wx.showToast({
+          title: 'ཆེད་བསྒྲིགས་འདི་ཁྱེད་ཀྱིས་ཉོས་ཡོད།',
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: '您已购买该专辑',
+          icon: 'none'
+        })
+
+      }
+    }else{
+      wx.setStorage({
+        key:'album',
+        data:that.data.data
+      })
+      wx.navigateTo({
+        url: '../albumOrders/albumOrders?lan='+(that.data.lan_index == 1 ? 'zang' : '')
+      })
+    }
+  },
+  // 会员开通
+  jumpMember () {
+    wx.navigateTo({
+      url: '../member/member'
+    })
+  },
+  // 播放全部
+  playAll: function(){
+    var that = this
+    //判断该专辑是否全部购买
+    if(that.data.data.is_buy !== 0){
+      //设置缓存
+      that.setSto(0)
+      // 判断第一个单曲的类别 跳转视频播放或音频播放
+      if (that.data.data.media[0].media_type === '1') {
+        wx.navigateTo({
+          url: '../video/video?lan='+that.data.lan+'&type=1&id='+that.data.data.media[0].id
+        })
+      }else{
+        wx.navigateTo({
+          url: '../singleDetails/singleDetails?lan='+that.data.lan+'&type=1&id='+that.data.data.media[0].id
+        })
+      }
+    } else {
+      if(that.data.lan_index === 1){
+        wx.showToast({
+          title: 'ཆེད་བསྒྲིགས་འདི་ད་དུང་ཉོས་མེད།',
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: '您还没购买该专辑',
+          icon: 'none'
+        })
+      }
+    }
+  },
+  // 试听
+  testListen () {
+    console.log(this.data.data.media[0].id)
+    var that = this
+    var id = this.data.data.media[0].id
+    var media_type = this.data.data.media[0].media_type
+    console.log(id)
+    if(media_type === '1'){
+      wx.navigateTo({
+        url: '../video/video?lan='+that.data.lan+'&type=1&id='+id
+      })
+    }else{
+      wx.navigateTo({
+        url: '../singleDetails/singleDetails?lan='+that.data.lan+'&type=1&id='+id
+      })
+    }
+  
+  },
+  // 上一页
+  prev () {
+    var x = this.data.listscope[0] - 1
+    var y = this.data.listscope[1]
+    this.setData({
+      listscope: [x,y]
+    })
+  },
+  // 下一页
+  next () {
+    var x = this.data.listscope[0]
+    var y = this.data.listscope[1] + 1
+    this.setData({
+      listscope: [x,y]
+    })
+  },
+
+// 分享
+sharecar () {
+  var that = this
+  var pages = getCurrentPages() //获取加载的页面
+  var currentPage = pages[pages.length-1] //获取当前页面的对象
+  var url = currentPage.route //当前页面url
+  var options = currentPage.options //如果要获取url中所带的参数可以查看options
+  var arr = []
+  for(var key in options){
+    var str = key+'='+options[key]
+    console.log(str)
+    arr.push(str)
+  }
+  var pageUrl = url+'?'+arr.join('&')
+  that.setData({pageUrl})
+  // console.log(that.data.pageUrl)
+  // console.log(pageurl)
+  // wx.request({
+  //   url: that.data.url + '/wechat/index/getcode',
+  //   data: {
+  //     pageurl
+  //   },
+  //   success: res => {
+  //     console.log(res)
+  //     var context = wx.createCanvasContext('sharecan')
+  //     // 二维码地址
+  //     var codeUrl = that.data.url + res.data.codeimg
+  //     // 图片地址
+  //     var path = that.data.url+that.data.data.cover
+  //     // 画图片
+  //     context.drawImage(path,50,20,275,275)
+  //     // 写标题
+  //     context.setFontSize(18)   
+  //     context.fillText(that.data.data.title, 50, 350)
+  //     // 写价格
+  //     context.setFillStyle('#f66')
+  //     context.setFontSize(15)   
+  //     context.fillText('¥'+that.data.data.money, 50, 390)
+  //     // 画二维码
+  //     context.drawImage(codeUrl,225,320,100,100)
+  //     context.draw(true,(res) => {
+  //       console.log(res)
+  //       wx.canvasToTempFilePath({
+  //         canvasId: 'sharecan',
+  //         fileType: 'jpg',
+  //         quality: 1,
+  //         success: res => {
+  //           console.log(res.tempFilePath)
+  //           that.setData({
+  //             shareImg: res.tempFilePath
+  //           })
+  //         }
+  //       })
+  //     })
+
+  //   }
+  // })
+},
+// 显示分享
+shareshow () {
+  this.setData({
+    shareshow:true
+  })
+},
+// 不显示分享
+back(){
+  this.setData({
+    shareshow:false
+  })
+},
+// 保存
+save () {
+  var that = this
+  wx.saveImageToPhotosAlbum({
+    filePath: that.data.shareImg,
+    success: res => {
+      console.log(res)
+      if(that.data.lan_index === 1){
+        wx.showToast({
+          title: 'པར་རིས་ཉར་ཚགས་བྱས་ཡོད།',
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: '图片已保存',
+          icon: 'none'
+        })
+      }
+      that.back()
+    }
+  })
+},
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this
+    that.getData(that.data.id)
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

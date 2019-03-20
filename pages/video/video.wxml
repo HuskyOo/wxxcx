@@ -1,0 +1,89 @@
+<!--pages/video/video.wxml-->
+<view class="mv">
+    <view style="height:450rpx">
+        <video src="{{data.is_buy === 1 || data.is_free === '1' ? data.audio : ''}}"/>
+    </view>
+    <view class="vip" wx:if="{{data.is_buy === 0}}">
+        <view  class="vip-font">
+            <image src="../../images/vip-icon.png" style="width:22rpx;height:24rpx"/>
+            <!-- <text>立即开通会员</text> -->
+            <text>{{page_font.vip_font[page_index]}}</text>
+        </view>
+        <text class="vip-btn" bindtap="jumpMember">{{page_font.vip_btn[page_index]}}</text>
+    </view>
+
+
+    <view class="title-list">
+        <!-- {{page_font.catalog[page_index]}} -->
+        <view  class="{{isShow === '1' ? 'active' : ''}}" data-show="1" bindtap="show">
+            <text>{{page_font.author[page_index]}}</text>
+        </view>
+        <!-- {{page_font.intro[page_index]}} -->
+        <view class="{{isShow === '2' ? 'active' : ''}}" data-show="2" bindtap="show">
+            <text>{{page_font.album[page_index]}}</text>
+        </view>
+    </view>
+
+
+    <!-- 相关信息 -->
+    <view class="related">
+        <text class="rela-title">{{data.title}}</text>
+        <text class="rela-sub">{{data.sub_title}}</text>
+        <view class="sales">
+            <view wx:if="{{type === 1}}">
+                <image src="../../images/set.png" />
+                <text>{{data.list.length}}</text>
+            </view>
+            <view wx:else>
+                <image src="../../images/peoplenumber.png" />
+                <text>{{data.sales}}</text>
+            </view>
+            <view>
+                <image src="../../images/shijian@3x.png" />
+                <text>{{data.duration}}</text>
+            </view>
+        </view>
+    </view>
+    
+    <!-- 分界线 -->
+    <view class='boundary-line'></view>
+
+    <view class="box">
+        
+        <!-- <scroll-view scroll-y="{{true}}" class="catalog-list" wx:if="{{isShow === '1'}}">
+
+            <view class="catalog" wx:for="{{data.list}}" data-free="{{item.is_free}}" data-id="{{item.id}}" bindtap="changePro">
+                <text class="num">{{index+1}}</text>
+                <text class="txt {{item.id === data.id ? 'active' : ''}}">{{item.title}}</text>
+                <image wx:if="{{data.is_buy === 0 && item.is_free === '0'}}" src="../../images/suo@2x.png" style="width:19rpx;height:25rpx; margin-left:auto;margin-right:20rpx" />
+            </view>
+            
+        </scroll-view> -->
+        
+
+        
+
+        <view class="intro" wx:if="{{isShow === '1'}}">
+            <text class="title">{{page_font.author[page_index]}}</text>
+            <text ></text>
+            <view class="content">
+                <import src="../../wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:author.nodes}}"/>
+            </view>
+        </view>
+        <view class="intro" wx:if="{{isShow === '2'}}">
+            <text class="title">{{page_font.album[page_index]}}</text>
+            <view class="content">
+                <import src="../../wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:album.nodes}}"/>
+            </view>  
+        </view>
+    </view>
+
+    <view class="fixed-box" wx:if="{{data.is_buy === 0}}">
+        <text class="fonts">{{page_font.nobuy[page_index]}}</text>
+        <text class="buy-btn" bindtap="buyMV">{{page_font.nowbuy[page_index]}} ¥{{data.money}}</text>
+    </view>
+
+    <view class="shadow" wx:if="{{data.is_buy === 0 && data.is_free === '0'}}"></view>
+</view>

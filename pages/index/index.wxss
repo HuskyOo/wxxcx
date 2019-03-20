@@ -1,0 +1,151 @@
+page{
+  font-family: 'Jomolhari';
+}
+.auth{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color:#fff
+}
+.auth-btn{
+  margin: 40% auto;
+  width: 200rpx;
+  height: 100rpx;
+  background-color: red;
+  border-radius: 10rpx;
+}
+
+
+.auth{
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 40rpx;
+}
+
+.bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 35rpx;
+}
+.title{
+  font-family: 'Himalaya-G';
+  
+}
+.replace-button{
+  font-family: 'Himalaya-G';
+  
+}
+.title-one{
+  font-size: 32rpx;
+}
+.replace-button text{
+  font-size: 30rpx;
+}
+.replace-button text{
+  margin-top:8rpx;
+}
+.title {
+  font-family:'Himalaya-G';
+  font-size:32rpx;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding:0 30rpx;
+  
+}
+.title-one{
+  display: inline-block;
+  /* margin-left: 28rpx; */
+  font-size: 32rpx
+}
+
+.title-two{
+  display: inline-block;
+  /* margin-left: 544rpx; */
+  color: #919191;
+  /* flex-direction: column */
+}  
+
+
+
+.bookContent{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 30rpx;
+}
+
+.bookContent > .book-list{
+  display: flex;
+  flex-direction: column;
+  margin: 54rpx 20rpx 0rpx 20rpx;
+  width: 33.3333%;
+  overflow: hidden;
+}
+
+.bookContent > .book-list image{
+  width: 210rpx;
+  height: 200rpx
+}
+
+.bookContent > .book-list text{
+  font-size: 24rpx;
+  color: #616161;
+  white-space: nowrap;
+  width: 100%;
+  margin-top: 18rpx;
+  /* line-clamp: 1; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookContent > .book-list > .book-price{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  align-items: center;
+}
+
+.bookContent > .book-list >.book-price>text{
+  font-size: 28rpx;
+  color: #F76241;
+  margin-top: 0rpx
+}
+
+.book-mailing{
+  width: 260rpx;
+  height: 30rpx;
+  border: 2rpx solid #FF623F;
+  font-size: 18rpx;
+  text-align: center;
+  color: #FF623F;
+  border-radius: 20rpx;
+  /* margin-left: 54rpx */
+}

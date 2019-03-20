@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "chinese":"/components/chinese/chinese",
+    "bookcity":"/components/bookcity/bookcity",
+    "welfare":"/components/welfare/welfare",
+    "interview":"/components/interview/interview",
+    "sing":"/components/sing/sing",
+    "recommend":"/components/recommend/recommend"
+  }
+}

@@ -1,0 +1,77 @@
+<!-- 公益 -->
+
+<view class="page-container">
+<!-- 头部图片 -->
+<view class='rescue-titleImg'>
+  <image src='{{url}}{{welfare.cover}}'></image>
+</view>
+<!-- <image wx:for="{{canImgList}}" src="{{item}}" mode="aspectFill" style="width:100%; height:500px" /> -->
+<!-- 最新救助 -->
+<view class='latest-aid'>
+  <view class='latest-aid-title'>
+    <text>རོགས་ཞུ་གསར་བ།</text>
+  </view>
+  <scroll-view scroll-x="true" class="latest-aid-content" scroll-left="{{scrollLeft}}">
+    <!-- <view style="display:flex"> -->
+      <view wx:for="{{welfare.news}}" id="{{item.id}}" class="Latest-aid-list" data-current="{{item.id}}" bindtap="jumpdetail">
+
+        <canvas canvas-id="newcan{{index}}" style="width:{{newCanData[index].w}}px;height:{{newCanData[index].h}}px;position: fixed;opacity:0; bottom: 300%" />
+
+        <image mode="aspectFill" src='{{newCanData[index].img}}'>
+          {{url+item.photos[0]}}
+        </image>
+        <view class='latest-aid-description'>
+          <text>{{item.title}}</text>
+        </view>  
+        <view class='latest-aid-total'>
+          <view class='latest-aid-current' style="width:{{item.now_money/item.need_money*100+'%'}}"></view>
+        </view>
+        <view class='latest-aid-amount'>
+          <text>སྒོར {{item.now_money}} འདུས་ཡོད།</text>
+        </view>
+      </view>
+    <!-- </view> -->
+  </scroll-view>
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+
+<!-- 当前救助 -->
+<view class='current-rescue'>
+  <view class='current-rescue-title'>
+    <text class='title-name'>གཞན་ཕན་ལས་ལ་འབད་ན་བསོད་ནམས་འཕེལ།</text>
+  </view>
+  <view wx:for="{{welfare.needs}}" class='current-rescue-list' data-current="{{item.id}}" id="{{item.id}}" bindtap="jumpdetail">
+    <view class='current-rescue-list-title'>
+
+      
+      
+      <image src='{{url}}{{item.avatar}}'></image>
+      <text class='current-rescue-list-name'>{{item.author}}</text>
+      <text class='current-rescue-list-frequency'>ཐེངས{{item.donation_count}}འབྱོར་ཡོད།</text>
+    </view>
+    <view class='current-rescue-list-content'>
+      <canvas canvas-id="needcan{{index}}" style="width:{{needCanData[index].w}}px;height:{{needCanData[index].h}}px;position: fixed;opacity:0; bottom: 300%" />
+
+      <image mode="aspectFill" src='{{needCanData[index].img}}'></image>
+      <view class='current-rescue-list-detailed'>
+        <text class='current-rescue-list-description'>{{item.title}}</text>
+        <view class='current-rescue-list-fundraising'>
+          <view class='current-rescue-list-now'>
+            <text class='current-rescue-list-amount'>{{item.now_money}}</text>
+            <text class='current-rescue-list-nowText'>འབྱོར་གྲངས།（སྒོར）</text>
+          </view>
+          <view class='current-rescue-list-schedule'>
+            <view class='current-rescue-list-scheduleNow' style="width:{{item.now_money/item.need_money*100+'%'}}"></view>
+          </view>
+          <view class='current-rescue-list-now'>
+            <text>{{item.need_money}}</text>
+            <text class='current-rescue-list-nowText'>མཁོ་ཚད།（སྒོར）</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

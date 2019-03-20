@@ -1,0 +1,135 @@
+/* 头部头像姓名 */
+page{
+  font-family: 'Jomolhari';
+}
+.header{
+  width: 100%;
+  height: 250rpx;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('http://qiuniu.vmobplus.com/fufei/background.png');
+}
+
+.header-image{
+  /* overflow: hidden; */
+  display: block;
+  width: 105rpx;
+  height: 105rpx;
+  /* border-radius: 50%; */
+  margin-top: 47rpx;
+  position: relative;
+  
+}
+.header-image>image{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22rpx;
+  height: 24rpx;
+}
+
+.header-name{
+  font-size: 28rpx;
+  margin-top: 14rpx;
+  color: #FFFFFF
+}
+
+/* 订单 */
+.order-header{
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  margin: 0 20rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #E8E8E8;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-header-title{
+  font-size: 28rpx;
+  margin-left: 8rpx;
+  color: #313131;
+  font-weight: 600;
+  font-family: 'Himalaya-G';
+}
+
+.order-header-detailed{
+  font-size: 20rpx;
+  /* margin-left: 427rpx; */
+  color: #616161
+}
+
+.order-header image{
+  width: 9rpx;
+  height: 16rpx;
+  margin-left: 7rpx;
+  margin-top: 37rpx
+}
+
+.order-option{
+  display: flex;
+  flex-direction: row;
+  padding-top: 45rpx;
+  padding-bottom: 41rpx;
+  justify-content:space-around;
+
+}
+
+.order-option-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 0 56rpx; */
+}
+
+.order-option-list image{
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.order-option-list text{
+  font-size: 23rpx;
+  color: #616161
+}
+
+.features-list{
+  font-family: 'Himalaya-G';
+  margin: 0rpx 18rpx;
+  border-bottom: 1rpx solid #E8E8E8;
+  height: 71rpx;
+  line-height: 71rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.features-list-icon{
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 10rpx
+}
+
+.features-list text{
+  font-size: 28rpx;
+  color: #313131;
+  margin-left: 20rpx;
+  font-weight: 600
+}
+
+.features-list-arrow{
+  width: 10rpx;
+  height: 18rpx;
+  /* margin-left: 510rpx */
+}
+button{
+  background: #fff;
+  text-align: start;
+  padding: 0;
+  border-radius: 0;
+}
+button::after{
+  border: none;
+}

@@ -1,0 +1,35 @@
+<!--pages/hotCourse/hotCourse.wxml-->
+<view class="boundary-line-to"></view>
+<view>
+  <view class='book-content'>
+    <view class='book-list' wx:for="{{hotCourse}}"  id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <view class="book-number {{index<3?'active':''}}">
+        {{index+1 < 10 ? '0' : ''}}{{index+1}}
+      </view>
+      <view class='book-image'>
+        <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+        <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+        <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+        <image src='{{url}}{{item.cover}}'></image>
+      </view>
+      <view class='book-information'>
+        <view class='book-one'>
+          <text class='book-title'>{{item.title}}</text>
+          <text class='book-introduction'>{{item.sub_title}}</text>
+        </view>
+        <view class='book-two interview-two'>
+          <view>
+            <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+            <image src='../../images/peoplenumber.png' wx:else></image>
+            <text>{{item.sales}}</text>
+          </view>
+          <view class='set'>
+            <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+            <image src='../../images/set.png' wx:else></image>
+            <text>{{item.duration ? item.duration : item.media_count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

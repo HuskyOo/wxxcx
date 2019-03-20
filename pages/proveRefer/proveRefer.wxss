@@ -1,0 +1,50 @@
+/* pages/proveRefer/proveRefer.wxss */
+page{
+    font-family: 'Jomolhari';
+}
+.refer-content{
+    padding:38rpx 22rpx 0 22rpx;
+    font-size: 20px;
+}
+.textOne{
+    margin-left:16rpx;
+    margin-bottom: 32rpx;
+    color: rgb(49,49,49);
+    font-family: 'Himalaya-G';
+    font-size: 32rpx;
+}
+.text{
+    font-size: 32rpx;
+    margin-left:16rpx;
+    margin-top:38rpx;
+    margin-bottom: 32rpx;
+    color: rgb(49,49,49);
+    font-family: 'Himalaya-G';
+}
+input{
+    font-family: 'Jomolhari';
+    height:75rpx;
+    font-size: 30rpx;
+    padding:0 23rpx;
+    background-color: rgb(238,238,238)
+}
+textarea{
+    font-family: 'Jomolhari';
+    width:100%;
+    height:250rpx;
+    font-size: 30rpx;
+    padding:23rpx;
+    box-sizing: border-box;
+    background-color: rgb(238,238,238)
+}
+.lastText{
+    margin-left:20rpx;
+    margin-top:25rpx;
+    font-size: 26rpx;
+    color: rgb(145,145,145)
+}
+button{
+    margin-top:78rpx;
+    background-color: rgb(255,98,63);
+    color: #fff;
+}

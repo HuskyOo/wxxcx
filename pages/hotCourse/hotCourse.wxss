@@ -1,0 +1,11 @@
+/* pages/hotCourse/hotCourse.wxss */
+.book-number{
+    height:120rpx;
+    text-align: center;
+    line-height: 120rpx;
+    margin-right: 40rpx;
+    color: #ddd;
+}
+.book-number.active{
+    color:red;
+}

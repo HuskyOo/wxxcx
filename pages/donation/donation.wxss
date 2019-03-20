@@ -1,0 +1,107 @@
+/* pages/donation/donation.wxss */
+page{
+    font-family: 'Himalaya-G';
+}
+.font_12{
+    font-size: 24rpx;
+}
+.page_padding{
+    padding: 0 40rpx;
+}
+.title{
+    height:110rpx;
+    line-height: 110rpx;
+    color:#333;
+    font-weight: normal;
+}
+.fundraising{
+    box-sizing: border-box;
+    padding: 50rpx 40rpx;
+    display: flex;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    height: 200rpx;
+    justify-content: space-between;
+}
+.head_portrait{
+    display: flex;
+    margin-right: 20rpx;
+    align-items: center;
+    
+}
+.head_portrait image{
+    width: 95rpx;
+    height: 95rpx;
+    border-radius: 50%;
+}
+.fundraising .uesr_msg{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.protrait_btn{
+    background: #ffefeb;
+    color:#ff623f;
+    border-radius: 5rpx;
+    font-size: 12px;
+    height: 100%;
+    padding:3rpx 10rpx;
+    margin-left: 20rpx;
+}
+.money .money_btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.money .money_btns .btn{
+    width: 215rpx;
+    height: 104rpx;
+    line-height: 104rpx;
+    text-align: center;
+    border: 1px solid #efefef;
+    box-shadow: 0 0 5rpx #eee;
+    border-radius: 10rpx;
+    color:#ff623f;
+    margin-bottom: 14rpx;
+}
+.money .money_btns .btn.active{
+    border: 1px solid #ffaa97;
+}
+.money .money_ipt{
+    display: flex;
+    height: 100rpx;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow: 0 0 5rpx #eee;
+    border-radius: 10rpx;
+    padding:0 20rpx;
+    font-size: 15px;
+}
+.money .money_ipt input{
+    width: 100%;
+    font-size: 15px;
+}
+.message textarea{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #efefef;
+    box-shadow: 0 0 5rpx #eee;
+    border-radius: 10rpx;
+    padding:0 20rpx;
+    padding-top:40rpx;
+    height: 150rpx;
+    font-size: 14px;
+}
+.sure{
+    height: 100rpx;
+    width: 100%;
+    color: #fff;
+    background: #ff623f;
+    position: fixed;
+    bottom: 0;
+}
+.money, .message{
+    border-top: 1px solid #efefef;
+    margin-bottom: 40rpx;
+}

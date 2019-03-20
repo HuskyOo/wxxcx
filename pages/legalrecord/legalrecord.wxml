@@ -1,0 +1,20 @@
+<!-- 书城列表 -->
+
+<view class='dividing-line'></view>
+<view>
+  <view class='record-list' wx:for="{{booklist}}" id="{{item.id}}" bindtap="detail">
+    <image class="record-list-show" src='{{url+item.cover}}'></image>
+    <view class='record-list-information'>
+      <text class='record-list-title'>{{item.title}}</text>
+      <text class='record-list-description'>{{item.description}}</text>
+      <view>
+        <image class="record-list-narratorimg" src="../../images/name.png" alt=""></image>
+        <text class="record-list-narrator">{{item.author}}</text>
+      </view>
+      <view class="btom">
+        <text class="price">¥{{item.money}}</text>
+        <text class="book-mailing">སྐུར་གླ་མི་དགོས།</text>
+      </view>
+    </view>
+  </view>
+</view>

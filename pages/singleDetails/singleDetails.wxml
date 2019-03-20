@@ -1,0 +1,67 @@
+<!-- pages/singleDetails/singleDetails.wxml 专辑、单曲播放 -->
+<view class="boundary-line-to"></view>
+<view class="single">
+    <text style="margin-top:60rpx;font-size:38rpx;color:#494949">{{data.title}}</text>
+    <text style="margin-top:30rpx;font-size:34rpx;color:#494949">{{data.author}}</text>
+    <image style="width:260px;height:260px;margin-top:20px;border-radius:50%" src="{{url}}{{data.cover}}"></image>
+    <!-- <progress class="progress" percent="{{percent}}" stroke-width="{{sw}}" activeColor="{{pc}}" backgroundColor="{{pbc}}" active="{{isActive}}" active-mode="forwards"></progress>
+    <view class="time">
+        <text style="color:rgb(255,98,63)">{{start}}</text>
+        <text style="color:rgb(255,98,63)">{{end}}</text>
+    </view>
+    <view class="play">
+        <image style="width:50px;height:50px" src="../../images/bofangjian1@2x.png"></image>
+        <image style="width:100px;height:100px" bindtap="bindButton" src="../../images/bofang@2x.png"></image>
+        <image style="width:50px;height:50px" src="../../images/bofangjian2@2x.png"></image>
+    </view> -->
+    <view class='audiosBox'>
+        <view class='slid'>
+            <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{offset}}" max="{{max}}" activeColor="#F86343" backgroundColor="#EACFC8" block-color="#F34E3A"/>
+            <view>
+                <text class='times'>{{starttime}}</text>
+                <!-- 进度时长 -->
+                <text class='times'>{{duration}}</text>
+                <!-- 总时长 -->
+            </view>
+        </view>
+    </view>
+    <view class="play">
+        <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="getPrev"></image>
+        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src="../../images/history.png"></image>
+        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPause" wx:if="{{isOpen}}" src="../../images/bofang@2x.png"></image>
+        <image style="width:75rpx;height:84rpx" src="../../images/nextsong.png" bindtap="getNext"></image>
+    </view>
+</view>
+<!-- 分割线 -->
+<view class='boundary-line' wx:if="{{type !== 1}}"></view>
+<view class="audio_detail" wx:if="{{type !== 1}}">
+    <view class="vip" wx:if="{{data.is_buy === 0}}">
+        <view  class="vip-font">
+            <image src="../../images/vip-icon.png" style="width:22rpx;height:24rpx"/>
+            <!-- <text>立即开通会员</text> -->
+            <text>{{page_font.vip_font[font_index]}}</text>
+        </view>
+        <text class="vip-btn" bindtap="jumpMember">{{page_font.vip_btn[font_index]}}</text>
+    </view>
+    <view class="title">
+        <text data-show="0" bindtap="changeShow" class="{{introduce === '0' ? 'active' : ''}}">{{page_font.intro[font_index]}}</text>
+        <text data-show="1" bindtap="changeShow" class="{{introduce === '1' ? 'active' : ''}}">{{page_font.album[font_index]}}</text>
+    </view>
+    <view class="content">
+        <view wx:if="{{introduce === '0'}}">
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:author.nodes}}"/>
+        </view>
+        <view wx:else>
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:good.nodes}}"/>
+        </view>
+    </view>
+    <view style="height:80rpx"></view>
+</view>
+<view class="fixed-box" wx:if="{{data.is_buy === 0}}">
+    <text class="fonts">{{page_font.nobuy[font_index]}}</text>
+    <text class="buy-btn" bindtap="buyMic">¥{{data.money}} {{page_font.nowbuy[font_index]}}</text>
+    <!-- <text class="buy-btn" style="background:#ffc926;border:none">ཚོགས་མིར་ཐོ་འགོད་བྱས་རྗེས་རིན་མེད་ཉན་ཆོག</text> -->
+    <!-- 开通会员即可免费收听 -->
+</view>

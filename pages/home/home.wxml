@@ -1,0 +1,233 @@
+<!--pages/home/home.wxml-->
+<!-- <text>pages/home/home.wxml</text> -->
+<view class="home">
+	<!-- 导航栏 -->
+	<view class="navigation">
+		<view wx:for="{{nav}}" wx:key="item.id" class="nav-options {{item.id == page_index?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.title}}</view>
+	</view>
+	
+	<!-- 众筹 -->
+	<view class="donation" wx:if="{{page_index == 1}}">
+
+		<!-- 公益 -->
+
+		<view class="page-container">
+			<!-- 头部图片 -->
+			<view class='rescue-titleImg'>
+				<image src='{{url}}{{welCover}}'></image>
+			</view>
+			<!-- <image wx:for="{{canImgList}}" src="{{item}}" mode="aspectFill" style="width:100%; height:500px" /> -->
+			<!-- 最新救助 -->
+			<view class='latest-aid'>
+				<view class='latest-aid-title'>
+					<text>རོགས་ཞུ་གསར་བ།</text>
+				</view>
+				<scroll-view scroll-x="true" class="latest-aid-content" scroll-left="{{scrollLeft}}">
+					<!-- <view style="display:flex"> -->
+						<view wx:for="{{welNew}}" id="{{item.id}}" class="Latest-aid-list" data-current="{{item.id}}" bindtap="jumpdetail">
+
+							<canvas canvas-id="newcan{{index}}" style="width:{{newCanData[index].w}}px;height:{{newCanData[index].h}}px;position: fixed;opacity:0; bottom: 300%" />
+
+							<image mode="aspectFill" src='{{newCanData[index].img}}'>
+								{{url+item.photos[0]}}
+							</image>
+							<view class='latest-aid-description'>
+								<text>{{item.title}}</text>
+							</view>  
+							<view class='latest-aid-total'>
+								<view class='latest-aid-current' style="width:{{item.now_money/item.need_money*100+'%'}}"></view>
+							</view>
+							<view class='latest-aid-amount'>
+								<text>སྒོར {{item.now_money}} འདུས་ཡོད།</text>
+							</view>
+						</view>
+					<!-- </view> -->
+				</scroll-view>
+			</view>
+
+			<!-- 分界线 -->
+			<view class='boundary-line'></view>
+
+			<!-- 当前救助 -->
+			<view class='current-rescue'>
+				<view class='current-rescue-title'>
+					<text class='title-name'>གཞན་ཕན་ལས་ལ་འབད་ན་བསོད་ནམས་འཕེལ།</text>
+				</view>
+				<view wx:for="{{welNeed}}" class='current-rescue-list' data-current="{{item.id}}" id="{{item.id}}" bindtap="jumpdetail">
+					<view class='current-rescue-list-title'>
+
+						
+						
+						<image src='{{url}}{{item.avatar}}'></image>
+						<text class='current-rescue-list-name'>{{item.author}}</text>
+						<text class='current-rescue-list-frequency'>ཐེངས{{item.donation_count}}འབྱོར་ཡོད།</text>
+					</view>
+					<view class='current-rescue-list-content'>
+						<canvas canvas-id="needcan{{index}}" style="width:{{needCanData[index].w}}px;height:{{needCanData[index].h}}px;position: fixed;opacity:0; bottom: 300%" />
+
+						<image mode="aspectFill" src='{{needCanData[index].img}}'></image>
+						<view class='current-rescue-list-detailed'>
+							<text class='current-rescue-list-description'>{{item.title}}</text>
+							<view class='current-rescue-list-fundraising'>
+								<view class='current-rescue-list-now'>
+									<text class='current-rescue-list-amount'>{{item.now_money}}</text>
+									<text class='current-rescue-list-nowText'>འབྱོར་གྲངས།（སྒོར）</text>
+								</view>
+								<view class='current-rescue-list-schedule'>
+									<view class='current-rescue-list-scheduleNow' style="width:{{item.now_money/item.need_money*100+'%'}}"></view>
+								</view>
+								<view class='current-rescue-list-now'>
+									<text>{{item.need_money}}</text>
+									<text class='current-rescue-list-nowText'>མཁོ་ཚད།（སྒོར）</text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+	<!-- 课程 course -->
+	<view class="cou" wx:if="{{page_index == 2}}">
+		<!-- 轮播图 -->
+		<!-- <view>
+			<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
+				<block wx:for="{{zbanner}}" wx:key="item.id">
+					<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx">
+						<image src="{{url}}{{item.img}}" mode="aspectFill" style="width:100%;height:263rpx" />
+					</swiper-item>
+				</block>
+			</swiper>
+		</view> -->
+
+		<!-- 九宫格 -->
+		<view class="grid">
+			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum">
+				<image src="{{url}}{{item.img}}" mode="aspectFill" st></image>
+				<text>{{item.title}}</text>
+			</view>
+			<view class="addMore">
+				<text >展开更多</text>
+			</view>
+		</view>
+
+		<!-- 分界线 -->
+		<view class='boundary-line'></view>
+		
+		<!-- 热播课程 -->
+		<!-- <view class='book-recommendation'>
+			<view class='title' data-title="ཡག་ཤོས།" bindtap='hotCourse'>
+				<view class='title-one'>
+					<text>ཡག་ཤོས།</text>
+				</view>
+				<view class='title-two'>
+					<image src='../../images/jiantou.png'></image>
+				</view>
+			</view>
+
+			<view class='book-content'>
+				<view class='book-list' wx:for="{{zhot}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+					<view class='book-image'>
+						<image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+						<image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+						<image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+						<image src='{{url}}{{item.cover}}'></image>
+					</view>
+					<view class='book-information'>
+						<view class='book-one'>
+							<text class='book-title'>{{item.title}}</text>
+							<text class='book-introduction'>{{item.sub_title}}</text>
+						</view>
+						<view class='book-two interview-two'>
+							<view>
+								<image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+								<image src='../../images/peoplenumber.png' wx:else></image>
+								<text>{{item.sales}}</text>
+							</view>
+							<view class='set'>
+								<image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+								<image src='../../images/set.png' wx:else></image>
+								<text>{{item.duration ? item.duration : item.media_count}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class='replace'>
+				<view class='replace-button' data-catetype="2" bindtap="updata">
+					<image src='../../images/replace.png'></image>
+					<text>དེ་ལས་མང་བ།</text>
+				</view>
+			</view>
+		</view> -->
+		<col-list list="{{zhot}}" title="热播课程"></col-list>
+
+		<!-- 广告推荐 -->
+		<view class='advertising' data-nav="{{zad.url}}" bindtap="navjump">
+			<view class='advertising-image'>
+				<image src='{{url}}{{zad.img}}'></image>
+			</view>
+			<view class='advertising-content'>
+				<text class='advertising-title'>{{zad.title}}</text>
+				<text class='advertising-introduction'>{{zad.sub_title}}</text>
+			</view>
+		</view>
+
+		<!-- 最新课程 -->
+		<!-- <view class='book-recommendation'>
+			<view class='title' data-title="གསར་ཤོས།" bindtap="newCourse">
+				<view class='title-one'>
+					<text>གསར་ཤོས།</text>
+				</view>
+				<view class='title-two'>
+					<image src='../../images/jiantou.png'></image>
+				</view>
+			</view>
+
+			<view class='book-content'>
+				<view class='book-list' wx:for="{{znew}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+				<view class='book-image'>
+						<image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+						<image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+						<image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+						<image src='{{url}}{{item.cover}}'></image>
+					</view>
+					<view class='book-information'>
+						<view class='book-one'>
+							<text class='book-title'>{{item.title}}</text>
+							<text class='book-introduction'>{{item.sub_title}}</text>
+						</view>
+						<view class='book-two interview-two'>
+							<view>
+								<image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+								<image src='../../images/peoplenumber.png' wx:else></image>
+								<text>{{item.sales}}</text>
+							</view>
+							<view class='set'>
+								<image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+								<image src='../../images/set.png' wx:else></image>
+								<text>{{item.duration ? item.duration : item.media_count}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class='replace'>
+				<view class='replace-button' data-catetype="1" bindtap="updata">
+					<image src='../../images/replace.png'></image>
+					<text>དེ་ལས་མང་བ།</text>
+				</view>
+			</view>
+		</view> -->
+		<col-list list="{{znew}}" title="最新课程"></col-list>
+
+	</view>
+
+
+	<!-- 问答 -->
+	<view class="asking" wx:if="{{page_index == 3}}"></view>
+</view>

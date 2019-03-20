@@ -1,0 +1,64 @@
+<!-- 个人中心 -->
+
+<!-- 头部头像姓名 -->
+<view class='header'>
+  <view class='header-image'>
+    <image src="../../images/vip-icon.png" wx:if="{{vip === '2'}}" />
+    <view style="border-radius:50%;overflow: hidden; width:105rpx;height:105rpx">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+  </view>
+  <view class='header-name'><open-data type="userNickName"></open-data></view>
+</view>
+
+<!-- 订单 -->
+<view class='order'>
+  <view class='order-header' bindtap='allOrders'>
+    <text class='order-header-title'>ངའི་ཉོ་ཐོ།</text>
+    <view >
+      <text class='order-header-detailed'>ཉོ་ཐོ་ཆ་ཚང་ལ་བལྟ།</text>
+      <image src='../../images/jiantou.png'></image>
+    </view>
+  </view>
+  <view class='order-option'>
+    <view class='order-option-list' wx:for="{{order}}" bindtap='features' id="{{item.id}}" wx:key="{{item.id}}">
+      <image src='{{item.image}}'></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+
+<!-- 功能选项 -->
+<view class='features'>
+  <view class='features-list' bindtap="jumpMember">
+    <view>
+      <image src='../../images/member.png' class='features-list-icon'></image>
+      <text>ཚོགས་མིའི་ལྟེ་གནས།</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+  <view class='features-list' bindtap="jumpHis">
+    <view>
+      <image src='../../images/lishijilu.png' class='features-list-icon'></image>
+      <text>ལོ་རྒྱུས་ཟིན་ཐོ།</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+  <!-- <button open-type="getPhoneNumber" class='features-list' bindgetphonenumber="getPhoneNumber">
+    <view >
+      <image src='../../images/fashijiu.png' class='features-list-icon'></image>
+      <text>ངའི་དགེ་སྒྲུབ།</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </button> -->
+  <view class='features-list' bindtap="jumpAbout">
+    <view >
+      <image src='../../images/guanyuwmen.png' class='features-list-icon'></image>
+      <text>ང་ཚོའི་གནས་ཚུལ།</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+.header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 48rpx;
+  margin-bottom: 58rpx
+}
+
+.header-title{
+  background-color: #FF623F;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  padding: 12rpx;
+  box-shadow: 2rpx 2rpx 16rpx 2rpx #F45E3C
+}
+
+.content{
+  padding: 0rpx 72rpx;
+  color: #616161;
+  font-size: 29rpx;
+  letter-spacing:2rpx;
+}

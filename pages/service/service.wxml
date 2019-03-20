@@ -1,0 +1,9 @@
+<!-- 服务页面 -->
+
+<!-- 头部导航 -->
+<view>
+  <scroll-view scroll-x="true" class="navigation" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{tab}}" class="nav-options {{currentTab==item.id?'active':''}}" data-current="{{item.id}}" bindtap="swichNav">{{item.title}}</view>
+  </scroll-view>
+</view>
+<text>服务页面</text>

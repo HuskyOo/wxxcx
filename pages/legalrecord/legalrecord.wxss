@@ -1,0 +1,91 @@
+
+.dividing-line{
+  width: 100%;
+  height: 1rpx;
+  background-color: #E5E5E5;
+  position: fixed;
+  top: 0
+}
+
+.record-list{
+  font-family: 'Jomolhari';
+  display: flex;
+  flex-direction: row;
+  padding-left: 23rpx;
+  padding-top: 36rpx
+}
+
+.record-list-information{
+  display: flex;
+  flex-direction: column;
+  padding-left: 25rpx;
+  padding-right: 20rpx;
+  width: 568rpx;
+  border-bottom: 3rpx solid #F6F6F6;
+  padding-bottom: 14rpx;
+  justify-content: space-between;
+}
+
+.record-list-show{
+  width: 250rpx;
+  height: 250rpx;
+  flex-shrink: 0 
+}
+
+.record-list-title{
+  font-size: 30rpx;
+  color: #313131;
+  margin-left: 9rpx;
+  margin-top: 8rpx
+}
+
+.record-list-description{
+  font-size: 26rpx;
+  color: #616161;
+  margin-left: 9rpx;
+  margin-top: 17rpx
+}
+
+.record-list-narratorimg{
+  width: 27rpx;
+  height: 30rpx;
+}
+
+.record-list-narrator{
+  font-size: 24rpx;
+  color: #616161;
+  margin-left: 12rpx
+}
+
+.record-list-timeimg{
+  width: 23rpx;
+  height: 23rpx;
+  margin-left: 60rpx
+}
+
+.record-list-time{
+  font-size: 24rpx;
+  color: #616161;
+  margin-left: 12rpx
+}
+.price{
+  color:#ff623f;
+  /* padding-right: 20rpx;
+  line-height: 140rpx;
+  border-bottom: 3rpx solid #F6F6F6; */
+}
+.btom{
+  display: flex;
+  align-items: center;
+}
+.book-mailing{
+  /* width:86rpx; */
+  border:2rpx solid #FF623F;
+  font-size:27rpx;
+  text-align:center;
+  color:#FF623F;
+  border-radius:20rpx;
+  margin-left:54rpx;
+  display:block;
+  padding: 0 20rpx;
+}

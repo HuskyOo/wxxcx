@@ -1,0 +1,9 @@
+var money = {
+  filtMoney: function(num) {
+    num = parseFloat(num)
+    return num.toFixed(2)
+  }
+}
+module.exports = {
+  filtMoney: money.filtMoney
+}

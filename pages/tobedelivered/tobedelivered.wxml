@@ -1,0 +1,38 @@
+<!-- 待发货 -->
+
+<view class="buy-header">
+    <text bindtap='allOrders'>全部</text>
+    <text bindtap='paymentOrder'>待支付</text>
+    <text class="buy-header-active" bindtap='deliveryOrder'>待发货</text>
+    <text bindtap='receiptOrder'>待收货</text>
+    <text bindtap='completeOrder'>已完成</text>
+</view>
+<view class="buy-list" wx:for="{{buyList}}" id="{{item.id}}">
+    <view class="buy-list-header">
+        <text class="buy-list-name">{{item.name}}</text>
+    </view>
+    <view class="buy-list-content">
+        <image src="{{item.image}}" class="buy-list-image" />
+        <view class="buy-list-description">
+            <view class="buy-list-description-left">
+                <text class="buy-list-title">{{item.title}}</text>
+                <text class="buy-list-kind">{{item.kind}}</text>
+                <text class="buy-list-freight">运险费  {{item.freight}}</text>
+            </view>
+            <view class="buy-list-description-right">
+                <text class="buy-list-price">￥{{item.price}}</text>
+                <text class="buy-list-quantity">×{{item.quantity}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="buy-list-footer">
+        <view class="list-footer-information">
+            <text class="footer-kind">共计{{item.quantity}}件商品  合计:</text>
+            <text class="footer-price"> ￥{{item.price*item.quantity}}</text>
+        </view>
+        <view class="footer-list-btn">
+            <text class="delete-btn">提醒发货</text>
+        </view>
+        
+    </view>
+</view>

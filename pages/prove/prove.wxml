@@ -1,0 +1,48 @@
+<!-- pages/prove/prove.wxml  公益 证明 -->
+<view class="boundary-line-to"></view>
+<!-- <view class="top">
+    <view class="top-name">
+        <view>
+          <text style="color:rgb(255,98,63);font-size:28rpx;">མི</text>
+          <text style="color:rgb(255,98,63);margin-bottom:20rpx;font-size:45rpx;">{{relationlist_count}}</text>
+        </view>
+        <text style="font-size:22rpx;color:rgb(145,145,145)">
+          མི{{author}}གནས་ཚུལ་བདེན་དཔང་བྱས་ཡོད།
+        </text>
+    </view>
+    <view>
+        <button bindtap="jumpRefer">ངས་ཀྱང་བདེན་དཔང་བྱེད།</button>
+    </view>
+</view> -->
+<view class="i-prove">
+    <view>
+        <text style="font-weight: bold;font-size:26rpx;">བསྡོམས་པས་མི{{relationlist_count}}གནས་ཚུལ་བདེན་དཔང་བྱས་ཡོད།</text>
+    </view>
+    <view class="i-prove-right" bindtap="toProveRefer">
+        <text bindtap="jumpRefer">ངས་ཀྱང་བདེན་དཔང་བྱེད།</text>
+    </view>
+</view>
+<!-- 分割线 -->
+<view class='boundary-line'></view>
+<!-- <view style="margin-top:70rpx;padding-left:48rpx;">
+    <text>ནད་གཡོག་དང་ནད་གྲོགས་ཀྱིས་གནས་ཚུལ་བདེན་དཔང་བྱས། （མི {{relationlist_count}}）
+    </text>
+</view> -->
+<view class='book-content prve-content'>
+  <view class='book-list' wx:for="{{relationlist}}" wx:key="{{item.id}}">
+    <view class='book-image prve-image'>
+      <!-- <image src='{{url}}{{item.cover}}'></image> -->
+      <image style="width:65rpx;height:65rpx;border-radius:65rpx;" src="{{item.user.avatarUrl}}"></image>
+    </view>
+    <view class='book-information'>
+      <view class='book-one name' style="font-size:30rpx">
+        <text class='book-title' style="color:rgb(97,97,97)">{{item.name}}</text>
+        <text class='prve'>{{item.relation.relation}}</text>
+        <text class='prve real'>{{realName}}</text>
+      </view>
+      <view class='content'>
+        <text style="color:rgb(49,49,49)">{{item.describe}}</text>
+      </view>
+    </view>
+  </view>
+</view>

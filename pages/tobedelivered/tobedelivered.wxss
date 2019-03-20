@@ -1,0 +1,161 @@
+page{
+    background-color: #F9F9F9
+}
+
+/* 头部导航 */
+.buy-header{
+    display: flex;
+    flex-direction: row;
+    border-top: 1rpx solid #E5E5E5;
+    justify-content: space-around;
+    /* padding: 0rpx 20rpx; */
+    height: 86rpx;
+    line-height: 86rpx;
+    background-color: #FFFFFF
+}
+
+.buy-header text{
+    width: 120rpx;
+    text-align: center;
+    font-size: 28rpx;
+
+}
+
+.buy-header-active{
+    border-bottom: 4rpx solid #FF623F;
+    color: #FF623F
+}
+
+
+/* 购买列表 */
+.buy-list{
+    margin: 34rpx 20rpx 0rpx 20rpx;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFFFF;
+    border-radius: 5rpx;
+    padding-bottom: 24rpx
+}
+
+.buy-list-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 26rpx
+}
+
+.buy-list-name{
+    font-size: 28rpx;
+    color: #616161;
+    margin-left: 15rpx
+}
+
+.buy-list-content{
+    display: flex;
+    flex-direction: row;
+    margin-top: 39rpx
+}
+
+.buy-list-image{
+    width: 196rpx;
+    height: 196rpx;
+}
+
+.buy-list-description{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 39rpx;
+    padding-right: 27rpx;
+    border-bottom: 3rpx solid #E5E5E5;
+}
+
+.buy-list-description-left{
+    display: flex;
+    flex-direction: column;
+    width: 259rpx;
+    margin-left: 23rpx
+}
+
+.buy-list-title{
+    font-size: 26rpx;
+    margin-top: 15rpx;
+}
+
+.buy-list-kind{
+    /* display: inline; */
+    width: 122rpx;
+    text-align: center;
+    padding: 0rpx 20rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    border-radius: 16rpx;
+    background-color: #FFEFEB;
+    color: #F76241;
+    font-size: 20rpx;
+    margin-top: 23rpx;
+}
+
+.buy-list-freight{
+    font-size: 24rpx;
+    margin-top: 24rpx;
+    color: #616161
+}
+
+.buy-list-description-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-right;
+    margin-top: 15rpx;
+    padding-left: 74rpx
+}
+
+.buy-list-price{
+    font-size: 29rpx;
+    color: #616161
+}
+
+.buy-list-quantity{
+    font-size: 20rpx;
+    text-align: right;
+    color: #919191
+}
+
+.buy-list-footer{
+    display: flex;
+    flex-direction: column;
+    text-align: right
+}
+
+.list-footer-information{
+    margin-right: 27rpx;
+    text-align: right
+}
+
+.footer-kind{
+    font-size: 20rpx;
+
+}
+
+.footer-price{
+    font-size: 28rpx;
+    color: #E73B2D
+}
+
+.footer-list-btn{
+    text-align: right;
+    margin-top: 20rpx;
+    padding-right: 10rpx
+}
+
+.delete-btn{
+    padding: 4rpx 25rpx;
+    border-radius: 20rpx;
+    border: 1rpx solid #FF623F;
+    font-size: 24rpx;
+    color: #F76241;
+    text-align: center;
+}
+
+.cancel{
+    margin-right: 32rpx
+}

@@ -1,0 +1,142 @@
+<!-- 访谈 -->
+
+<!-- 广告推荐 -->
+  <view class='advertising' data-nav="{{interview.tphoto.url}}" bindtap="navjump">
+    <view class='advertising-image'>
+      <image src='{{url}}{{interview.tphoto.img}}'></image>
+    </view>
+    <view class='advertising-content'>
+      <text class='advertising-title'>{{interview.tphoto.title}}</text>
+      <text class='advertising-introduction'>{{interview.tphoto.sub_title}}</text>
+    </view>
+  </view>
+  <!-- 分界线 -->
+  <view class='boundary-line'></view>
+
+<!-- 最新访谈 -->
+<view class='book-recommendation'>
+  <view class='title' data-title="གསར་ཤོས།" bindtap="newCourse">
+    <view class='title-one'><text>གསར་ཤོས།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+  <!-- <view class='book-content'>
+    <view class='book-list' wx:for="{{interview.news}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <view class='book-image'>
+        <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+        <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+        <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+        <image src='{{url}}{{item.cover}}'></image>
+      </view>
+      <view class='book-information'>
+        <view class='book-one'>
+          <text class='book-title'>{{item.title}}</text>
+          <text class='book-introduction'>{{item.sub_title}}</text>
+        </view>
+        <view class='book-two interview-two'>
+          <view>
+            <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+            <image src='../../images/peoplenumber.png' wx:else></image>
+            <text>{{item.sales}}</text>
+          </view>
+          <view class='set'>
+            <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+            <image src='../../images/set.png' wx:else></image>
+            <text>{{item.duration ? item.duration : item.media_count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class='course-content'>
+    <view class='course-list' wx:for="{{interview.news}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <image src='{{url+item.cover}}' mode="aspectFill"></image>
+      <view class='course-text'>
+      <text class='course-name'>{{item.title}}</text>
+      <text class='course-introduction'>{{item.sub_title}}</text>      
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='replace'>
+    <view class='replace-button'  data-catetype="1" bindtap="updata">
+      <image src='../../images/replace.png'></image>
+      <text>དེ་ལས་མང་བ།</text>
+    </view>
+  </view> -->
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+<!-- 热门访谈 -->
+<view class='course interview-opular'>
+  <view class='title' data-title="ཡག་ཤོས།" bindtap="hotCourse">
+    <view class='title-one'><text>ཡག་ཤོས།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+
+  <view class='course-content'>
+    <view class='course-list' wx:for="{{interview.hots}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <image src='{{url+item.cover}}' mode="aspectFill"></image>
+      <view class='course-text'>
+      <text class='course-name'>{{item.title}}</text>
+      <text class='course-introduction'>{{item.sub_title}}</text>      
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 分界线 -->
+<view class='boundary-line'></view>
+<!-- 更多访谈 -->
+<view class='book-recommendation'>
+  <view class='title' data-title="དེ་ལས་མང་བ།" data-cateType="3"  bindtap="newCourse">
+    <view class='title-one'><text>དེ་ལས་མང་བ།</text></view>
+    <view class='title-two'><image src='../../images/jiantou.png'></image></view>
+  </view>
+
+  <view class='course-content'>
+    <view class='course-list' wx:for="{{interview.more}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <image src='{{url+item.cover}}' mode="aspectFill"></image>
+      <view class='course-text'>
+      <text class='course-name'>{{item.title}}</text>
+      <text class='course-introduction'>{{item.sub_title}}</text>      
+      </view>
+    </view>
+  </view>
+  <!-- <view class='book-content'>
+    <view class='book-list' wx:for="{{interview.more}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
+      <view class='book-image'>
+        <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+        <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+        <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+        <image src='{{url}}{{item.cover}}'></image>
+      </view>
+      <view class='book-information'>
+        <view class='book-one'>
+          <text class='book-title'>{{item.title}}</text>
+          <text class='book-introduction'>{{item.sub_title}}</text>
+        </view>
+        <view class='book-two interview-two'>
+          <view>
+            <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+            <image src='../../images/peoplenumber.png' wx:else></image>
+            <text>{{item.sales}}</text>
+          </view>
+          <view class='set'>
+            <image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
+            <image src='../../images/set.png' wx:else></image>
+            <text>{{item.duration ? item.duration : item.media_count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- <view class='replace'>
+    <view class='replace-button' bindtap="updata">
+      <image src='../../images/replace.png' data-catetype="3" ></image>
+      <text>དེ་ལས་མང་བ།</text>
+    </view>
+  </view> -->
+</view>
+

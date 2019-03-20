@@ -1,0 +1,254 @@
+<!-- pages/welfareDetails/welfareDetails.wxml  公益详情 -->
+<view class="boundary-line-to"></view>
+<image src="{{welcover}}" style="width:100%;height:220rpx" mode="aspectFill" />
+<!-- 头部信息 -->
+<view class="welfareDetails-content">
+    <view class="welfareDetails-head">
+        <view class="welfareDetails-user">
+            <image style="width:50rpx;height:50rpx;border-radius:50rpx;" src="{{url}}{{welfare.avatar}}" />
+            <view class="user-name">
+                <view style="font-size:26rpx;color:rgb(97,97,97);margin:10rpx 16rpx 0 16px;">
+                    <text>{{welfare.author}}</text>
+                </view>
+                <view>
+                    <text style="font-size:22rpx;color:rgb(255,98,63);">རོགས་སྐྱོར་རེ་ཞུ་བྱས།</text>
+                </view>
+            </view>
+        </view>
+        <view class="welfareDetails-type">
+            <text style="font-size:20rpx;">སྒེར་གྱི་རེ་ཞུ།</text>
+        </view>
+    </view>
+    <view class="welfareDetails-title">
+        <text>{{welfare.title}}</text>
+    </view>
+    <view class="welfareDetails-money">
+        <view class="money">
+            <text class="money-m">{{welfare.need_money}}</text>
+            <text class="money-font">མཁོ་ཚད།（སྒོར）</text>
+        </view>
+        <view class="money">
+            <text class="money-m">{{welfare.now_money}}</text>
+            <text class="money-font">འབྱོར་གྲངས།（སྒོར）</text>
+        </view>
+        <view class="money">
+            <text class="money-m">{{welfare.donation_count}}</text>
+            <text class="money-font">འབྱོར་ཐེངས།</text>
+        </view>
+    </view>
+</view>
+<!-- 分割线 -->
+<view class="boundary-line line"></view>
+<!-- 求助人的故事 -->
+<view class="welfareDetails-life">
+    <text style="margin-left:36rpx;font-weight: bold;">ནད་པའི་གནས་ཚུལ་གསལ་བཤད།</text>
+    <view class="life">
+        <text class="{{unfold?'restrict':''}}">{{welfare.introduction}}</text>
+        <!-- <text wx:if="{{show}}"> -->
+            <text style="color:rgb(255,98,63)" bindtap="unfold" wx:if="{{unfold}}">ཚང་མར་བལྟ།</text>
+            <text style="color:rgb(255,98,63)" bindtap="unfold" wx:else>ཡར་བསྡུ།</text>
+        <!-- </text> -->
+    </view>
+    <view class="imgs">
+        <view wx:for="{{welfare.photos}}" wx:key="item.id" class="box">
+            <canvas canvas-id="welcan{{index}}" style="width:{{welCanData[index].w}}px;height:{{welCanData[index].h}}px;position: fixed;opacity:0; bottom: 300%" />  
+            <image class="img" mode="aspectFill" bindtap="preview" data-src="{{welCanData[index].img}}" src="{{welCanData[index].img}}" />
+        </view>
+        <!-- <image class="img" src="../../images/tuijiantwo.png" />
+        <image class="img" src="../../images/tuijiantwo.png" />
+        <image class="img" src="../../images/tuijiantwo.png" /> -->
+    </view>
+</view>
+<!-- 分割线 -->
+<view class="boundary-line line"></view>
+<!-- 证明材料 -->
+<view class="welfareDetails-prove">
+    <text style="margin-left:36rpx;font-weight: bold;">བདེན་དཔང་ཡིག་ཆ།</text>
+    <view class="prove-details  topOne">
+        <view>
+            <text style="font-size:30rpx;color:rgb(49,49,49)">ནད་པའི་མིང་།</text>
+        </view>
+        <view>
+            <view>
+                <text style="font-size:30rpx;color:rgb(123,123,123)">{{welfare.author}}</text>
+                <view>
+                    <text style="color:rgb(93,152,242);font-size:30rpx;">{{idcardprove}}</text>
+                    <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="prove-details topTwo">
+        <view>
+            <text style="font-size:30rpx;color:rgb(49,49,49)">ནད་ཀྱི་རིགས།</text>
+        </view>
+        <view>
+            <text style="font-size:30rpx;color:rgb(123,123,123)">{{welfare.disease}}</text>
+            <view>
+                <text style="color:rgb(93,152,242);font-size:30rpx;">{{prove1[0]}}</text>
+                <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+            </view>
+            <view>
+                <text style="color:rgb(93,152,242);font-size:30rpx;">{{welfare.hospital}}སྨན་ཁང་ནང་དུ་སྨན་བཅོས་བྱེད་བཞིན་འདུག</text>
+                <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+            </view>
+        </view>
+    </view>
+    <view class="prove-details topThree">
+        <view>
+            <text style="font-size:30rpx;color:rgb(49,49,49)">རོགས་དངུལ་ལེན་མཁན།</text>
+        </view>
+        <view>
+            <view>
+                <text style="font-size:30rpx;color:rgb(123,123,123)">{{welfare.payee}}</text>
+                <view>
+                    <text style="color:rgb(93,152,242);font-size:30rpx;">{{prove2[0]}}</text>
+                    <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+                </view>
+                <view>
+                    <text style="color:rgb(93,152,242);font-size:30rpx;">{{prove2[1]}}</text>
+                    <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+                </view>
+                <view>
+                    <text style="color:rgb(93,152,242);font-size:30rpx;">{{prove2[2]}}</text>
+                    <image style="width:26rpx;height:26rpx;margin-left:18rpx;margin-top:30rpx;" src="../../images/tongguo@2x.png" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="prove-details topFour">
+        <view>
+            <text style="font-size:30rpx;color:rgb(49,49,49)">རོགས་ཞུ་མཁན་གྱི་དམ་བཅའ།</text>
+        </view>
+        <view>
+            <view style="width:450rpx;">
+                <text style="font-size:30rpx;color:rgb(123,123,123)">{{prove3}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="prove-details topFour">
+        <view>
+            <text style="font-size:30rpx;color:rgb(49,49,49)"> སྤྱི་སྟེགས་ཀྱི་གསལ་བསྒྲགས།</text>
+        </view>
+        <view>
+            <view style="width:450rpx;">
+                <text style="font-size:30rpx;color:rgb(123,123,123)">{{prove4}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 我也来证明 -->
+<view class="iprove">
+    <view class="i-prove">
+        <view>
+            <text style="font-weight: bold;font-size:26rpx;">བསྡོམས་པས་མི{{welfare.relationlist_count}}གནས་ཚུལ་བདེན་དཔང་བྱས་ཡོད།</text>
+        </view>
+        <view class="i-prove-right" bindtap="toProveRefer">
+            <text>ངས་ཀྱང་བདེན་དཔང་བྱེད།</text>
+        </view>
+    </view>
+    <!-- 分割线 -->
+    <view class="boundary-line-to" style="margin-top:40rpx;"></view>
+    <view class='book-content prve-content'>
+        <view class='book-list' wx:for="{{relationlist}}" wx:if="{{index<2}}" wx:key="{{item.id}}">
+            <view class='book-image prve-image'>
+                <!-- <image src='{{url}}{{item.cover}}'></image> -->
+                <image style="width:65rpx;height:65rpx;border-radius:65rpx;" src="{{item.user.avatarUrl}}"></image>
+            </view>
+            <view class='book-information'>
+                <view class='book-one name' style="font-size:30rpx">
+                    <text class='book-title' style="color:rgb(97,97,97)">{{item.user.nickname}}</text>
+                    <text class='prve'>{{item.relation.relation}}</text>
+                    <text class='prve real'>{{realName}}</text>
+                </view>
+                <view class='content'>
+                    <text style="color:rgb(49,49,49)">{{item.describe}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="prove-bottom">
+    <view class="prove-touxiang">
+        <view wx:for="{{relationlist}}">
+            <image style="width:50rpx;height:50rpx;border-radius:50rpx" src="{{item.user.avatarUrl}}" />
+        </view>
+    </view>
+    <view class="jumpp" bindtap="toProve">
+        <view style="width:220rpx;height:30rpx;font-size:30rpx;line-height:30rpx">
+            <text>ཚང་མར་བལྟ་བ།</text>
+        </view>
+        <view style="margin-left:5rpx;">
+            <image style="width:20rpx;height:30rpx;" src="../../images/jiantou.png" />
+        </view>
+    </view>
+</view>
+<!-- 筹款动态 -->
+<view class="dynamic">
+    <view style="margin-top:68rpx;font-weight: bold;">
+        <text>ནད་པའི་ད་ལྟའི་གནས་ཚུལ།</text>
+    </view>
+    <view class="content">
+        <view class="timer">
+            <text>{{dynamics.time}}</text>
+        </view>
+        <view class="info">
+            <view class="user">
+                <image style="width:50rpx;height:50rpx;border-radius:50rpx" src="{{dynamics.user.avatarUrl}}" />
+                <text >{{dynamics.user.nickname}}</text>
+            </view>
+            <text>{{dynamics.content}}</text>
+            <view class="img-list">
+                <image wx:for="{{dynamics.photos}}" mode="aspectFill" bindtap="preview" data-src="{{url}}{{item}}" src="{{url}}{{item}}" />
+                <!-- <image src="../../images/tuijianone.png" />
+                <image src="../../images/tuijianone.png" />
+                <image src="../../images/tuijianone.png" /> -->
+            </view>
+            <view class="more" bindtap="jumpdynamic">
+                <text>ཚང་མར་བལྟ་བ།</text>
+                <image src="../../images/jiantou.png" />
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 分割线 -->
+<view class='boundary-line'></view>
+
+<view style="margin-top:68rpx;margin-left:20rpx;margin-bottom:30rpx;font-size:30rpx;font-weight: bold;font-family: 'Himalaya-G';">
+    <text>རོགས་དངུལ་ཕུལ་བའི་ཟིན་བྲིས།</text>
+</view>
+<view style="height:100rpx;background-color:rgb(248,248,248);font-size:30rpx;text-align:center;line-height:100rpx;color:rgb(97,97,97)">
+    <text>བརྒྱུད་སྤེལ་ཐེངས{{welfare.sharenum}}བྱས་ཡོད། རོགས་དངུལ་ཐེངས{{welfare.donation_count}}འབྱོར་ཡོད།</text>
+</view>
+<view class='book-content prve-content'>
+    <view class='book-list prve-content-img' wx:for="{{donation}}" wx:key="{{item.id}}">
+        <view class='book-image prve-image'>
+            <!-- <image src='{{url}}{{item.cover}}'></image> -->
+            <image style="width:65rpx;height:65rpx;border-radius:65rpx;" src="{{item.user.avatarUrl}}"></image>
+        </view>
+        <view class='book-information'>
+            <view class='book-one' style="font-size:30rpx">
+                <view>
+                <text class='book-title' style="color:rgb(97,97,97)">{{item.user.nickname}} སྒོར<text style="color:rgb(255,98,63)">{{item.money}}</text> རོགས་སྐྱོར་བྱས་ཡོད།</text>
+                </view>
+            </view>
+            <view class='content'>
+                <text style="color:rgb(49,49,49)">{{item.message}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="footer">
+    <view style="width:240rpx;height:100rpx;background-color:#fff;color:rgb(97,97,97)">
+        <button class="share" bindtap="shareshow">
+        <!-- bindtap="onShareAppMessage" -->
+            <image style="margin-right:10rpx;" src="../../images/fenxiang@2x.png" />
+            <text>བརྒྱུད་སྐུར།</text>
+        </button>
+    </view>
+    <view class="jumpbtn" bindtap="jumpDonation">
+        <text>ངས་རོགས་སྐྱོར་བྱེད།</text>
+    </view>
+</view>
+<share shareShow="{{shareshow}}" title="{{welfare.title}}" subtitle="{{welfare.author}}" cover="{{welfare.photos[0]}}" pageurl="{{pageUrl}}" lan="zang" bindshareHide="back" bindshareSucc="onShareAppMessage"></share>

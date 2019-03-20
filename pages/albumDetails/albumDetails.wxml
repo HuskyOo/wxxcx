@@ -1,0 +1,144 @@
+<!--pages/albumDetails/albumDetails.wxml-->
+<!-- 头部 -->
+<view wx:if="{{media_type === '1'}}" style="height:330rpx">
+    <video src="{{mediaData.audio}}" style="width:100%;height:330rpx" />
+</view>
+<view wx:else>
+    <view>
+        <image class="bg" src="{{url}}{{data.cover}}" mode="aspectFill"></image>
+    </view>
+    <view >
+        <image class="cg" src="{{url}}{{data.cover}}"></image>
+        <view class="te">
+            <text style="font-size:36rpx">{{data.title}}</text>
+            <text class="ty">{{data.sub_title}}</text>
+            <text class="cl">{{page_font.listen[lan_index]}} | {{page_font.expect[lan_index]}}</text>
+        </view>
+    </view>
+</view>
+
+
+<view class="vip" wx:if="{{data.is_buy === 0}}">
+    <view  class="vip-font">
+        <image src="../../images/vip-icon.png" style="width:22rpx;height:24rpx"/>
+        <!-- <text>立即开通会员</text> -->
+        <text>{{page_font.vip_font[lan_index]}}</text>
+    </view>
+    <text class="vip-btn" bindtap="jumpMember">{{page_font.vip_btn[lan_index]}}</text>
+</view>
+<!-- 上面按钮 -->
+<view class="btns">
+    <!-- <button class="btn" bindtap="tox">详情</button><button  class="btn">节目</button> -->
+    <view class="album-detail-btn {{showIndex === '0' ? 'album-class-btn' : ''}}" data-show="0" bindtap="changeShow"><text>{{page_font.detail[lan_index]}}</text></view>
+    <view class="album-detail-btn {{showIndex === '1' ? 'album-class-btn' : ''}}" data-show="1" bindtap="changeShow"><text>{{page_font.program[lan_index]}}</text></view>
+</view>
+
+<!-- 歌曲内容列表 -->
+<view wx:if="{{showIndex === '1'}}">
+    <view class="choise">
+        <view bindtap="playAll">
+            <image style="width:30rpx;height:30rpx;margin-left:40rpx;margin-right:23rpx" src="../../images/bofangquanbu@2x.png"></image>
+            <text style="font-size:32rpx;color:#979797">{{page_font.play[lan_index]}}</text>
+        </view>
+        <view style="display:flex;font-size:32rpx;color:#616161">
+            <view bindtap="handlesort">
+                <image style="width:29rpx;height:25rpx" src="../../images/zhengxu@2x.png"></image>
+                <text style="margin-left:10rpx;margin-right:20rpx">{{page_font.order[lan_index]}}</text>
+            </view>
+            <picker mode="selector" bindchange="handleSelect" range="{{pageArr}}" value="{{pageIndex}}">
+                <image style="width:20rpx;height:25rpx;vertical-align:baseline" src="../../images/xuanji@2x.png"></image>
+                <text style="margin-left:10rpx;margin-right:20rpx;">{{page_font.selected[lan_index]}}</text>
+            </picker>
+        </view>
+    </view>
+    <scroll-view scroll-y="{{true}}" class='book-content album-content' bindscrolltoupper="prev" bindscrolltolower="next" style="{{data.is_buy === 0 ? '' : 'height:550rpx'}}">
+        <view class='book-list' wx:for="{{showdata}}" wx:key="{{item.album_id}}" id="{{item.id}}" data-free="{{item.is_free}}" data-index="{{index}}" data-type="{{item.media_type}}" wx:if="{{index+1 >= listscope[0]*10+1 && index+1 <= listscope[1]*10}}" bindtap="jumpDetail">
+            <view class="book-number" style="color:#979797">
+                {{sort === 0 ? index+1 : showdata.length-index}}
+            </view>
+            <view class='book-information' style="height:100rpx">
+                <view class='book-one'>
+                    <text class='book-title' style="color:#494949;font-size:30rpx">{{item.title}}</text>
+                    <!-- <text class='book-introduction'>{{item.sub_title}}</text> -->
+                </view>
+                <view class='book-two interview-two'>
+                    <view>
+                        <!-- <image src='../../images/peoplenumber.png'></image> -->
+                        <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+                        <image src='../../images/peoplenumber.png' wx:else></image>
+                        <text style="color:#494949;font-size:17rpx">{{data.sales}}</text>
+                    </view>
+                    <view class='set'>
+                        <image src='../../images/shijian@2x.png'></image>
+                        <text style="color:#494949;font-size:17rpx">{{item.duration}}</text>
+                    </view>
+                    <view class="suo_icon" wx:if="{{item.is_free === '0' && data.is_buy === 0}}"><image src="../../images/suo@3x.png" class="suo" mode="aspectFit"/>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 作者介绍 专辑介绍 -->
+<scroll-view scroll-y="{{true}}" class="introduce" wx:if="{{showIndex === '0'}}">
+    <!-- 标题 副标题 播放量 -->
+    <view class="relate" wx:if="{{media_type === '1'}}">
+        <text style="font-size:36rpx">{{data.title}}</text>
+        <text class="ty">{{data.sub_title}}</text>
+        <!-- <text class="cl">{{page_font.listen[lan_index]}} | {{page_font.expect[lan_index]}}</text> -->
+        <view class="play-num">
+            <view>
+                <image src="../../images/peoplenumber.png"/>
+                <text>{{data.media.length}}</text>
+            </view>
+            <view>
+                <image src="../../images/set.png"/>
+                <text>{{data.media.length}}</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 分界线 -->
+    <view class='boundary-line' wx:if="{{media_type === '1'}}"></view>
+    <!-- 介绍内容 -->
+    <view class="content">
+        <text class="title">{{page_font.author[lan_index]}}</text>
+        <view class="content">
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:author.nodes}}"/>
+        </view>
+        <text class="title">{{page_font.album[lan_index]}}</text>
+        <view class="content">
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:album.nodes}}"/>
+        </view>  
+    </view>
+</scroll-view>
+
+<!-- 高度填充 -->
+<view class='highly-filled'></view>
+
+<!-- 下面按钮 -->
+<view class="LastBtns">
+    <view class="album-detail-btn share">
+        <button  bindtap="shareshow">
+            <!-- open-type="share" -->
+            <image style="width:29rpx;height:33rpx;margin-right:10rpx;" src="../../images/fenxiang@2x.png" />
+            <text >{{page_font.share[lan_index]}}</text>
+        </button>
+        <view bindtap="testListen" wx:if="{{data.is_buy === 0}}">
+            <image style="width:45rpx;height:37rpx" src="../../images/erji_1.png" />
+            <text>{{page_font.audition[lan_index]}}</text>
+        </view>
+    </view>
+    <view class="album-detail-btn album-class-btn">
+        <text wx:if="{{data.is_buy === 0}}" bindtap="tobuy">¥{{data.money}} {{page_font.buy[lan_index]}}</text>
+        <text wx:else bindtap="playAll">{{page_font.once[lan_index]}}</text>
+    </view>
+</view>
+
+
+<share shareShow="{{shareshow}}" cover="{{data.cover}}" pageurl="{{pageUrl}}" title="{{data.title}}" subtitle="{{data.sub_title}}" lan="{{lan}}" bindshareHide="back"></share>
+
+
+

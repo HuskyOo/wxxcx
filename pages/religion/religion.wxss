@@ -1,0 +1,45 @@
+/* pages/religion/religion.wxss */
+.tui-tabbar-content{
+    padding: 10px;
+    padding-bottom: 0;
+}
+.tui-tabbar-group{
+    overflow: hidden;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    color: #000;
+    font-family: 'Himalaya-G';
+}
+.tui-tabbar-cell{
+    display: table-cell;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 35rpx;
+    text-align: center;
+}
+.book-content > .book-list:first-child{
+    margin-top: 30rpx;
+}
+.tui-tabbar-cell:not(:last-child){
+    border-right: 1px solid #fff;
+    }
+.tui-tabbar-cell.active{
+    color: red;border-bottom: 1px solid red
+    }
+.tui-list-box{
+    border-top:1px solid #c8c7cc;
+    }
+.navigation{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Himalaya-G';
+}
+.setdisplay{
+    display: none
+}
+.setdisplay1{
+    display: block
+}

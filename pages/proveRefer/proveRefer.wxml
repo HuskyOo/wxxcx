@@ -1,0 +1,38 @@
+<!-- pages/proveRefer/proveRefer.wxml 证明提交-->
+<view class="boundary-line-to"></view>
+<view class="refer-content">
+    <view class="textOne">
+        <text class="">ཁྱེད་དང་རོགས་ཞུ་མཁན་གྱི་འབྲེལ་བ།</text>
+    </view>
+    <view class="section">
+        <!-- <input type="text" placeholder="འདིར་འབྲི་རོགས།" /> -->
+        <picker bindchange="relationChange" mode="selector" value="{{relation[index].id}}" range="{{relation}}" range-key="{{'relation'}}">
+            <input type="text" placeholder="འདིར་འབྲི་རོགས།" value="{{relation[index].relation}}" disabled="{{true}}" />
+            <view >{{relation[index].ralation}}</view>
+        </picker>
+    </view>
+    <view class="text">
+        <text class="">ཁྱེད་ཀྱི་མིང་།</text>
+    </view>
+    <view class="section">
+        <input placeholder="ཁྱེད་ཀྱི་མིང་ངོ་མ་འབྲི་དགོས།" bindinput="handleName"/>
+    </view>
+    <view class="text">
+        <text class="">བདེན་དཔང་མཁན་གྱི་གཏམ་སྤེལ་ས།</text>
+    </view>
+    <view>
+        <textarea placeholder="དཔེར་ན། རོགས་ཞུ་མཁན་དང་ཁྱེད་གཉིས་ཀྱི་འབྲེལ་བ་ཅི་ཞིག་ཡིན་པ་དང་། རོགས་ཞུ་མཁན་གྱི་སྐོར་ནས་ཁྱེད་རང་ལ་རྒྱུས་ལོན་གང་འདྲ་ཡོད་པ་སོགས་བྲིས་ཆོག" bindinput="handleContent"></textarea>
+    </view>
+    <view class="text">
+        <text class=""> དངོས་མང་བདེན་དཔང་།</text>
+    </view>
+    <view class="section">
+        <input type="idcard" placeholder="ཁྱེད་ཀྱི་ཐོབ་ཐང་ལག་ཁྱེར་གྱི་ཨང་གྲངས་འབྲི་དགོས།" bindinput="handleIdCard" />
+    </view>
+    <view class="lastText">
+        <text>མཆན། གོང་དུ་བཀོད་པའི་གནས་ཚུལ་ཚང་མ་དོན་དངོས་དང་མཐུན་དགོས། ཁྱོད་ཀྱི་མིང་དང་ཐོབ་ཐང་ཨང་གྲངས་སོགས་ང་ཚོས་གསང་བ་དམ་སྲུང་བྱས་ནས་མི་གཞན་ལ་མི་སྟོན།</text>
+    </view>
+    <view>
+        <button bindtap="jump">ཡར་སྤྲོད་པ།</button>
+    </view>
+</view>

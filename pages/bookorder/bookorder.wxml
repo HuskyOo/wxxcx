@@ -1,0 +1,58 @@
+<!--pages/bookorder/bookorder.wxml-->
+<!--pages/indent/indent.wxml-->
+<!-- 订单 -->
+<view class="indent">
+  <view class="addAddress" bindtap="getAddress" wx:if="{{!getdress}}">
+    <text>སྐུར་སའི་ས་གནས་འབྲི་ས།(ས་གནས་ངེས་པར་རྒྱ་ཡིག་འབྲི་དགོས།)</text>
+    <image src="../../images/jiantou.png" />
+  </view>
+  <view class="receiving" wx:else>
+    <image src="../../images/localtion.png" />
+    <view class="content">
+      <view class="user-info">
+        <text >收货人: {{dressData.userName}}</text>
+        <text >{{dressData.telNumber}}</text>
+      </view>
+      <text class="address">
+        {{dressData.provinceName + dressData.cityName + dressData.countyName + dressData.detailInfo}}
+      </text>
+    </view>
+  </view>
+  <view class="product">
+    <!-- <text class="title">嘿嘿嘿</text> -->
+    <view class="content">
+      <image mode="aspectFill" bindtap="preview" data-src="{{url}}{{buyInfo.photos[0]}}" src="{{url}}{{buyInfo.photos[0]}}" />
+      <view class="info">
+        <text class="name">{{buyInfo.title}}</text>
+        <!-- <text class="num">精装6本</text> -->
+        <text class="pric">¥{{buyInfo.money}}</text>
+      </view>
+      <view class="number">
+        <image src="../../images/false.png" />
+        <text>{{buyInfo.saleNum}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="calculate">
+    <!-- <view>
+      <text class="info">རིན་གོང་།</text>
+      <text class="pric">¥{{buyInfo.money*buyInfo.saleNum}}</text>
+    </view> -->
+    <view>
+      <text class="info">སྐུར་གླ།</text>
+      <text class="pric">¥00.00</text>
+    </view>
+    <view class="total">
+      <text class="info">རིན་གོང་།</text>
+      <text class="pric">¥{{buyInfo.money*buyInfo.saleNum}}</text>
+    </view>
+  </view>
+  <!-- <view class="timer">
+    <text>订单编号: 60000146876328354</text>
+    <text>下单时间: 2017-03-15 11:41:23</text>
+  </view> -->
+  <view class="sure" bindtap="isBuy">
+    <text>རིན་སྤྲོད།</text>
+  </view>
+</view>
+

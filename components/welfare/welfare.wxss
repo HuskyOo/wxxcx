@@ -1,0 +1,567 @@
+/* components/welfare/welfare.wxss */
+/**app.wxss**/
+.page-container{
+  font-family: 'Jomolhari';
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+  } 
+  
+  /* 滚动条 */
+  /* ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  } */
+  
+  .navigation {
+    width: 680rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 70rpx;
+    font-size: 30rpx;
+    white-space: nowrap;
+    background-color: rgb(250, 250, 250);
+    color: #757575;
+  }
+  
+  .nav-options {
+    margin: 0 28rpx;
+    display: inline-block;
+  }
+  
+  .nav-options.active {
+    color: #FE533C;
+    position: relative;
+  }
+  
+  .nav-options.active:after {
+    content: "";
+    display: block;
+    height: 4rpx;
+    width: 60rpx;
+    background: #FE533C;
+    position: absolute;
+    bottom: 0;
+    border-radius: 4rpx;
+  }
+  
+  /* 轮播图 */
+  .carousel{
+    margin:0rpx 20rpx;
+    margin-top: 16rpx;
+    height: 264rpx
+  }
+  
+  /* 分界线 */
+  .boundary-line{
+    width: 100%;
+    height: 18rpx;
+    background-color: #F6F6F6
+  }
+  
+  /* 细分割 */
+  .segmentation-file{
+    width: 570rpx;
+    height: 4rpx;
+    background-color: #F6F6F6
+  }
+  
+  .carousel image{
+    width: 710rpx;
+    height: 264rpx
+  }
+  
+  /* 二级导航 */
+  .nav{
+    margin-top: 10rpx;
+    /* background-color: royalblue; */
+    margin-bottom: 44rpx
+  }
+  
+  .nav-content{
+    display: inline-block;
+    margin: 0rpx 39rpx;
+    /* background-color: black; */
+    width: 72rpx;
+    font-size: 24rpx;
+    text-align: center
+  }
+  
+  .nav-content image{
+    width: 72rpx;
+    height: 72rpx;
+    margin-top: 41rpx;
+    /* background-color: black */
+  }
+  
+  .nav-content text{
+    /* background-color: brown */
+  }
+  
+  .title{
+    font-size: 32rpx;
+    font-weight: 700
+  }
+  
+  /* 经典课程 */
+  .course{
+    margin-top: 46rpx;
+    margin-bottom: 48rpx;
+  }
+  
+  .title-one{
+    display: inline-block;
+    margin-left: 28rpx;
+    font-size: 32rpx
+  }
+  
+  .title-two{
+    display: inline-block;
+    margin-left: 544rpx;
+    color: #919191;
+  }
+  
+  .title-two image{
+    width: 14rpx;
+    height: 24rpx;
+  }
+  
+  .course-content{
+    margin-top: 54rpx;
+    margin-left: 10rpx
+  }
+  
+  .course-list{
+    width: 226rpx;
+    display: inline-block;
+    margin: 0rpx 9rpx
+  }
+  
+  .course-list image{
+    width: 226rpx;
+    height: 218rpx
+  }
+  
+  .course-text{
+    margin-left: 14rpx
+  }
+  
+  .course-name{
+    display: inline-block;
+    font-size: 26rpx;
+    /* background-color: turquoise */
+  }
+  
+  .course-introduction{
+    display: inline-block;
+    font-size: 22rpx;
+    color: #919191;
+    /* background-color: turquoise */
+  }
+  
+  /* 书本推荐 */
+  .book-recommendation{
+    margin-top: 52rpx
+  }
+  
+  .book-list{
+    margin-top: 60rpx;
+    margin-left: 20rpx;
+    display: flex
+  }
+  
+  .book-image{
+  }
+  
+  .book-information{
+    margin-left: 32rpx;
+    /* background-color: turquoise; */
+    border-bottom: 4rpx solid #F6F6F6;
+    width: 100%;
+  }
+  
+  .book-image image{
+    width: 140rpx;
+    height: 140rpx
+  }
+  
+  .book-one{
+    display: flex;
+    flex-direction: column
+  }
+  
+  .book-title{
+    font-size: 30rpx;
+    color: #313131
+  }
+  
+  .book-introduction{
+    font-size: 26rpx;
+    color: #616161;
+    margin-top: 20rpx;
+  }
+  
+  .book-two image{
+    width: 16rpx;
+    height: 20rpx
+  }
+  
+  .book-two text{
+    font-size: 24rpx;
+    margin-left: 10rpx;
+    color: #616161
+  }
+  
+  .replace{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 38rpx;
+    margin-bottom: 38rpx
+  }
+  
+  .replace-button{
+    display: flex;
+    vertical-align: middle;
+    width: 190rpx;
+    height: 60rpx;
+    background-color: rgb(255,239,235);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50rpx
+  }
+  
+  .replace-button image{
+    width: 28rpx;
+    height: 28rpx;
+  }
+  
+  .replace-button text{
+    font-size: 26rpx;
+    color: #FF623F;
+    margin-left: 18rpx
+  }
+  
+  /* 广告位 */
+  .advertising{
+    margin-left: 20rpx;
+    margin-top: 24rpx;
+    margin-bottom: 30rpx;
+    display: flex;
+    flex-direction: column
+  }
+  
+  .advertising-image{
+  }
+  
+  .advertising-image image{
+    width: 712rpx;
+    height: 260rpx
+  }
+  
+  .advertising-content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx
+  }
+  
+  .advertising-title{
+    font-size: 30rpx;
+    color: #313131;
+    margin-top: 25rpx
+  }
+  
+  .advertising-introduction{
+    font-size: 26rpx;
+    color: #919191;
+    margin-top: 20rpx
+  }
+  
+  /* 访谈推荐 */
+  .interview-two{
+    display: flex;
+  }
+  
+  .set{
+    margin-left: 60rpx
+  }
+  
+  .set image{
+    width: 24rpx;
+    height: 24rpx
+  }
+  
+  /* 历史播放 */
+  .history{
+    position: fixed;
+    bottom: 105rpx;
+    right: 50rpx
+  }
+  
+  .history image{
+    width: 74rpx;
+    height: 74rpx;
+  }
+  
+  /* 底部导航 */
+  .tabbar{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    border-top: 2rpx solid #DFDFDF;
+    height: 102rpx;
+    align-items: center;
+    position: fixed;
+    bottom: 0rpx;
+    background-color: #fff
+  }
+  
+  .tabbar-list{
+    display: flex;
+    flex-direction: column;
+    margin: 0rpx 100rpx
+  }
+  
+  .tabbar-list image{
+    width: 42rpx;
+    height: 42rpx
+  }
+  
+  .tabbar-list text{
+    font-size: 24rpx;
+    margin-top: 10rpx;
+    color: #919191
+  }
+  
+  .tabbar-active{
+    color: #F76241
+  }
+  
+  /* 高度填充 */
+  .highly-filled{
+    height: 105rpx
+  }
+/* 头部图片 */
+.rescue-titleImg image{
+    width: 100%;
+    height: 220rpx;
+    margin-top: 5rpx
+  }
+  
+  /* 滚动条 */
+  /* ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  } */
+  
+  
+  /* 最新救助 */
+  .latest-aid{
+    margin-top: 30rpx;
+    margin-bottom: 40rpx
+  }
+  
+  .latest-aid-content {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .Latest-aid-list {
+    margin-left: 30rpx;
+    display: inline-block;
+    /* background-color: red; */
+    width: 300rpx;
+    border-bottom: 1rpx solid rgb(240, 240, 240);
+    box-shadow: 3rpx 3rpx 3rpx 5rpx rgb(240, 240, 240);
+    padding-bottom: 20rpx
+  }
+  
+  .latest-aid-title{
+    font-family: 'Himalaya-G';
+    padding-left: 40rpx;
+    margin-bottom: 40rpx;
+    font-weight: 600;
+    font-size: 32rpx;
+  }
+  
+  .latest-aid-title text{
+    font-size: 32rpx;
+  }
+  
+  .Latest-aid-list image{
+    width: 300rpx;
+    height: 140rpx
+  }
+  
+  .latest-aid-description{
+    line-height: 30rpx;
+    padding: 16rpx 16rpx 0rpx 16rpx;
+  }
+  
+  .latest-aid-description text{
+    font-size: 24rpx;
+    font-weight: 600;
+    line-height: 50rpx;
+    /* white-space:pre-line; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  
+  .latest-aid-total{
+    width: 280rpx;
+    height: 6rpx;
+    background-color: #F3F3F3;
+    margin-top: 14rpx;
+    margin-left: 12rpx;
+  }
+  
+  .latest-aid-current{
+    width: 50%;
+    height: 6rpx;
+    background-color: #F76241
+  }
+  
+  .latest-aid-amount{
+    font-size: 24rpx;
+    color: #FF623F;
+    margin-top: 15rpx;
+    margin-left: 16rpx;
+  }
+  
+  .current-rescue-title{
+    display: flex;
+    flex-direction: row
+  }
+  
+  /* 当前救助 */
+  .current-rescue{
+    padding-top: 36rpx
+  }
+  
+  .current-rescue-title{
+    padding-bottom: 28rpx;
+    border-bottom: 4rpx solid #F6F6F6
+  }
+  
+  .title-name{
+    margin-left: 42rpx;
+    font-size: 32rpx;
+    /* color: red; */
+    line-height: 42rpx;
+    font-weight: 600;
+    font-family: 'Himalaya-G';
+  }
+  
+  .title-prompt{
+    font-size: 20rpx;
+    color: #919191;
+    margin-left: 222rpx;
+    line-height: 42rpx
+  }
+  
+  .current-rescue-list{
+    padding: 16rpx 40rpx 0rpx 40rpx
+  }
+  
+  .current-rescue-list-title{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .current-rescue-list-title image{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 10rpx
+  }
+  
+  .current-rescue-list-title text{
+    font-size: 20rpx;
+    color: #616161;
+    line-height: 40rpx
+  }
+  
+  .current-rescue-list-name{
+    margin-left: 12rpx
+  }
+  
+  .current-rescue-list-frequency{
+    margin-left: 430rpx
+  }
+  
+  .current-rescue-list-content{
+    display: flex;
+    flex-direction: row;
+    padding-top: 20rpx;
+    padding-bottom: 28rpx;
+    border-bottom: 4rpx solid #F6F6F6
+  }
+  
+  .current-rescue-list-content image{
+    width: 160rpx;
+    height: 160rpx
+  }
+  
+  .current-rescue-list-detailed{
+    /* background-color: red; */
+    padding-left: 28rpx;
+    width: 480rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .current-rescue-list-description{
+    font-size: 28rpx;
+    color: #313131
+  }
+  
+  .current-rescue-list-fundraising{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:center;
+    background-color: #F8F8F8;
+    font-size: 26rpx;
+    color: #919191
+  }
+  
+  .current-rescue-list-now{
+    display: flex;
+    flex-direction: column;
+    padding: 18rpx 30rpx
+  }
+  
+  .current-rescue-list-nowText{
+    color: #919191;
+  }
+  
+  .current-rescue-list-schedule{
+    width: 120rpx;
+    height: 4rpx;
+    background-color: #D5D5D5
+  }
+  
+  .current-rescue-list-scheduleNow{
+    width: 30%;
+    height: 4rpx;
+    background-color: #FF623F
+  }
+  
+  .current-rescue-list-amount{
+    color: #FF623F
+  }
+  

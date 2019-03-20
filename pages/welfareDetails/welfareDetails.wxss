@@ -1,0 +1,308 @@
+/* pages/welfareDetails/welfareDetails.wxss */
+page{
+    font-family: 'Jomolhari';
+}
+.welfareDetails-content{
+    padding: 35rpx 20rpx 0 20rpx;
+}
+.welfareDetails-head{
+    margin-left:14rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.welfareDetails-user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-name{
+    display: flex;
+    align-items: center
+}
+.welfareDetails-type{
+    width:108rpx;
+    height:32rpx;
+    background-color: rgb(255,239,235);
+    border-radius: 4rpx;
+    text-align: center;
+    line-height: 20rpx;
+    margin-top: 8rpx;
+}
+.welfareDetails-title{
+    margin-top:48rpx;
+    margin-left:20rpx;
+    margin-right:60rpx;
+    color: rgb(49,49,49);
+    font-weight: bold;
+}
+.welfareDetails-money{
+    display: flex;
+    justify-content: space-between;
+    margin-top:56rpx;
+}
+.money{
+    background-color: rgb(248,248,248);
+    width:230rpx;
+    height:200rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.money-m{
+    font-size: 30rpx;
+    color: rgb(247,185,8);
+    margin-top:40rpx;
+}
+.money-font{
+    font-size: 24rpx;
+    color: rgb(97,97,97);
+    margin-top:30rpx;
+    text-align: center;
+}
+.line{
+    margin-top:48rpx;
+}
+.welfareDetails-life{
+    margin-top:40rpx;
+}
+.welfareDetails-life>text{
+    font-family: 'Himalaya-G';
+}
+.life{
+    padding:34rpx 22rpx 34rpx 0;
+    margin-left: 36rpx;
+    font-size: 24rpx;
+    color: rgb(97,97,97);
+}
+.imgs{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+.box{
+    width: 25%;
+    text-align: center;
+}
+.img{
+    width:150rpx;
+    height:150rpx;
+}
+/* 证明材料 */
+.welfareDetails-prove{
+    margin:54rpx 20rpx 0 20rpx;
+}
+.welfareDetails-prove>text{
+    font-family: 'Himalaya-G';
+}
+.topOne{
+    margin-top:48rpx;
+}
+
+.prove-details{
+    /* height:165rpx; */
+    background-color: rgb(248,248,248);
+    padding:48rpx 20rpx 14rpx 30rpx;
+    border-bottom: 1px solid rgb(233,233,233);
+    display: flex;
+    justify-content: space-between;
+}
+.prove-details>view:first-child{
+    width: 20%;
+    font-family: 'Himalaya-G';
+}
+.prove-details>view:last-child{
+    box-sizing: border-box;
+    padding-left: 10rpx;
+    width: 80%;
+}
+
+/* 我也来证明 */
+.iprove{
+    margin-top:60rpx;
+    padding:0 20rpx;
+}
+.i-prove{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Himalaya-G';
+}
+.i-prove-right{
+    /* width:150rpx; */
+    height:50rpx;
+    background: rgb(255,98,63);
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 60rpx;
+    border-radius: 25rpx;
+    padding: 0 15rpx;
+}
+.i-prove-right text{
+    /* padding: 10rpx 15rpx;
+    border-radius: 30rpx; */
+    /* font-size: 30rpx; */
+    color: #fff;
+    white-space: nowrap;
+}
+.name{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* width:300rpx; */
+}
+.prve{
+    background-color: orange;
+    padding:10rpx;
+    border-radius: 30rpx;
+    color: #fff;
+    margin: 0 10rpx;
+}
+.real{
+    background-color: rgb(255,98,63);
+    font-size: 26rpx;
+}
+.prve-content{
+    padding:0 40rpx 20rpx;
+}
+.content{
+    margin-top:20rpx;
+    font-size: 28rpx;
+    margin-bottom: 40rpx;
+}
+.prve-content-img{
+    display: flex;
+    align-items: center;
+    /* height:100rpx; */
+    margin-top:30rpx;
+}
+.prve-image{
+    width:65rpx;
+    height:65rpx;
+    border-radius: 65rpx;
+}
+.prove-bottom{
+    height:106rpx;
+    background-color: rgb(248,248,248);
+    /* display: flex; */
+    position: relative;
+    line-height: 106rpx;
+}
+.prove-touxiang{
+    /* width:200rpx; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left:30%; */
+}
+.prove-touxiang > view > image{
+    line-height: 106rpx;
+    margin-right: -5rpx;
+    vertical-align: text-bottom;
+}
+.jumpp{
+    display: flex;
+    align-items: center;
+    width:160rpx;
+    margin-left:96rpx;
+    position: absolute;
+    right: 30rpx;
+    top:0rpx;
+}
+.jumpp text{
+    white-space: normal;
+    display: inline;
+}
+.footer{
+    display: flex;
+    border-top: 4rpx solid rgb(248,248,248);
+    text-align: center;
+    line-height: 100rpx;
+    font-family: 'Himalaya-G'
+}
+.footer>.jumpbtn{
+    width:510rpx;
+    height:100rpx;
+    background-color: rgb(255,98,63);
+    /* color: rgb(97,97,97); */
+    color: #fff;
+}
+/* .footer>.jumpbtn:hover{
+    background-color: rgb(255,98,63);
+    color: #fff
+} */
+.restrict{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.dynamic{
+    padding: 0 20rpx;
+}
+.dynamic .content{
+    display: flex;
+}
+.timer text{
+    width: 88rpx;
+    height: 40rpx;
+    border-radius: 4rpx;
+    background: #f8f8f8;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #313131;
+    white-space: nowrap;
+}
+.content .info{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    width: 100%;
+}
+.info .user{
+    display: flex;
+    align-items: center;
+}
+.info .user text{
+    margin-left: 10rpx;
+}
+.image-list{
+    display: flex;
+}
+.info>text{
+    padding: 15rpx 0;
+}
+.img-list image{
+    width: 98rpx;
+    height: 98rpx;
+    margin-right: 10rpx;
+}
+.more{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 20rpx;
+}
+.more image{
+    width: 18rpx;
+    height: 28rpx;
+    margin-left: 10rpx;
+}
+.share{
+    border: none;
+    height: 100%;
+    background: #fff;
+    line-height: 90rpx;
+    display: flex;
+    align-items: center;
+}
+.share image{
+    width: 29rpx;
+    height: 33rpx;
+    vertical-align: text-bottom;
+}
+button::after{
+    border:none;
+}

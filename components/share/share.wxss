@@ -1,0 +1,79 @@
+/* components/share/share.wxss */
+.share-box{
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-content{
+  padding: 30rpx;
+  background: #fff;
+  width: 80%;
+  height: 80%;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+.cancel{
+  display: flex;
+  justify-content: flex-end;
+  height: 50rpx;
+  flex-shrink: 0;
+  margin-bottom: 30rpx;
+}
+.cancel image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.save-btn{
+  background: #FE533C;
+  color: #fff;
+  font-size: 30rpx;
+  padding: 15rpx 150rpx;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+}
+
+.btm-box{
+  background: #fff;
+  width: 100%;
+  margin-top: auto;
+}
+.btns{
+  display: flex;
+}
+.btns image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.share-btn, .photo-btn{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+}
+.share-btn{
+  background: #fff;
+}
+.share-btn::after{
+  border: none;
+}
+.close{
+  width:100%;
+  display:inline-block;
+  text-align:center;
+  border-top:2rpx solid #ccc;
+  padding:20rpx;
+  font-size:32rpx;
+  box-sizing: border-box
+}

@@ -1,0 +1,12 @@
+/* components/recommend/recommend.wxss */
+/* @import '../../app.wxss'; */
+/* @import '../../pages/index/index.wxss'; */
+.nav-content {
+  display:flex;
+  width:calc(100% / 6);
+  font-size:24rpx;
+  text-align:center;
+  flex-direction:column;
+  align-items:center;
+}
+  

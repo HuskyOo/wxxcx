@@ -1,0 +1,61 @@
+<!--pages/indent/indent.wxml-->
+<!-- 订单 -->
+<view class="indent">
+  <view class="header">
+    <image src="../../images/sure_1.png" />
+    <text wx:if="{{indent.status === 1}}">རིན་སྤྲད་མེད་པའི་ཉོ་ཐོ།</text>
+    <text wx:elif="{{indent.status === 2}}">བསྐུར་མེད་པའི་ཉོ་ཐོ།</text>
+    <text wx:elif="{{indent.status === 3}}">སྐུར་ཟིན་པའི་ཉོ་ཐོ།</text>
+    <text wx:else>ཉོ་ཐོ་སྤྲད་ཟིན།</text>
+  </view>
+  <view class="receiving" wx:if="{{indent.goods_type === '0'}}">
+    <image src="../../images/localtion.png" />
+    <view class="content">
+      <view class="user-info">
+        <text >སྐུར་སའི་མི། {{indent.user}}</text>
+        <text >{{indent.mobile}}</text>
+      </view>
+      <text class="address">
+        {{indent.address}}
+      </text>
+    </view>
+  </view>
+  <view class="product">
+    <text class="title">{{indent.goods_title}}</text>
+    <view class="content">
+      <image src="{{url}}{{indent.img}}"/>
+      <view class="info">
+        <text class="name">{{indent.title}}</text>
+        <!-- <text class="num">精装6本</text> -->
+        <text class="pric">¥{{indent.money}}</text>
+      </view>
+      <view class="number">
+        <image src="../../images/false.png" />
+        <text>{{indent.goods_num}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="calculate">
+    <!-- <view>
+      <text class="info">商品总价</text>
+      <text class="pric">¥{{indent.money}}</text>
+    </view> -->
+    <view>
+      <text class="info">སྐུར་གླ།</text>
+      <text class="pric">¥0.00</text>
+    </view>
+    <view class="total">
+      <text class="info">རིན་གོང་།</text>
+      <text class="pric">¥{{indent.money}}</text>
+    </view>
+  </view>
+  <view class="timer">
+    <view class="copyNum" wx:if="{{indent.delivery_name}}">
+      <text>{{indent.delivery_name}}: {{indent.delivery_sn}}</text>
+      <text class="copy-btn" bindtap="copy">འདྲ་བཤུ་བྱེད།</text>
+    </view>
+    <text>ཉོ་ཐོའི་ཨང་རྟགས། {{indent.order_sn}}</text>
+    <text>ཉོས་པའི་དུས་ཚོད། {{indent.time}}</text>
+    <text wx:if="{{indent.delivery_time}}">མཇུག་རྫོགས་པའི་དུས་ཚོད། {{indent.delivery_time}}</text>
+  </view>
+</view>

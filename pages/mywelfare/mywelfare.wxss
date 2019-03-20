@@ -1,0 +1,46 @@
+/* pages/mywelfare/mywelfare.wxss */
+page{
+  background: #f8f8f8
+}
+.container{
+  background: #fff;
+  height: 230rpx;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 40rpx 20rpx;
+  margin-bottom: 10rpx;
+}
+.container image{
+  width: 145rpx;
+  height: 145rpx;
+  flex-shrink: 0;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  height: 100%;
+}
+.detail{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end
+}
+.time{
+  font-size: 22rpx;
+  color: #616161;
+}
+.help{
+  background: #ffefeb;
+  font-size: 20rpx;
+  border-radius: 5rpx;
+  width: 150rpx;
+  text-align: center;
+  color: #ff7e61;
+  margin-right: 30rpx;
+  line-height: 50rpx;
+}

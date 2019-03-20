@@ -1,0 +1,29 @@
+<!--pages/donation/donation.wxml-->
+<view>
+    <!-- 筹款人 -->
+    <view class="fundraising">
+        <!-- 头像 -->
+        <view class="head_portrait">
+            <image src="{{url}}{{welfare.avatar}}" mode="aspectFill"/>
+        </view>
+        <!-- 用户名 和 感谢语 -->
+        <view class="uesr_msg">
+            <text>{{welfare.author}}<text class="protrait_btn">རོགས་དངུལ་ལེན་མི།</text></text>
+            <text class="font_12">ཁྱེད་ཀྱི་བྱམས་བརྩེའི་རོགས་སྐྱོར་ལ་བཀའ་དྲིན་ཆེ།</text>
+        </view>
+    </view>
+    <!-- 选择金额 -->
+    <view class="money page_padding">
+        <text class="title" style="font-weight:bold">རོགས་དངུལ་ག་ཚོད་གནང་རྒྱུ་འདེམས་རོགས།</text>
+        <view class="money_btns">
+            <text class="btn {{money_index == index ? 'active':''}}" wx:for="{{money_list}}" bindtap="changeMoney" data-index="{{index}}">སྒོར།{{item}}</text>
+        </view>
+        <label class="money_ipt"><input type="number" placeholder="དངུལ་གྲངས་གཞན་པ།" bindinput="handleInput" value="{{money_input}}"/>སྒོར།</label>
+    </view>
+    <!-- 留言-->
+    <view class="message page_padding">
+        <text class="title">གཏམ་སྤེལ་ས།</text>
+        <textarea placeholder="{{place_message}}" bindinput="messageChange"></textarea>
+    </view>
+    <button class="sure" bindtap="handleSure">རོགས་དངུལ་ཡར་སྤྲོད།</button>
+</view>

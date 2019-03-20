@@ -1,0 +1,65 @@
+.dividing-line{
+  width: 100%;
+  height: 1rpx;
+  background-color: #E5E5E5;
+  position: fixed;
+  top: 0
+}
+
+.record-list{
+  display: flex;
+  flex-direction: row;
+  padding-left: 23rpx;
+  padding-top: 36rpx
+}
+
+.record-list-information{
+  display: flex;
+  flex-direction: column;
+  padding-left: 25rpx;
+  width: 568rpx;
+  border-bottom: 3rpx solid #F6F6F6;
+  padding-bottom: 31rpx
+}
+
+.record-list-show{
+  width: 140rpx;
+  height: 140rpx
+}
+
+.record-list-title{
+  font-size: 30rpx;
+  color: #313131;
+  margin-left: 9rpx;
+  margin-top: 8rpx
+}
+
+.record-list-description{
+  font-size: 26rpx;
+  color: #616161;
+  margin-left: 9rpx;
+  margin-top: 17rpx
+}
+
+.record-list-narratorimg{
+  width: 18rpx;
+  height: 20rpx;
+}
+
+.record-list-narrator{
+  font-size: 24rpx;
+  color: #616161;
+  margin-left: 12rpx
+}
+
+.record-list-timeimg{
+  width: 23rpx;
+  height: 23rpx;
+  margin-left: 60rpx
+}
+
+.record-list-time{
+  font-size: 24rpx;
+  color: #616161;
+  margin-left: 12rpx
+}

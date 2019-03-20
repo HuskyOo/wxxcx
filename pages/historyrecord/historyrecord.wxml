@@ -1,0 +1,29 @@
+<!-- 历史记录 -->
+
+<view class='dividing-line'></view>
+<view>
+  <view class='book-list' wx:for="{{historyRecord}}" id="{{item.id}}"  data-msg="{{index}}" data-type="{{item.media_type}}" wx:key="item.id" bindtap="detail">
+    <view class='book-image'>
+      <image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
+      <image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
+      <image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
+      <image src='{{url}}{{item.album.cover || item.cover}}'></image>
+    </view>
+    <view class='book-information'>
+      <view class='book-one'>
+        <text class='book-title'>{{item.album.title || item.title}}</text>
+        <text class='book-introduction'>{{item.album.sub_title || item.sub_title}}</text>
+      </view>
+      <view class='book-two interview-two'>
+        <view>
+          <image src="../../images/name.png" alt=""></image>
+          <text>{{item.album.author || item.author}}</text>
+        </view>
+        <view class="set">
+          <image src="../../images/shijian.png" alt=""></image>
+          <text>{{item.hisTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

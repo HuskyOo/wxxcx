@@ -1,0 +1,76 @@
+<!--pages/bookdetail/bookdetail.wxml-->
+<!-- 商品详情页 -->
+<view>
+  <!-- 轮播图 -->
+  <swiper style="height:700rpx">
+    <block wx:for="{{book.photos}}">
+      <swiper-item>
+        <image src="{{url}}{{item}}" mode="aspectFill" style="height:700rpx;width:100%"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 介绍 -->
+  <view class="page-padding introduce">
+    <text class="price">¥{{book.money}}</text>
+    <text class="title">{{book.title}}</text>
+    <view class="sell">
+      <text>སྐུར་གླ། 0.00</text>
+      <text>བཙོངས་གྲངས། {{book.sales}}</text>
+      <text> </text>
+    </view>
+  </view>
+  <!-- 认证 -->
+  <!-- <view class="attestation">
+    <view>
+      <image src="../../images/sure.png"/>
+      <text>担保交易</text>
+    </view>
+    <view>
+      <image src="../../images/sure.png"/>
+      <text>正版认证</text>
+    </view>
+    <view>
+      <image src="../../images/sure.png"/>
+      <text>企业认证</text>
+    </view>
+  </view> -->
+  <!-- 分界线 -->
+  <view class='boundary-line'></view>
+  <!-- 详情 -->
+  <view class="page-padding detail">
+    <text class="title">ཚོང་རྫས་ངོ་སྤྲོད།</text>
+    <view>
+      <import src="../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:detail.nodes}}"/>
+    </view>
+  </view>
+  <view class="box-container" wx:if="{{show}}">
+    <view class="box">
+      <view class="contai">
+        <image mode="aspectFill" bindtap="preview" data-src="{{url}}{{book.photos[0]}}" src="{{url}}{{book.photos[0]}}" />
+        <view class="info">
+          <text class="title">{{book.title}}</text>
+          <text class="pric">¥{{book.money}}</text>
+          
+        </view>
+        <view class="cancel">
+          <image src="../../images/cancel.png" catchtap="noShow"/>
+        </view>
+      </view>
+      <view class="sale-num">
+        <text style="color:#999;margin-right:20rpx">གྲངས་ཀ</text>
+        <image src="../../images/sub.png" catchtap="sub"/>
+        <input type="number" value="{{saleNum}}" bindblur="handleNum"/>
+        <image src="../../images/add.png" catchtap="add"/>
+      </view>
+      <view class="once">
+        <button class="btn" catchtap="isBuy">རིམ་པ་རྗེས་མ།</button>
+      </view>
+    </view>
+  </view>
+  <!-- 立即购买 -->
+  <view class="once" wx:if="{{!show}}">
+    <button class="btn" catchtap="isShow">ད་ལྟ་ཉོ།</button>
+  </view>
+  
+</view>
