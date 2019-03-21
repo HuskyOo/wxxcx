@@ -8,6 +8,7 @@ Page({
    */
   data: {
     url: app.globalData.pageUrl,
+    is_auth:false,  //授权
     //导航栏内容
     nav: [
       {
@@ -26,12 +27,41 @@ Page({
     page_index: 2,  //导航栏
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
+    addMore: false, //九宫格是否展开,
+    animation: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // wx.hideTabBar({})
+    var that = this;
+    
+    
+    var str = wx.getStorageSync('token')
+    // console.log(str)
+    // console.log(str)
+    wx.getSetting({
+      success: res => {
+        console.log(res)
+        if(!res.authSetting['scope.userInfo']){
+          that.setData({is_auth:true})
+          wx.hideTabBar()
+        }
+        else{
+           if(!that.data.token){
+            console.log(1)
+            that.setData({is_auth:true})
+            wx.hideTabBar()
+          }else{
+            console.log(2)
+            wx.showTabBar()
+            that.getdata()
+          }
+        }
+      }
+    })
     this.getData()
   },
 
@@ -66,7 +96,53 @@ Page({
       page_index: cur
     })
   },
-  addMore () {},
+  addMore () {
+    // this.setData({
+    //   addMore: !this.data.addMore
+    // })
+    let addMore = this.data.addMore
+    if(!addMore){
+      console.log(addMore)
+      this.animation.height('300rpx').step()
+    } else {
+      console.log(addMore)
+      this.animation.height(0).step()
+    }
+    
+    this.setData({
+      animation: this.animation.export(),
+      addMore: !addMore
+    })
+  },
+  onGotUserInfo:function(){
+    var that = this;
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        if (code) {
+          wx.getUserInfo({
+            withCredentials: true,
+            lang: 'zh_CN',
+            success: function (res) {
+              wx.request({
+                url: app.globalData.pageUrl+'/wechat/index/user',
+                data: { code: code, encryptedData: res.encryptedData, iv: res.iv },
+                success: function (res) {
+                  console.log(res.data.token)
+                  wx.showTabBar({})
+                  wx.setStorageSync('token', res.data.token)
+                  that.setData({
+                    is_auth: false,
+                  })
+                  that.getData()
+                }
+              })
+            }
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -78,7 +154,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.animation = wx.createAnimation()
+    this.animation.height(0).step()
+    this.setData({animation: this.animation.export()})
   },
 
   /**

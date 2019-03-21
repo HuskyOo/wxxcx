@@ -104,15 +104,20 @@
 
 		<!-- 九宫格 -->
 		<view class="grid">
-			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum">
-				<image src="{{url}}{{item.img}}" mode="aspectFill" st></image>
+			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index<10}}">
+				<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
 				<text>{{item.title}}</text>
 			</view>
-			<view class="addMore">
-				<text >展开更多</text>
+		</view>
+		<view class="grid" animation="{{animation}}">
+			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index>=10}}">
+				<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
+				<text>{{item.title}}</text>
 			</view>
 		</view>
-
+		<view class="addMore" bindtap="addMore">
+			<text >展开更多</text>
+		</view>
 		<!-- 分界线 -->
 		<view class='boundary-line'></view>
 		
@@ -230,4 +235,8 @@
 
 	<!-- 问答 -->
 	<view class="asking" wx:if="{{page_index == 3}}"></view>
+
+	<!-- 授权页面 -->
+	<!-- 未授权 -->
+	<include src="login.wxml"></include>
 </view>

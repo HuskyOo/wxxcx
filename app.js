@@ -19,31 +19,31 @@ App({
     var str = wx.getStorageSync('token')
     if(!str){
       wx.switchTab({
-        url: 'pages/index/index'
+        url: '/pages/home/home'
       })
     }
     // 下载字体
-    wx.loadFontFace({
-      family: '藏研黑体',
-      source: "url('https://qiuniu.vmobplus.com/CTRC-HT.ttf')",
-      success: res => {
-        console.log(res)
-      }
-    })
-    wx.loadFontFace({
-      family: 'Himalaya-G',
-      source: "url('https://qiuniu.vmobplus.com/Himalaya-G.ttf')",
-      success: res => {
-        console.log(res)
-      }
-    })
-    wx.loadFontFace({
-      family: 'Jomolhari',
-      source: "url('https://qiuniu.vmobplus.com/Jomolhari-alpha3c-0605331.ttf')",
-      success: res => {
-        console.log(res)
-      }
-    })
+    // wx.loadFontFace({
+    //   family: '藏研黑体',
+    //   source: "url('https://qiuniu.vmobplus.com/CTRC-HT.ttf')",
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
+    // wx.loadFontFace({
+    //   family: 'Himalaya-G',
+    //   source: "url('https://qiuniu.vmobplus.com/Himalaya-G.ttf')",
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
+    // wx.loadFontFace({
+    //   family: 'Jomolhari',
+    //   source: "url('https://qiuniu.vmobplus.com/Jomolhari-alpha3c-0605331.ttf')",
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
     // var token = wx.getStorageSync('token')
     // if(!token){
     //   this.globalData.is_login = false

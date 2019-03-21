@@ -45,6 +45,7 @@
 	justify-content: space-between;
 	/* margin: 40rpx 0; */
 	/* position: relative; */
+	overflow: hidden;
 }
 .grid-item{
 	display: flex;
@@ -58,7 +59,10 @@
 	height: 72rpx;
 	margin-bottom: 10rpx;
 }
-.grid .addMore{
+
+
+/* 加载更多按钮 */
+.addMore{
 	/* position: absolute;
 	top:100%; */
 	width: 100%;
@@ -66,7 +70,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.grid .addMore text{
+.addMore text{
 	font-size: 26rpx;
 }
 /* .grid .addMore-btn{

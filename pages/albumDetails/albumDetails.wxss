@@ -253,3 +253,57 @@ button::after{
     box-shadow: 0 0 10rpx #000;
     transform: scale(.8)
 } */
+
+/* 控制台 */
+.control{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top:30rpx;
+}
+
+.audiosBox{
+	width: 90%;
+	/* margin-top:60rpx; */
+	/* height: 130rpx; */
+	border-radius: 10rpx;
+}
+	
+/*进度条长度  */
+.slid{
+	width:95%;
+}
+.slid view{
+	display: flex;
+	justify-content: space-between;
+}
+.slid view>text{
+	color:rgb(255,98,63);
+}
+
+.single{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.time{
+	display: flex;
+	justify-content: space-between;
+	width:90%;
+}
+.times{
+	font-size:24rpx;
+}
+.play{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.albumInfo{
+	display: flex;
+	flex-direction: column;
+	padding: 30rpx;
+	box-sizing: border-box;
+}
