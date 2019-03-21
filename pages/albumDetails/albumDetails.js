@@ -2,6 +2,8 @@
 var util = require('../../utils/util')
 var WxParse = require('../../wxParse/wxParse')
 var app = getApp();
+// 背景音乐
+const bgMusic = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -20,7 +22,10 @@ Page({
     page_font:null,
     playType: 0,
     playNum: 0,
-    shareshow: false
+    shareshow: false,
+    isOpen: false,  //背景音乐开关
+    currentTime: 200,    //正在播放的时间
+    duration: 300,       //音乐总时长
   },
 
   /**
@@ -28,8 +33,12 @@ Page({
    */
   onLoad: function (options) {
     util.fontFamily()
-    console.log(options.lan,options.id)
-    let that = this
+    // console.log(options.lan,options.id)
+    console.log(options)
+    let that = this,
+        type = options.type,
+        mediatype = options.mediatype,
+        id = options.id
     // 初始化语言
     if(options.lan == 'zang'){
       this.setData({
@@ -379,7 +388,32 @@ Page({
       listscope: [x,y]
     })
   },
-
+  // 背景音乐播放
+  listenerButtonPlay () {
+    let that = this
+    bgMusic.play()
+    // 总时长
+    let duration = bgMusic.duration
+    that.setData({duration})
+    bgMusic.onTimeUpdate(() => {
+      // 当前时间
+      let currentTime = bgMusic.currentTime
+      that.setData({currentTime})
+    })
+  },
+  // 背景音乐暂停
+  listenerButtonPause () {
+    bgMusic.pause()
+  },
+  // 背景音乐上一首
+  listenerButtonPrev () {},
+  // 背景音乐下一首
+  listenerButtonNext () {},
+  // 背景音乐进度条
+  sliderChange (e) {
+    console.log(e.detail.value)
+    bgMusic.seek(e.detail.value)
+  },
 // 分享
 sharecar () {
   var that = this

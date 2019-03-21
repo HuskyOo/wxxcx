@@ -24,15 +24,15 @@
 <view class="control">
     <!-- 按钮 -->
     <view class="play">
-        <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="getPrev"></image>
+        <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="listenerButtonPrev"></image>
         <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src="../../images/history.png"></image>
         <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPause" wx:if="{{isOpen}}" src="../../images/bofang@2x.png"></image>
-        <image style="width:75rpx;height:84rpx" src="../../images/nextsong.png" bindtap="getNext"></image>
+        <image style="width:75rpx;height:84rpx" src="../../images/nextsong.png" bindtap="listenerButtonNext"></image>
     </view>
     <!-- 进度条 -->
     <view class='audiosBox'>
         <view class='slid'>
-            <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{offset}}" max="{{max}}" activeColor="#F86343" backgroundColor="#EACFC8" block-color="#F34E3A"/>
+            <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{currentTime}}" max="{{duration}}" activeColor="#F86343" backgroundColor="#EACFC8" block-color="#F34E3A"/>
             <view>
                 <text class='times'>{{starttime}}</text>
                 <!-- 进度时长 -->
@@ -58,7 +58,7 @@
 
 <!-- 分割线 -->
 <view class='boundary-line'></view>
-
+<!-- 开通会员 -->
 <view class="vip" wx:if="{{data.is_buy === 0}}">
     <view  class="vip-font">
         <image src="../../images/vip-icon.png" style="width:22rpx;height:24rpx"/>
