@@ -51,7 +51,8 @@ Page({
     }
     // 获取数据
     // that.getData(options.id)
-    that.setData({id:options.id})
+    // type: 1专辑 0单曲    mediatype: 1视频 0音频
+    that.setData({id, type, mediatype})
     
   },
   // 介绍和歌单的切换
