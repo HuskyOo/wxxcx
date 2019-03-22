@@ -1,6 +1,6 @@
 // pages/home/home.js
 let app = getApp()
-import {zang, commonweal} from "../../request/index"
+import {zang, commonweal, allClassify} from "../../request/index"
 Page({
 
   /**
@@ -11,24 +11,25 @@ Page({
     is_auth:false,  //授权
     //导航栏内容
     nav: [
-      {
-        id:1,
-        title: "众筹"
-      },
-      {
-        id:2,
-        title: "课程"
-      },
-      {
-        id:3,
-        title: "问答"
-      },
+      // {
+      //   id:1,
+      //   title: "众筹"
+      // },
+      // {
+      //   id:2,
+      //   title: "课程"
+      // },
+      // {
+      //   id:3,
+      //   title: "问答"
+      // },
     ],
-    page_index: 2,  //导航栏
+    page_index: 1,  //导航栏
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
     addMore: false, //九宫格是否展开,
-    animation: {}
+    animation: {},  //展开动画
+    classify: [],   //分类
   },
 
   /**
@@ -77,7 +78,8 @@ Page({
         // 广告
         zad: res.photo,
         // 最新课程
-        znew: res.news
+        znew: res.news,
+        nav: res.cates
       })
     })
     commonweal().then((res) => {
@@ -88,12 +90,18 @@ Page({
         welNeed: res.needs
       })
     })
+    allClassify().then((res) => {
+      console.log(res)
+      this.setData({
+        classify: res.cate
+      })
+    })
   },
   swichNav (e) {
-    var cur = e.target.dataset.current;
-    console.log(cur)
+    var index = e.target.dataset.index;
+    console.log(index)
     this.setData({
-      page_index: cur
+      page_index: index
     })
   },
   addMore () {
@@ -114,6 +122,7 @@ Page({
       addMore: !addMore
     })
   },
+  jumpLive () {},
   onGotUserInfo:function(){
     var that = this;
     wx.login({

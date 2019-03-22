@@ -305,3 +305,10 @@
 .current-rescue-list-amount{
 	color: #FF623F
 }
+button::after{
+	border:none;
+}
+button{
+	padding: 0;
+	margin: 0;
+}

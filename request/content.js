@@ -32,5 +32,10 @@ function sing () {
         http(url.sing, {}, (res) => {resolve(res.data)})
     })
 }
+function allClassify (id = 53) {
+    return new Promise ((resolve, reject) => {
+        http(url.allClassify, {id}, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing }
+export { zang, chinese, book, commonweal, interview, sing, allClassify }

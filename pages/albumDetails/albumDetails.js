@@ -64,12 +64,12 @@ Page({
   },
   getMedia(type, id){
     var that = this
-    if(type === '1'){
+    // if(type === '1'){
       wx.request({
         url:that.data.url + '/index/details/mediaurl',
         data: {
           id: id,
-          type: 1,
+          type: type,
           token: wx.getStorageSync('token')
         },
         success: res => {
@@ -81,18 +81,22 @@ Page({
           //   })
           // }
           that.setData({
-            mediaData:res.data.media
+            mediaData:res.data.media,
+            mediatype: res.data.media.media_type
           })
+          if(that.data.type === '0'){
+            that.setData({data: res.data.media})
+          }
           // that.showTab()
           // that.sethistory()
           // that.setParse()
         }
       })
-    }
+    // }
   },
   // 请求数据
-  getData (id) {
-    var that = this
+  getData (id = this.data.id) {
+    let that = this, media_type = this.data.mediatype
     wx.request({
       url: this.data.url+'/index/details/comdetails',
       header: {
@@ -100,6 +104,7 @@ Page({
       },
       data: {
         id: id,
+        // media_type: -1,
         media_type: -1,
         token: wx.getStorageSync('token')
       },
@@ -520,8 +525,11 @@ save () {
    */
   onShow: function () {
     var that = this
-    that.getData(that.data.id)
-    
+    if(that.data.type == 1){
+      that.getData(that.data.id)
+    } else {
+      that.getMedia(that.data.type, that.data.id)
+    }
   },
 
   /**

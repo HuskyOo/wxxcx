@@ -11,4 +11,6 @@ export default {
     interview: "/index/index/interview",
     // 唱咏请求
     sing: "/index/index/sing",
+    // 所有分类
+    allClassify: "/index/index/allclassify",
 }

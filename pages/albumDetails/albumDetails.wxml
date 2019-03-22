@@ -18,10 +18,10 @@
 </view>
 
 <!-- 分割线 -->
-<view class='boundary-line'></view>
+<view class='boundary-line' wx:if="{{mediatype === '1'}}"></view>
 
 <!-- 控制台 -->
-<view class="control">
+<view class="control" wx:if="{{mediatype === '1'}}">
     <!-- 按钮 -->
     <view class="play">
         <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="listenerButtonPrev"></image>
