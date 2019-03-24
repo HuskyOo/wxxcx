@@ -13,4 +13,6 @@ export default {
     sing: "/index/index/sing",
     // 所有分类
     allClassify: "/index/index/allclassify",
+    // 已购买
+    buy: "/index/buy/my"
 }

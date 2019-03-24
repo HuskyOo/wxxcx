@@ -7,171 +7,84 @@
 		<!-- <view class="nav-options {{item.id == page_index?'active':''}}"  bindtap="jumpLive">直播</view> -->
 		<button open-type="contact" class="nav-options"  bindtap="jumpLive">直播</button>
 	</view>
-	
-	<!-- 众筹 -->
-	<view class="donation" wx:if="{{page_index === 0}}">
-		<view wx:for="{{classify}}">
-			<view >
-				<image style="height:0" />
-				<text >{{item.title}}</text>
-			</view>
-			<view >
-				<view wx:for="{{item.chlid}}">
-					<image style="height:0" />
+	<my-scroll>
+		<!-- 分类 -->
+		<view class="donation" wx:if="{{page_index === 0}}">
+			<view class="classify-box" wx:for="{{classify}}" wx:key="item.id">
+				<view class="two-classify">
+					<image style="width: 20rpx;height:0" />
 					<text >{{item.title}}</text>
 				</view>
-			</view>
-		</view>
-	</view>
-
-
-	<!-- 课程 course -->
-	<view class="cou" wx:if="{{page_index === 1}}">
-		<!-- 轮播图 -->
-		<!-- <view>
-			<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
-				<block wx:for="{{zbanner}}" wx:key="item.id">
-					<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx">
-						<image src="{{url}}{{item.img}}" mode="aspectFill" style="width:100%;height:263rpx" />
-					</swiper-item>
-				</block>
-			</swiper>
-		</view> -->
-
-		<!-- 九宫格 -->
-		<view class="grid">
-			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index<10}}">
-				<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
-				<text>{{item.title}}</text>
-			</view>
-		</view>
-		<view class="grid" animation="{{animation}}">
-			<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index>=10}}">
-				<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
-				<text>{{item.title}}</text>
-			</view>
-		</view>
-		<view class="addMore" bindtap="addMore">
-			<text >展开更多</text>
-		</view>
-		<!-- 分界线 -->
-		<view class='boundary-line'></view>
-		
-		<!-- 热播课程 -->
-		<!-- <view class='book-recommendation'>
-			<view class='title' data-title="ཡག་ཤོས།" bindtap='hotCourse'>
-				<view class='title-one'>
-					<text>ཡག་ཤོས།</text>
-				</view>
-				<view class='title-two'>
-					<image src='../../images/jiantou.png'></image>
-				</view>
-			</view>
-
-			<view class='book-content'>
-				<view class='book-list' wx:for="{{zhot}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
-					<view class='book-image'>
-						<image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
-						<image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
-						<image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
-						<image src='{{url}}{{item.cover}}'></image>
-					</view>
-					<view class='book-information'>
-						<view class='book-one'>
-							<text class='book-title'>{{item.title}}</text>
-							<text class='book-introduction'>{{item.sub_title}}</text>
-						</view>
-						<view class='book-two interview-two'>
-							<view>
-								<image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
-								<image src='../../images/peoplenumber.png' wx:else></image>
-								<text>{{item.sales}}</text>
-							</view>
-							<view class='set'>
-								<image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
-								<image src='../../images/set.png' wx:else></image>
-								<text>{{item.duration ? item.duration : item.media_count}}</text>
-							</view>
-						</view>
+				<view class="three-calssify">
+					<view wx:for="{{item.chlid}}" wx:key="item.id" class="three-item" id="{{item.id}}" bindtap="jumpClassifyDetail">
+						<!-- <image style="height:0;width:0" /> -->
+						<text >{{item.title}}</text>
 					</view>
 				</view>
 			</view>
-
-			<view class='replace'>
-				<view class='replace-button' data-catetype="2" bindtap="updata">
-					<image src='../../images/replace.png'></image>
-					<text>དེ་ལས་མང་བ།</text>
-				</view>
-			</view>
-		</view> -->
-		<col-list list="{{zhot}}" title="热播课程"></col-list>
-
-		<!-- 广告推荐 -->
-		<view class='advertising' data-nav="{{zad.url}}" bindtap="navjump">
-			<view class='advertising-image'>
-				<image src='{{url}}{{zad.img}}'></image>
-			</view>
-			<view class='advertising-content'>
-				<text class='advertising-title'>{{zad.title}}</text>
-				<text class='advertising-introduction'>{{zad.sub_title}}</text>
-			</view>
 		</view>
 
-		<!-- 最新课程 -->
-		<!-- <view class='book-recommendation'>
-			<view class='title' data-title="གསར་ཤོས།" bindtap="newCourse">
-				<view class='title-one'>
-					<text>གསར་ཤོས།</text>
+
+		<!-- 课程 course -->
+		<view class="cou" wx:if="{{page_index === 1}}">
+			<!-- 轮播图 -->
+			<view>
+				<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
+					<block wx:for="{{zbanner}}" wx:key="item.id">
+						<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx">
+							<image src="{{url}}{{item.img}}" mode="aspectFill" style="width:100%;height:263rpx" />
+						</swiper-item>
+					</block>
+				</swiper>
+			</view>
+
+			<!-- 九宫格 -->
+			<view class="grid">
+				<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index<10}}">
+					<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
+					<text>{{item.title}}</text>
 				</view>
-				<view class='title-two'>
-					<image src='../../images/jiantou.png'></image>
+			</view>
+			<view class="grid" animation="{{animation}}">
+				<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index>=10}}">
+					<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
+					<text>{{item.title}}</text>
+				</view>
+			</view>
+			<view class="addMore" bindtap="addMore">
+				<text >展开更多</text>
+			</view>
+			
+			<!-- 分界线 -->
+			<view class='boundary-line'></view>
+			<col-list list="{{zhot}}" title="热播课程"></col-list>
+
+			<!-- 分界线 -->
+			<view class='boundary-line'></view>
+			<!-- 广告推荐 -->
+			<view class='advertising' data-nav="{{zad.url}}" bindtap="navjump">
+				<view class='advertising-image'>
+					<image src='{{url}}{{zad.img}}'></image>
+				</view>
+				<view class='advertising-content'>
+					<text class='advertising-title'>{{zad.title}}</text>
+					<text class='advertising-introduction'>{{zad.sub_title}}</text>
 				</view>
 			</view>
 
-			<view class='book-content'>
-				<view class='book-list' wx:for="{{znew}}" id="{{item.id}}" data-mediaType="{{item.media_type}}" data-type="{{item.type}}" wx:key="item.id" bindtap="details">
-				<view class='book-image'>
-						<image class="album" src="../../images/zhuanji.png" wx:if="{{item.type == 1}}"></image>
-						<image src="../../images/audio_icon.png" class="audio"  wx:elif="{{item.media_type == 0}}"/>
-						<image src="../../images/video_icon.png" class="video" wx:elif="{{item.media_type == 1}}"/>
-						<image src='{{url}}{{item.cover}}'></image>
-					</view>
-					<view class='book-information'>
-						<view class='book-one'>
-							<text class='book-title'>{{item.title}}</text>
-							<text class='book-introduction'>{{item.sub_title}}</text>
-						</view>
-						<view class='book-two interview-two'>
-							<view>
-								<image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
-								<image src='../../images/peoplenumber.png' wx:else></image>
-								<text>{{item.sales}}</text>
-							</view>
-							<view class='set'>
-								<image src='../../images/shijian@3x.png' wx:if="{{item.duration}}"></image>
-								<image src='../../images/set.png' wx:else></image>
-								<text>{{item.duration ? item.duration : item.media_count}}</text>
-							</view>
-						</view>
-					</view>
-				</view>
-			</view>
+			<!-- 分界线 -->
+			<view class='boundary-line'></view>
+			<col-list list="{{znew}}" title="最新课程"></col-list>
 
-			<view class='replace'>
-				<view class='replace-button' data-catetype="1" bindtap="updata">
-					<image src='../../images/replace.png'></image>
-					<text>དེ་ལས་མང་བ།</text>
-				</view>
-			</view>
-		</view> -->
-		<col-list list="{{znew}}" title="最新课程"></col-list>
-
-	</view>
+			<!-- 分界线 -->
+			<view class='boundary-line'></view>
+			<col-list list="{{book}}" title="开店创业必备资料" book></col-list>
+		</view>
 
 
-	<!-- 问答 -->
-	<view class="asking" wx:if="{{page_index === 2}}"></view>
-
+		<!-- 问答 -->
+		<view class="asking" wx:if="{{page_index === 2}}"></view>
+	</my-scroll>
 	<!-- 授权页面 -->
 	<!-- 未授权 -->
 	<include src="login.wxml"></include>

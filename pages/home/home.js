@@ -1,6 +1,6 @@
 // pages/home/home.js
-let app = getApp()
-import {zang, commonweal, allClassify} from "../../request/index"
+let app = getApp(), util = require('../../utils/util')
+import {zang, book, commonweal, allClassify} from "../../request/index"
 Page({
 
   /**
@@ -24,7 +24,7 @@ Page({
       //   title: "问答"
       // },
     ],
-    page_index: 1,  //导航栏
+    page_index: 0,  //导航栏
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
     addMore: false, //九宫格是否展开,
@@ -36,36 +36,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.hideTabBar({})
-    var that = this;
-    
-    
-    var str = wx.getStorageSync('token')
-    // console.log(str)
-    // console.log(str)
+    util.fontFamily()
+    this.auth()
+    this.getData()
+  },
+  auth () {
+    let that = this, token = wx.getStorageSync('token')
+    // console.log(token)
     wx.getSetting({
       success: res => {
-        console.log(res)
+        // console.log(res)
         if(!res.authSetting['scope.userInfo']){
           that.setData({is_auth:true})
           wx.hideTabBar()
         }
         else{
-           if(!that.data.token){
-            console.log(1)
+           if(!token){
+            // console.log(1)
             that.setData({is_auth:true})
             wx.hideTabBar()
           }else{
-            console.log(2)
+            // console.log(2)
             wx.showTabBar()
-            that.getdata()
+            // that.getdata()
           }
         }
       }
     })
-    this.getData()
   },
-
   getData () {
     zang().then((res) => {
       this.setData({
@@ -82,8 +80,14 @@ Page({
         nav: res.cates
       })
     })
+    book().then((res) => {
+      // console.log(res)
+      this.setData({
+        book: res.news
+      })
+    })
     commonweal().then((res) => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         welCover: res.cover,
         welNew: res.news,
@@ -91,15 +95,23 @@ Page({
       })
     })
     allClassify().then((res) => {
-      console.log(res)
+      // console.log(res)
+      // let arr2 = []
+      // arr2.length
+      let arr = res.cate
+      arr.forEach((item, i, arr) => {
+        // console.log(item,i)
+        // console.log(item.child.length)
+        item.chlid.length = Math.ceil(item.chlid.length/3) * 3
+      })
       this.setData({
-        classify: res.cate
+        classify: arr
       })
     })
   },
   swichNav (e) {
     var index = e.target.dataset.index;
-    console.log(index)
+    // console.log(index)
     this.setData({
       page_index: index
     })
@@ -110,10 +122,10 @@ Page({
     // })
     let addMore = this.data.addMore
     if(!addMore){
-      console.log(addMore)
+      // console.log(addMore)
       this.animation.height('300rpx').step()
     } else {
-      console.log(addMore)
+      // console.log(addMore)
       this.animation.height(0).step()
     }
     
@@ -123,6 +135,13 @@ Page({
     })
   },
   jumpLive () {},
+  jumpClassifyDetail (e) {
+    console.log()
+    let id = e.currentTarget.id
+    if(id){
+      wx.navigateTo({ url: '/pages/classifyDetail/classifyDetail?id=' + id });
+    }
+  },
   onGotUserInfo:function(){
     var that = this;
     wx.login({

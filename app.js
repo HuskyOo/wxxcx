@@ -22,37 +22,11 @@ App({
         url: '/pages/home/home'
       })
     }
-    // 下载字体
-    // wx.loadFontFace({
-    //   family: '藏研黑体',
-    //   source: "url('https://qiuniu.vmobplus.com/CTRC-HT.ttf')",
-    //   success: res => {
-    //     console.log(res)
-    //   }
-    // })
-    // wx.loadFontFace({
-    //   family: 'Himalaya-G',
-    //   source: "url('https://qiuniu.vmobplus.com/Himalaya-G.ttf')",
-    //   success: res => {
-    //     console.log(res)
-    //   }
-    // })
-    // wx.loadFontFace({
-    //   family: 'Jomolhari',
-    //   source: "url('https://qiuniu.vmobplus.com/Jomolhari-alpha3c-0605331.ttf')",
-    //   success: res => {
-    //     console.log(res)
-    //   }
-    // })
-    // var token = wx.getStorageSync('token')
-    // if(!token){
-    //   this.globalData.is_login = false
-    // }
   },
   globalData: {
     userInfo: null,
     // pageUrl: "https://wx.novowey.com",
-    pageUrl: "http://39.98.207.68",
+    pageUrl: "https://chonlong.cn",
     // is_login: false
   }
 })

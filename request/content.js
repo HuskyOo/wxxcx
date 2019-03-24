@@ -37,5 +37,10 @@ function allClassify (id = 53) {
         http(url.allClassify, {id}, (res) => {resolve(res.data)})
     })
 }
+function buy () {
+    return new Promise ((resolve, reject) => {
+        http(url.buy, {token: wx.getStorageSync('token')}, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing, allClassify }
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy }

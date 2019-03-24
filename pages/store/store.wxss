@@ -1,0 +1,5 @@
+/* pages/store/store.wxss */
+.store{
+    display: flex;
+    flex-wrap: nowrap;
+}

@@ -11,5 +11,5 @@
 //         }
 //     })
 // }
-import { zang, chinese, book, commonweal, interview, sing, allClassify } from "./content"
-export { zang, chinese, book, commonweal, interview, sing, allClassify }
+import { zang, chinese, book, commonweal, interview, sing, allClassify, buy } from "./content"
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy }

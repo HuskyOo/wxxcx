@@ -10,7 +10,7 @@ page{
 .introduce{
   display: flex;
   flex-direction: column;
-  height: 210rpx;
+  /* height: 210rpx; */
   justify-content: space-around;
   padding: 20rpx;
   box-sizing: border-box;

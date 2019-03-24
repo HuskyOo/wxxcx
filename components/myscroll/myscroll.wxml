@@ -1,0 +1,4 @@
+<!--components/myscroll/myscroll.wxml-->
+<scroll-view scroll-y="{{true}}" style="height: {{height}}" id="myscroll">
+    <slot></slot>
+</scroll-view>

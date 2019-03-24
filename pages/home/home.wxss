@@ -2,40 +2,38 @@
 /* 导航栏 */
 .navigation {
 	font-family: '藏研黑体';
-	/* width: 680rpx; */
 	box-sizing: border-box;
 	overflow: hidden;
-	/* line-height: 70rpx; */
-	/* height: 70rpx; */
 	font-size: 30rpx;
-	/* white-space: nowrap; */
 	background-color: rgb(250, 250, 250);
 	color: #757575;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	height: 92rpx;
 }
 .nav-options {
-	/* margin: 0 28rpx; */
 	box-sizing: border-box;
 	padding: 20rpx 40rpx;
-	/* display: inline-block; */
 }
 .nav-options.active {
-	color: #FE533C;
-	border-bottom: 1rpx solid #FE533C;
-	/* position: relative; */
+	color: #10c2b8;
+	border-bottom: 1rpx solid #10c2b8;
 }
-/* .nav-options.active:after {
-	content: "";
-	display: block;
-	height: 4rpx;
-	width: 60rpx;
-	background: #FE533C;
-	position: absolute;
-	bottom: 0;
-	border-radius: 4rpx;
-} */
+.navigation button{
+	margin:0;
+	/* padding: 0; */
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 30rpx;
+	line-height: 0;
+	background: none;
+	color: #757575;
+}
+.navigation button::after{
+	border: none;
+	background: none
+}
 
 
 /* 九宫格 */
@@ -63,8 +61,6 @@
 
 /* 加载更多按钮 */
 .addMore{
-	/* position: absolute;
-	top:100%; */
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -73,22 +69,6 @@
 .addMore text{
 	font-size: 26rpx;
 }
-/* .grid .addMore-btn{
-	width: 180rpx;
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	box-sizing: border-box;
-	padding: 10rpx 20rpx;
-	padding-top: 0;
-	background: #fff;
-	border-bottom-left-radius: 15rpx;
-	border-bottom-right-radius: 15rpx;
-}
-.grid .addMore-btn text{
-	font-size: 26rpx;
-} */
-
 /* 头部图片 */
 .rescue-titleImg image{
 	width: 100%;
@@ -96,219 +76,84 @@
 	margin-top: 5rpx
 }
 
-/* 滚动条 */
-/* ::-webkit-scrollbar {
-	width: 0;
-	height: 0;
-	color: transparent;
-} */
 
-
-/* 最新救助 */
-.latest-aid{
-	margin-top: 30rpx;
-	margin-bottom: 40rpx
-}
-
-.latest-aid-content {
+/* 授权 */
+.auth{
+	position: fixed;
 	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+	background: #fff;
+	z-index: 999;
+}
+
+
+/* 分类 */
+.donation{
 	box-sizing: border-box;
-	overflow: hidden;
-	white-space: nowrap;
+	/* padding: 0 30rpx; */
+	background: #f3f3f3;
 }
-
-.Latest-aid-list {
-	margin-left: 30rpx;
-	display: inline-block;
-	/* background-color: red; */
-	width: 300rpx;
-	border-bottom: 1rpx solid rgb(240, 240, 240);
-	box-shadow: 3rpx 3rpx 3rpx 5rpx rgb(240, 240, 240);
-	padding-bottom: 20rpx
+.classify-box{
+	padding: 20rpx 0 0 0;
 }
-
-.latest-aid-title{
-	font-family: 'Himalaya-G';
-	padding-left: 40rpx;
-	margin-bottom: 40rpx;
-	font-weight: 600;
-	font-size: 32rpx;
-}
-
-.latest-aid-title text{
-	font-size: 32rpx;
-}
-
-.Latest-aid-list image{
-	width: 300rpx;
-	height: 140rpx
-}
-
-.latest-aid-description{
-	line-height: 30rpx;
-	padding: 16rpx 16rpx 0rpx 16rpx;
-}
-
-.latest-aid-description text{
-	font-size: 24rpx;
-	font-weight: 600;
-	line-height: 50rpx;
-	/* white-space:pre-line; */
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: normal;
-}
-
-.latest-aid-total{
-	width: 280rpx;
-	height: 6rpx;
-	background-color: #F3F3F3;
-	margin-top: 14rpx;
-	margin-left: 12rpx;
-}
-
-.latest-aid-current{
-	width: 50%;
-	height: 6rpx;
-	background-color: #F76241
-}
-
-.latest-aid-amount{
-	font-size: 24rpx;
-	color: #FF623F;
-	margin-top: 15rpx;
-	margin-left: 16rpx;
-}
-
-.current-rescue-title{
+/* 二级分类 */
+.two-classify{
 	display: flex;
-	flex-direction: row
+	align-items: center;
 }
-
-/* 当前救助 */
-.current-rescue{
-	padding-top: 36rpx
-}
-
-.current-rescue-title{
-	padding-bottom: 28rpx;
-	border-bottom: 4rpx solid #F6F6F6
-}
-
-.title-name{
-	margin-left: 42rpx;
-	font-size: 32rpx;
-	/* color: red; */
-	line-height: 42rpx;
-	font-weight: 600;
-	font-family: 'Himalaya-G';
-}
-
-.title-prompt{
-	font-size: 20rpx;
-	color: #919191;
-	margin-left: 222rpx;
-	line-height: 42rpx
-}
-
-.current-rescue-list{
-	padding: 16rpx 40rpx 0rpx 40rpx
-}
-
-.current-rescue-list-title{
+/* 三级分类 */
+.three-calssify{
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
+	background: #fff;
 }
-
-.current-rescue-list-title image{
-	width: 40rpx;
-	height: 40rpx;
-	border-radius: 10rpx
-}
-
-.current-rescue-list-title text{
-	font-size: 20rpx;
-	color: #616161;
-	line-height: 40rpx
-}
-
-.current-rescue-list-name{
-	margin-left: 12rpx
-}
-
-.current-rescue-list-frequency{
-	margin-left: 430rpx
-}
-
-.current-rescue-list-content{
+.three-item{
+	box-sizing: border-box;
+	width: calc(100%/3);
 	display: flex;
-	flex-direction: row;
-	padding-top: 20rpx;
-	padding-bottom: 28rpx;
-	border-bottom: 4rpx solid #F6F6F6
+	justify-content: center;
+	align-items: center;
+	padding: 10rpx 0;
+	border-left:1rpx solid #eee;
+	border-bottom:1rpx solid #eee;
 }
 
-.current-rescue-list-content image{
-	width: 160rpx;
-	height: 160rpx
+
+/* 授权 */
+.auth{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+.header {
+	margin: 90rpx 0 90rpx 50rpx;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	width: 650rpx;
+	height: 300rpx;
+	line-height: 450rpx;
 }
 
-.current-rescue-list-detailed{
-	/* background-color: red; */
-	padding-left: 28rpx;
-	width: 480rpx;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+.header image {
+	width: 200rpx;
+	height: 200rpx;
 }
 
-.current-rescue-list-description{
-	font-size: 28rpx;
-	color: #313131
+.content {
+	margin-left: 50rpx;
+	margin-bottom: 90rpx;
 }
 
-.current-rescue-list-fundraising{
-	display: flex;
-	flex-direction: row;
-	align-items:center;
-	justify-content:center;
-	background-color: #F8F8F8;
-	font-size: 26rpx;
-	color: #919191
+.content text {
+	display: block;
+	color: #9d9d9d;
+	margin-top: 40rpx;
 }
 
-.current-rescue-list-now{
-	display: flex;
-	flex-direction: column;
-	padding: 18rpx 30rpx
-}
-
-.current-rescue-list-nowText{
-	color: #919191;
-}
-
-.current-rescue-list-schedule{
-	width: 120rpx;
-	height: 4rpx;
-	background-color: #D5D5D5
-}
-
-.current-rescue-list-scheduleNow{
-	width: 30%;
-	height: 4rpx;
-	background-color: #FF623F
-}
-
-.current-rescue-list-amount{
-	color: #FF623F
-}
-button::after{
-	border:none;
-}
-button{
-	padding: 0;
-	margin: 0;
+.bottom {
+	border-radius: 80rpx;
+	margin: 70rpx 50rpx;
+	font-size: 35rpx;
 }

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "col-list": "/components/col-list/col-list"
+  }
+}

@@ -1,0 +1,41 @@
+<!--pages/my-course/my-course.wxml-->
+<view class="my-course">
+	<!-- 上方导航栏 -->
+	<view class="course-nav">
+		<view wx:for="{{navList}}" wx:key="item.id" id="{{item.id}}" class="nav-item" bindtap="switchNav">
+			<image src="{{item.img}}" />
+			<text >{{item.title}}</text>
+		</view>
+	</view>
+	<!-- 分界线 -->
+	<view class='boundary-line'></view>
+
+	<!-- 下方内容 -->
+	<view class="bottom-box">
+		<!-- 历史 -->
+		<view wx:if="{{navIndex == 1}}">
+			<col-list wx:for="{{history}}" titlejump="{{false}}" wx:key="index" title="{{item.title}}" list="{{item.item}}"></col-list>
+		</view>
+		
+		<!-- 已购买 -->
+		<view wx:if="{{navIndex == 2}}">
+			
+			<col-list list="{{buy.single}}"></col-list>
+			<!-- 没有物品 -->
+			<view class="none" wx:if="{{buy.code === 0}}">
+				<image src="../../images/none.png" />
+				<text>སྟོང་བ་རེད།</text>
+			</view>
+		</view>
+		
+
+		<!-- 收藏 -->
+		<view wx:if="{{navIndex == 3}}">
+			<!-- <col-list list=""></col-list> -->
+			<view class="none">
+				<image src="" />
+				<text>此功能暂未开放</text>
+			</view>
+		</view>
+	</view>
+</view>
