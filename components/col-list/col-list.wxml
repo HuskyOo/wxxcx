@@ -11,7 +11,7 @@
 
     <view class='book-content'>
         <view class='book-list' wx:for="{{list}}" id="{{item.id}}"  wx:key="item.id" bindtap="jumpBookOrder">
-            <view class='book-image'>
+            <view class='pro-image'>
                 <image src='{{url}}{{item.cover}}'></image>
             </view>
             <view class='book-information'>

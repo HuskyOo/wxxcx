@@ -42,5 +42,10 @@ function buy () {
         http(url.buy, {token: wx.getStorageSync('token')}, (res) => {resolve(res.data)})
     })
 }
+function religionCate (id) {
+    return new Promise ((resolve, reject) => {
+        http(url.religionCate, {id}, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing, allClassify, buy }
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate }

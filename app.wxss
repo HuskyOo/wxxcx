@@ -51,12 +51,12 @@
 }
 
 /* 二级导航 */
-.nav{
+/* .nav{
   margin-top:10rpx;
   margin-bottom:44rpx;
   display:flex;
   flex-wrap:wrap;
-}
+} */
 
 .nav-content{
   display:flex;

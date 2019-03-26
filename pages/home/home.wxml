@@ -4,7 +4,6 @@
 	<!-- 导航栏 -->
 	<view class="navigation">
 		<view wx:for="{{nav}}" wx:key="item.id" class="nav-options {{index == page_index?'active':''}}" data-current="{{item.id}}" data-index="{{index}}" bindtap="swichNav" wx:if="{{index<2}}">{{item.title}}</view>
-		<!-- <view class="nav-options {{item.id == page_index?'active':''}}"  bindtap="jumpLive">直播</view> -->
 		<button open-type="contact" class="nav-options"  bindtap="jumpLive">直播</button>
 	</view>
 	<my-scroll>
@@ -12,7 +11,7 @@
 		<view class="donation" wx:if="{{page_index === 0}}">
 			<view class="classify-box" wx:for="{{classify}}" wx:key="item.id">
 				<view class="two-classify">
-					<image style="width: 20rpx;height:0" />
+					<image src="{{url}}{{item.img}}" />
 					<text >{{item.title}}</text>
 				</view>
 				<view class="three-calssify">
@@ -40,13 +39,13 @@
 
 			<!-- 九宫格 -->
 			<view class="grid">
-				<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index<10}}">
+				<view wx:for="{{classify}}" wx:key="{{item.id}}" id="{{item.id}}" class="grid-item" bindtap="jumpClassifyDetail" wx:if="{{index<10}}">
 					<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
 			</view>
 			<view class="grid" animation="{{animation}}">
-				<view wx:for="{{grid}}" wx:key="{{item.id}}" data-id="{{item.id}}" class="grid-item" bindtap="jumpAlbum" wx:if="{{index>=10}}">
+				<view wx:for="{{classify}}" wx:key="{{item.id}}" id="{{item.id}}" class="grid-item" bindtap="jumpClassifyDetail" wx:if="{{index>=10}}">
 					<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>

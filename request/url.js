@@ -13,6 +13,8 @@ export default {
     sing: "/index/index/sing",
     // 所有分类
     allClassify: "/index/index/allclassify",
+    // 分类下的数据
+    religionCate: "/index/index/religionCate",
     // 已购买
     buy: "/index/buy/my"
 }

@@ -24,7 +24,7 @@ Page({
       //   title: "问答"
       // },
     ],
-    page_index: 0,  //导航栏
+    page_index: 1,  //导航栏
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
     addMore: false, //九宫格是否展开,
@@ -123,7 +123,7 @@ Page({
     let addMore = this.data.addMore
     if(!addMore){
       // console.log(addMore)
-      this.animation.height('300rpx').step()
+      this.animation.height('310rpx').step()
     } else {
       // console.log(addMore)
       this.animation.height(0).step()

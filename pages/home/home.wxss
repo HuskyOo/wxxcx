@@ -102,6 +102,12 @@
 .two-classify{
 	display: flex;
 	align-items: center;
+	margin-bottom: 10rpx;
+}
+.two-classify image{
+	width: 40rpx;
+	height: 40rpx;
+	margin: 0 20rpx;
 }
 /* 三级分类 */
 .three-calssify{

@@ -1,1 +1,19 @@
 /* pages/classifyDetail/classifyDetail.wxss */
+.nav{
+    background-color: rgb(250, 250, 250);
+    white-space: nowrap;
+    width: 100%;
+    height: 80rpx;
+    /* line-height: 80rpx; */
+}
+.nav text{
+    box-sizing: border-box;
+    display: inline-block;
+    height: 80rpx;
+    padding: 0rpx 40rpx;
+    margin: 0 30rpx;
+}
+.nav text.active{
+    color: #10c2b8;
+	border-bottom: 1rpx solid #10c2b8;
+}
