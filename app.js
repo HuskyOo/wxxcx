@@ -7,13 +7,19 @@ App({
     wx.setStorageSync('logs', logs);
     // wx.hideTabBar({})
     //判断是否有播放历史
-    var history = wx.getStorageSync('history')
+    let history = wx.getStorageSync('history'), lan = wx.getStorageSync('lan');
     if(!history){
       var arr = []
       wx.setStorage({
         key: 'history',
         data: arr
       })
+    }
+    if(!lan){
+      wx.setStorage({
+        key: 'lan',
+        data: 0
+      });
     }
     //判断用户是否登录
     var str = wx.getStorageSync('token')

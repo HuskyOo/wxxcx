@@ -1,6 +1,10 @@
 <!--pages/home/home.wxml-->
 <!-- <text>pages/home/home.wxml</text> -->
 <view class="home">
+	<view class="search">
+		<image src="{{lan === 0 ? '/images/changehan.png' : '/images/changezang.png'}}" bindtap="changeLan" />
+		<input type="text" placeholder="请输入您想搜索的内容" />
+	</view>
 	<!-- 导航栏 -->
 	<view class="navigation">
 		<view wx:for="{{nav}}" wx:key="item.id" class="nav-options {{index == page_index?'active':''}}" data-current="{{item.id}}" data-index="{{index}}" bindtap="swichNav" wx:if="{{index<2}}">{{item.title}}</view>
@@ -51,7 +55,9 @@
 				</view>
 			</view>
 			<view class="addMore" bindtap="addMore">
-				<text >展开更多</text>
+				<text wx:if="{{addMore}}">收起更多</text>
+				<text wx:else>展开更多</text>
+				<image src="/images/unfold.png" animation="{{unfoldAnimation}}" />
 			</view>
 			
 			<!-- 分界线 -->

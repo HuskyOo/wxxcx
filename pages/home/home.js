@@ -29,7 +29,9 @@ Page({
     grid: null,     //九宫格
     addMore: false, //九宫格是否展开,
     animation: {},  //展开动画
+    unfoldAnimation: {},  //展开箭头动画
     classify: [],   //分类
+    lan: wx.getStorageSync('lan')
   },
 
   /**
@@ -124,13 +126,16 @@ Page({
     if(!addMore){
       // console.log(addMore)
       this.animation.height('310rpx').step()
+      this.unfoldAnimation.rotate(180).step()
     } else {
       // console.log(addMore)
       this.animation.height(0).step()
+      this.unfoldAnimation.rotate(0).step()
     }
     
     this.setData({
       animation: this.animation.export(),
+      unfoldAnimation: this.unfoldAnimation.export(),
       addMore: !addMore
     })
   },
@@ -171,6 +176,26 @@ Page({
       }
     })
   },
+  changeLan () {
+    let lan = this.data.lan
+    if(lan === 0) {
+      this.setData({
+        lan: 1
+      })
+      wx.setStorage({
+        key: 'lan',
+        data: 1
+      });
+    } else {
+      this.setData({
+        lan: 0
+      })
+      wx.setStorage({
+        key: 'lan',
+        data: 0
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -183,6 +208,7 @@ Page({
    */
   onShow: function () {
     this.animation = wx.createAnimation()
+    this.unfoldAnimation = wx.createAnimation({});
     this.animation.height(0).step()
     this.setData({animation: this.animation.export()})
   },
