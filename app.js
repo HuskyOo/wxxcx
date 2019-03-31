@@ -1,4 +1,5 @@
 //app.js
+// const bgMusic = wx.getBackgroundAudioManager()
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -28,11 +29,19 @@ App({
         url: '/pages/home/home'
       })
     }
+    
+    // this.setBgMusic()
   },
   globalData: {
     userInfo: null,
     // pageUrl: "https://wx.novowey.com",
     pageUrl: "https://chonlong.cn",
     // is_login: false
-  }
+    bgMusic: null,
+  },
+  // setBgMusic () {
+  //   console.log(bgMusic)
+  //   let history = wx.getStorageSync('history');
+  //   if(history.length > 0){}
+  // }
 })

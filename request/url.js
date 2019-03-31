@@ -16,5 +16,7 @@ export default {
     // 分类下的数据
     religionCate: "/index/index/religionCate",
     // 已购买
-    buy: "/index/buy/my"
+    buy: "/index/buy/my",
+    // 获取播放地址
+    mediaurl: "/index/details/mediaurl"
 }

@@ -44,25 +44,25 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "主页",
+        "text": "གཙོ་ངོས།",
         "iconPath": "./images/index.png",
         "selectedIconPath": "./images/SelecteIndex.png"
       },
       {
         "pagePath": "pages/my-course/my-course",
-        "text": "我的",
+        "text": "ངའི་སློབ་ཁྲིད།",
         "iconPath": "./images/tushu.png",
         "selectedIconPath": "./images/SelecteTushu.png"
       },
       {
         "pagePath": "pages/buy/buy",
-        "text": "资料",
+        "text": "ཡིག་ཆ།",
         "iconPath": "./images/buy.png",
         "selectedIconPath": "./images/SelecteBuy.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "中心",
+        "text": "ལྟེ་གནས།",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/SelecteMy.png"
       }
@@ -70,5 +70,6 @@
   },
   "requiredBackgroundModes": [
     "audio"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }

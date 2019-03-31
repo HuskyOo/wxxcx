@@ -1,6 +1,6 @@
 <!--pages/albumDetails/albumDetails.wxml-->
 <!-- 头部 -->
-<view wx:if="{{media_type === '1'}}" style="height:330rpx">
+<view wx:if="{{mediatype === '1'}}" style="height:330rpx">
     <video src="{{mediaData.audio}}" style="width:100%;height:330rpx" />
 </view>
 <view wx:else>
@@ -18,10 +18,10 @@
 </view>
 
 <!-- 分割线 -->
-<view class='boundary-line' wx:if="{{mediatype === '1'}}"></view>
+<view class='boundary-line' wx:if="{{mediatype === '0'}}"></view>
 
 <!-- 控制台 -->
-<view class="control" wx:if="{{mediatype === '1'}}">
+<view class="control" wx:if="{{mediatype === '0'}}">
     <!-- 按钮 -->
     <view class="play">
         <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="listenerButtonPrev"></image>

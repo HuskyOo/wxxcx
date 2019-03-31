@@ -11,5 +11,5 @@
 //         }
 //     })
 // }
-import { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate } from "./content"
-export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate }
+import { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl } from "./content"
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl }

@@ -22,9 +22,9 @@ Component({
       success: (res) => {
         // console.log(res)
         let allHeight = res.windowHeight
-        console.log(allHeight)
+        // console.log(allHeight)
         query.select('#myscroll').boundingClientRect(function (res) {
-          console.log(res.top) // 这个组件内 #the-id 节点的上边界坐标
+          // console.log(res.top) // 这个组件内 #the-id 节点的上边界坐标
           let top = res.top
           that.setData({
             height: allHeight-top+'px'
@@ -38,6 +38,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    viewScroll (e) {
+      this.triggerEvent('scroll', e)
+    }
   }
 })

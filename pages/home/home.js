@@ -1,6 +1,7 @@
 // pages/home/home.js
 let app = getApp(), util = require('../../utils/util')
 import {zang, book, commonweal, allClassify} from "../../request/index"
+import {index} from "../../font/index"
 Page({
 
   /**
@@ -28,10 +29,14 @@ Page({
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
     addMore: false, //九宫格是否展开,
-    animation: {},  //展开动画
+    animation: null,  //展开动画
     unfoldAnimation: {},  //展开箭头动画
     classify: [],   //分类
-    lan: wx.getStorageSync('lan')
+    lan: wx.getStorageSync('lan'),  //语言
+    scrollTop: 0, //
+    scroolAnimation: {},  //控制台动画
+    scroolTimer: null,
+    pageFont: {}, //页面文字
   },
 
   /**
@@ -196,6 +201,26 @@ Page({
       });
     }
   },
+  handleControl (e) {
+    let that = this
+    clearTimeout(that.data.scroolTimer)
+    that.scroolAnimation.opacity(0).step()
+    that.setData({
+      scroolAnimation: that.scroolAnimation.export(),
+      scroolTimer: setTimeout(() => {
+        that.controlShow()
+      }, 300)
+    })
+    // console.log(that.data.scroolTimer)
+    
+  },
+  controlShow () {
+    // console.log(1)
+    this.scroolAnimation.opacity(1).step()
+    this.setData({
+      scroolAnimation: this.scroolAnimation.export()
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -207,10 +232,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 动画
     this.animation = wx.createAnimation()
     this.unfoldAnimation = wx.createAnimation({});
-    this.animation.height(0).step()
-    this.setData({animation: this.animation.export()})
+    this.scroolAnimation = wx.createAnimation({
+      duration: 150
+    });
+    if(!this.data.animation){
+      this.animation.height(0).step()
+      this.setData({animation: this.animation.export()})
+    }
+    this.setData({
+      pageFont: index()
+    })
+    // console.log(this.data.pageFont)
   },
 
   /**

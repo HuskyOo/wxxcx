@@ -47,5 +47,10 @@ function religionCate (id) {
         http(url.religionCate, {id}, (res) => {resolve(res.data)})
     })
 }
+function mediaurl (params) {
+    return new Promise ((resolve, reject) => {
+        http(url.mediaurl, params, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate }
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl }

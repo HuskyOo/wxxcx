@@ -2,8 +2,11 @@
 var util = require('../../utils/util')
 var WxParse = require('../../wxParse/wxParse')
 var app = getApp();
+
+import { mediaurl } from "../../request/index"
 // 背景音乐
 const bgMusic = wx.getBackgroundAudioManager()
+
 Page({
 
   /**
@@ -53,6 +56,9 @@ Page({
     // that.getData(options.id)
     // type: 1专辑 0单曲    mediatype: 1视频 0音频
     that.setData({id, type, mediatype})
+    if(type === '0'){
+      this.getMedia(type, id)
+    }
     
   },
   // 介绍和歌单的切换
@@ -65,34 +71,24 @@ Page({
   getMedia(type, id){
     var that = this
     // if(type === '1'){
-      wx.request({
-        url:that.data.url + '/index/details/mediaurl',
-        data: {
-          id: id,
-          type: type,
-          token: wx.getStorageSync('token')
-        },
-        success: res => {
-          
-          console.log(res)
-          // if(res.data.media.is_buy === 0){
-          //   that.setData({
-          //     boxShow: true
-          //   })
-          // }
-          that.setData({
-            mediaData:res.data.media,
-            mediatype: res.data.media.media_type
-          })
-          if(that.data.type === '0'){
-            that.setData({data: res.data.media})
-          }
-          // that.showTab()
-          // that.sethistory()
-          // that.setParse()
-        }
+    mediaurl({type, id, token: wx.getStorageSync('token')}).then(res => {
+      console.log(res)
+      that.setData({
+        data:res.media,
+        // mediatype: res.media.media_type
       })
-    // }
+      if(this.data.mediatype === "0"){
+        this.setData({
+          bgMusicSrc: res.media.audio
+        })
+        console.log(this.data.bgMusicSrc)
+        this.listenerButtonPlay()
+      } else {
+        this.setData({
+          videoSrc: res.media.audio
+        })
+      }
+    })
   },
   // 请求数据
   getData (id = this.data.id) {
@@ -394,22 +390,40 @@ Page({
       listscope: [x,y]
     })
   },
+  // setBgmusicInfo () {},
   // 背景音乐播放
   listenerButtonPlay () {
-    let that = this
+    let that = this, bgMusicSrc = that.data.bgMusicSrc
+    bgMusic.title = "哈哈哈"
+    console.log(bgMusicSrc)
+    if(bgMusic.src !== bgMusicSrc){
+      bgMusic.src = bgMusicSrc
+    }
     bgMusic.play()
     // 总时长
-    let duration = bgMusic.duration
-    that.setData({duration})
+    that.setData({
+      isOpen: true
+    })
+    
     bgMusic.onTimeUpdate(() => {
       // 当前时间
       let currentTime = bgMusic.currentTime
       that.setData({currentTime})
+      let duration = bgMusic.duration
+      if(that.data.duration !== duration){
+        that.setData({duration})
+        console.log(duration)
+      }
+      
     })
+    
   },
   // 背景音乐暂停
   listenerButtonPause () {
     bgMusic.pause()
+    this.setData({
+      isOpen: false
+    })
   },
   // 背景音乐上一首
   listenerButtonPrev () {},
@@ -435,48 +449,6 @@ sharecar () {
   }
   var pageUrl = url+'?'+arr.join('&')
   that.setData({pageUrl})
-  // console.log(that.data.pageUrl)
-  // console.log(pageurl)
-  // wx.request({
-  //   url: that.data.url + '/wechat/index/getcode',
-  //   data: {
-  //     pageurl
-  //   },
-  //   success: res => {
-  //     console.log(res)
-  //     var context = wx.createCanvasContext('sharecan')
-  //     // 二维码地址
-  //     var codeUrl = that.data.url + res.data.codeimg
-  //     // 图片地址
-  //     var path = that.data.url+that.data.data.cover
-  //     // 画图片
-  //     context.drawImage(path,50,20,275,275)
-  //     // 写标题
-  //     context.setFontSize(18)   
-  //     context.fillText(that.data.data.title, 50, 350)
-  //     // 写价格
-  //     context.setFillStyle('#f66')
-  //     context.setFontSize(15)   
-  //     context.fillText('¥'+that.data.data.money, 50, 390)
-  //     // 画二维码
-  //     context.drawImage(codeUrl,225,320,100,100)
-  //     context.draw(true,(res) => {
-  //       console.log(res)
-  //       wx.canvasToTempFilePath({
-  //         canvasId: 'sharecan',
-  //         fileType: 'jpg',
-  //         quality: 1,
-  //         success: res => {
-  //           console.log(res.tempFilePath)
-  //           that.setData({
-  //             shareImg: res.tempFilePath
-  //           })
-  //         }
-  //       })
-  //     })
-
-  //   }
-  // })
 },
 // 显示分享
 shareshow () {
@@ -524,12 +496,12 @@ save () {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-    if(that.data.type == 1){
-      that.getData(that.data.id)
-    } else {
-      that.getMedia(that.data.type, that.data.id)
-    }
+    // var that = this
+    // if(that.data.type == 1){
+    //   that.getData(that.data.id)
+    // } else {
+    //   that.getMedia(that.data.type, that.data.id)
+    // }
   },
 
   /**

@@ -2,8 +2,8 @@
 <view class="my-course">
 	<!-- 上方导航栏 -->
 	<view class="course-nav">
-		<view wx:for="{{navList}}" wx:key="item.id" id="{{item.id}}" class="nav-item" bindtap="switchNav">
-			<image src="{{item.img}}" />
+		<view wx:for="{{navList}}" wx:key="item.id" id="{{item.id}}" class="nav-item {{item.id == navIndex ? 'active' : ''}}" bindtap="switchNav">
+			<image src="{{item.id == navIndex ? item.activeImg : item.img}}" />
 			<text >{{item.title}}</text>
 		</view>
 	</view>
@@ -15,6 +15,10 @@
 		<!-- 历史 -->
 		<view wx:if="{{navIndex == 1}}">
 			<col-list wx:for="{{history}}" titlejump="{{false}}" wx:key="index" title="{{item.title}}" list="{{item.item}}"></col-list>
+			<view class="none" wx:if="{{history.length < 1}}">
+				<image src="" />
+				<text>{{pageFont.nohistory}}</text>
+			</view>
 		</view>
 		
 		<!-- 已购买 -->
@@ -24,7 +28,7 @@
 			<!-- 没有物品 -->
 			<view class="none" wx:if="{{buy.code === 0}}">
 				<image src="../../images/none.png" />
-				<text>སྟོང་བ་རེད།</text>
+				<text>{{pageFont.nobuy}}</text>
 			</view>
 		</view>
 		
@@ -34,7 +38,7 @@
 			<!-- <col-list list=""></col-list> -->
 			<view class="none">
 				<image src="" />
-				<text>此功能暂未开放</text>
+				<text>{{pageFont.unopen}}</text>
 			</view>
 		</view>
 	</view>

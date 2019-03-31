@@ -8,6 +8,7 @@
 	justify-content: space-between;
 	align-items: center;
 	/* flex-wrap: nowrap; */
+	font-family: '藏研黑体';
 }
 /* .book-recommendation .title text{} */
 .title-one{
@@ -62,7 +63,7 @@
 .book-image{
 	position: relative;
 	/* width: 140rpx; */
-	height: 180rpx;
+	height: 200rpx;
 	width: 100%;
 	border-radius: 10rpx;
 	overflow: hidden;
@@ -81,6 +82,25 @@
 	text-align: center;
 	line-height: 25rpx;
 }
+
+
+/* 集数 */
+.episode{
+	position: absolute;
+	bottom: 5rpx;
+	right: 15rpx;
+}
+.book-image  .episode image{
+	width:30rpx;
+	height: 23rpx;
+	margin-right: 5rpx;
+}
+.book-image .episode text{
+	color: #fff;
+	font-size: 24rpx;
+}
+
+
 /* .book-image .album */
 .book-image .audio{
 	position: absolute;
@@ -120,17 +140,17 @@
 }
 
 .book-title{
-	font-family: 'Himalaya-G';
-	font-size: 30rpx;
+	/* font-family: 'Himalaya-G'; */
+	font-size: 24rpx;
 	color: #313131;
-	margin-top: 5rpx;
+	margin-top: 15rpx;
 }
 
 .book-introduction{
-	font-family: 'Jomolhari';
-	font-size: 26rpx;
+	/* font-family: 'Jomolhari'; */
+	font-size: 22rpx;
 	color: #616161;
-	margin-top: 20rpx;
+	/* margin-top: 15rpx; */
 }
 
 .book-two{

@@ -1,6 +1,7 @@
 // pages/my-course/my-course.js
 let app = getApp(), util = require('../../utils/util')
 import { buy } from '../../request/index'
+import { myCourse } from '../../font/index'
 Page({
 
   /**
@@ -8,27 +9,11 @@ Page({
    */
   data: {
     url: app.globalData.pageUrl,
-    navIndex: 1,
-    navList:[
-      {
-        id: 1,
-        img: '/images/cancel.png',
-        activeImg: '',
-        title: '历史'
-      },
-      {
-        id: 2,
-        img: '/images/buy.png',
-        activeImg: '',
-        title: '已购买'
-      },
-      {
-        id: 3,
-        img: '/images/yiwancheng.png',
-        activeImg: '',
-        title: '收藏'
-      },
-    ]
+    navIndex: 1,  //选中的导航
+    navList:[], //导航栏数据
+    pageFont: {}, //页面文字
+    history: [],  //历史数据
+    buy: [],  //购买数据
   },
 
   /**
@@ -50,7 +35,7 @@ Page({
   },
   switchNav (e) {
     let id = e.currentTarget.id
-    // console.log(id)
+    console.log(id)
     this.setData({
       navIndex: id
     })
@@ -67,7 +52,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let pageFont = myCourse()
+    this.setData({
+      pageFont: pageFont,
+      navList:[
+        {
+          id: 1,
+          img: '/images/course_history.png',
+          activeImg: '/images/course_history_select.png',
+          title: pageFont.history
+        },
+        {
+          id: 2,
+          img: '/images/course_buy.png',
+          activeImg: '/images/course_buy_select.png',
+          title: pageFont.buy
+        },
+        {
+          id: 3,
+          img: '/images/course_enshrine.png',
+          activeImg: '/images/course_enshrine_select.png',
+          title: pageFont.enshrine
+        },
+      ],
+    })
+    console.log(this.data.pageFont)
   },
 
   /**

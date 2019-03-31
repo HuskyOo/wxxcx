@@ -3,14 +3,14 @@
 <view class="home">
 	<view class="search">
 		<image src="{{lan === 0 ? '/images/changehan.png' : '/images/changezang.png'}}" bindtap="changeLan" />
-		<input type="text" placeholder="请输入您想搜索的内容" />
+		<input type="text" placeholder="{{pageFont.search[lan]}}" />
 	</view>
 	<!-- 导航栏 -->
 	<view class="navigation">
 		<view wx:for="{{nav}}" wx:key="item.id" class="nav-options {{index == page_index?'active':''}}" data-current="{{item.id}}" data-index="{{index}}" bindtap="swichNav" wx:if="{{index<2}}">{{item.title}}</view>
-		<button open-type="contact" class="nav-options"  bindtap="jumpLive">直播</button>
+		<button open-type="contact" class="nav-options"  bindtap="jumpLive">ཐད་གཏོང་།</button>
 	</view>
-	<my-scroll>
+	<my-scroll bindscroll="handleControl">
 		<!-- 分类 -->
 		<view class="donation" wx:if="{{page_index === 0}}">
 			<view class="classify-box" wx:for="{{classify}}" wx:key="item.id">
@@ -55,14 +55,14 @@
 				</view>
 			</view>
 			<view class="addMore" bindtap="addMore">
-				<text wx:if="{{addMore}}">收起更多</text>
-				<text wx:else>展开更多</text>
+				<text wx:if="{{addMore}}">{{pageFont.fewer[lan]}}</text>
+				<text wx:else>{{pageFont.unfold[lan]}}</text>
 				<image src="/images/unfold.png" animation="{{unfoldAnimation}}" />
 			</view>
 			
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{zhot}}" title="热播课程"></col-list>
+			<col-list list="{{zhot}}" title="{{pageFont.hot[lan]}}"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
@@ -79,16 +79,28 @@
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{znew}}" title="最新课程"></col-list>
+			<col-list list="{{znew}}" title="{{pageFont.new[lan]}}"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{book}}" title="开店创业必备资料" book></col-list>
+			<col-list list="{{book}}" title="{{pageFont.shop[lan]}}" book></col-list>
 		</view>
 
 
 		<!-- 问答 -->
 		<view class="asking" wx:if="{{page_index === 2}}"></view>
+
+		<view class="control" animation="{{scroolAnimation}}">
+			<view class="control-content">
+				<image src="/images/gong.png" class="control-avatar"/>
+				<view class="control-info">
+					<text class="control-title">青藏高原呐</text>
+					<text class="control-timer">0:00</text>
+				</view>
+				<image src="/images/control_play.png" class="control-play"/>
+				<image src="/images/control_next.png" class="control-next"/>
+			</view>
+		</view>
 	</my-scroll>
 	<!-- 授权页面 -->
 	<!-- 未授权 -->
