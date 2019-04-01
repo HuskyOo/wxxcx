@@ -14,9 +14,9 @@
 <!-- 订单 -->
 <view class='order'>
   <view class='order-header' bindtap='allOrders'>
-    <text class='order-header-title'>ངའི་ཉོ་ཐོ།</text>
+    <text class='order-header-title'>{{pageFont.myorder}}</text>
     <view >
-      <text class='order-header-detailed'>ཉོ་ཐོ་ཆ་ཚང་ལ་བལྟ།</text>
+      <text class='order-header-detailed'>{{pageFont.allorder}}</text>
       <image src='../../images/jiantou.png'></image>
     </view>
   </view>
@@ -36,17 +36,17 @@
   <view class='features-list' bindtap="jumpMember">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
-      <text>ཚོགས་མིའི་ལྟེ་གནས།</text>
+      <text>{{pageFont.member}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list' bindtap="jumpHis">
+  <!-- <view class='features-list' bindtap="jumpHis">
     <view>
       <image src='../../images/lishijilu.png' class='features-list-icon'></image>
       <text>ལོ་རྒྱུས་ཟིན་ཐོ།</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
-  </view>
+  </view> -->
   <!-- <button open-type="getPhoneNumber" class='features-list' bindgetphonenumber="getPhoneNumber">
     <view >
       <image src='../../images/fashijiu.png' class='features-list-icon'></image>
@@ -57,7 +57,7 @@
   <view class='features-list' bindtap="jumpAbout">
     <view >
       <image src='../../images/guanyuwmen.png' class='features-list-icon'></image>
-      <text>ང་ཚོའི་གནས་ཚུལ།</text>
+      <text>{{pageFont.about}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>

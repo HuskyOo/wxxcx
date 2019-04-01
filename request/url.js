@@ -18,5 +18,7 @@ export default {
     // 已购买
     buy: "/index/buy/my",
     // 获取播放地址
-    mediaurl: "/index/details/mediaurl"
+    mediaurl: "/index/details/mediaurl",
+    // 获取专辑详情
+    comdetails: "/index/details/comdetails"
 }

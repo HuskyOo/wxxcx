@@ -3,7 +3,7 @@
 <view class="buy-header">
     <text wx:for="{{title_list}}" wx:key="{{item.id}}" class="{{item.id == page_index ? 'buy-header-active' : ''}}" id="{{item.id}}" bindtap='pageChange'>{{item.title}}</text>
 </view>
-<view wx:for="{{title_list}}" wx:if="{{item.id == page_index}}">
+<view wx:for="{{title_list}}" wx:key="{{item.id}}" wx:if="{{item.id == page_index}}">
     <view class="buy-list" wx:for="{{buyList}}" wx:if="{{page_index == 0 ? true : item.status == page_index}}" wx:key="{{item.order_id}}" data-id="{{item.order_id}}" bindtap="goDetail">
         <view class="buy-list-header">
             <text class="buy-list-name">{{item.goods_title}}</text>

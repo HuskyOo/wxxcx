@@ -44,4 +44,14 @@ App({
   //   let history = wx.getStorageSync('history');
   //   if(history.length > 0){}
   // }
+  switchTime (num) {
+    let minute = Math.floor(num/60), second = num - (minute * 60)
+    if(minute < 10) {
+      minute = '0' + minute
+    }
+    if(second < 10){
+      second = '0' + second
+    }
+    return minute + ':' + second
+  }
 })

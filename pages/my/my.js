@@ -1,5 +1,6 @@
 var app = getApp()
 var util = require('../../utils/util')
+import { my } from '../../font/index'
 Page({
 
   /**
@@ -7,28 +8,7 @@ Page({
    */
   data: {
     url: app.globalData.pageUrl,
-    order: [
-      {
-        "id": "1",
-        "title": "རིན་སྤྲད་མེད་པ།",
-        "image": "../../images/daifukuan.png"
-      },
-      {
-        "id": "2",
-        "title": "བསྐུར་རྩིས་ཡོད་པ།",
-        "image": "../../images/daifahuo.png"
-      },
-      {
-        "id": "3",
-        "title": "བསྐུར་འཚག་པ།",
-        "image": "../../images/yifahuo.png"
-      },
-      {
-        "id": "4",
-        "title": "མཇུག་རྫོགས་པ།",
-        "image": "../../images/yiwancheng.png"
-      }
-    ],
+    order: [],
     features: [
       {
         "id": "1",
@@ -198,6 +178,32 @@ Page({
    */
   onShow: function () {
     var that = this
+    let pageFont = my()
+    that.setData({
+      pageFont,
+      order: [
+        {
+          "id": "1",
+          "title": pageFont.daifukuan,
+          "image": "../../images/daifukuan.png"
+        },
+        {
+          "id": "2",
+          "title": pageFont.daifahuo,
+          "image": "../../images/daifahuo.png"
+        },
+        {
+          "id": "3",
+          "title": pageFont.yifahuo,
+          "image": "../../images/yifahuo.png"
+        },
+        {
+          "id": "4",
+          "title": pageFont.yiwancheng,
+          "image": "../../images/yiwancheng.png"
+        }
+      ],
+    })
     wx.request({
       url: that.data.url + '/index/index/usertype',
       data: {

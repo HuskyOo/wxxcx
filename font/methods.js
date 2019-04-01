@@ -11,7 +11,28 @@ function myCourse () {
     for (let key in font.myCourse) {
         obj[key] = font.myCourse[key][lanIndex]
     }
-    console.log(lanIndex)
+    // console.log(lanIndex)
     return obj
 }
-module.exports = { index, myCourse }
+function my () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.my) {
+        obj[key] = font.my[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
+function paddingpayment () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.paddingpayment) {
+        obj[key] = font.paddingpayment[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
+
+module.exports = { index, myCourse, my, paddingpayment }

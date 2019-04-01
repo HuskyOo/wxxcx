@@ -1,6 +1,7 @@
 // pages/Pendingpayment/Pendingpayment.js
 var app = getApp()
 var util = require("../../utils/util")
+import { paddingpayment } from '../../font/index'
 Page({
 
   /**
@@ -9,13 +10,7 @@ Page({
   data: {
     url: app.globalData.pageUrl,
     page_index:0,
-    title_list:[
-      {id:0,title:'ཆ་ཚང་།'},
-      {id:1,title:'རིན་སྤྲད་མེད་པ།'},
-      {id:2,title:'བསྐུར་རྩིས་ཡོད་པ།'},
-      {id:3,title:'བསྐུར་འཚག་པ།'},
-      {id:4,title:'མཇུག་རྫོགས་པ།'}
-    ],
+    title_list:[],
     buyList: []
   },
 
@@ -27,7 +22,7 @@ Page({
       success: res => {
         console.log(res)
         that.setData({
-          buyList:res.data.data
+          buyList:res.data.data ? res.data.data : []
         })
       }
     })
@@ -205,7 +200,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let pageFont = paddingpayment()
     this.getData()
+    this.setData({
+      pageFont,
+      title_list:[
+        {id:0,title: pageFont.all},
+        {id:1,title: pageFont.daifukuan},
+        {id:2,title: pageFont.daifahuo},
+        {id:3,title: pageFont.yifahuo},
+        {id:4,title: pageFont.yiwancheng}
+      ],
+    })
   },
 
   /**

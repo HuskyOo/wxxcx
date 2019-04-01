@@ -52,5 +52,10 @@ function mediaurl (params) {
         http(url.mediaurl, params, (res) => {resolve(res.data)})
     })
 }
+function comdetails (params) {
+    return new Promise ((resolve, reject) => {
+        http(url.comdetails, params, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl }
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl, comdetails }

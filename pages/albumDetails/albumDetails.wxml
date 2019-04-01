@@ -1,7 +1,7 @@
 <!--pages/albumDetails/albumDetails.wxml-->
 <!-- 头部 -->
 <view wx:if="{{mediatype === '1'}}" style="height:330rpx">
-    <video src="{{mediaData.audio}}" style="width:100%;height:330rpx" />
+    <video src="{{videoSrc}}" style="width:100%;height:330rpx" />
 </view>
 <view wx:else>
     <view>
@@ -34,9 +34,9 @@
         <view class='slid'>
             <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{currentTime}}" max="{{duration}}" activeColor="#F86343" backgroundColor="#EACFC8" block-color="#F34E3A"/>
             <view>
-                <text class='times'>{{starttime}}</text>
+                <text class='times'>{{showCurrentTime}}</text>
                 <!-- 进度时长 -->
-                <text class='times'>{{duration}}</text>
+                <text class='times'>{{showDuration}}</text>
                 <!-- 总时长 -->
             </view>
         </view>

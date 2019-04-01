@@ -9,7 +9,7 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('http://qiuniu.vmobplus.com/fufei/background.png');
+  background-image: url('https://www.chonlong.cn/wx/imagebackgroun.jpg');
 }
 
 .header-image{

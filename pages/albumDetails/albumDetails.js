@@ -3,7 +3,7 @@ var util = require('../../utils/util')
 var WxParse = require('../../wxParse/wxParse')
 var app = getApp();
 
-import { mediaurl } from "../../request/index"
+import { mediaurl, comdetails } from "../../request/index"
 // 背景音乐
 const bgMusic = wx.getBackgroundAudioManager()
 
@@ -27,8 +27,10 @@ Page({
     playNum: 0,
     shareshow: false,
     isOpen: false,  //背景音乐开关
-    currentTime: 200,    //正在播放的时间
-    duration: 300,       //音乐总时长
+    currentTime: 0,    //正在播放的时间
+    duration: 0,       //音乐总时长
+    showCurrentTime: '0:00',  //显示的正在播放的时间
+    showDuration: '0:00',   //x显示的总时长
   },
 
   /**
@@ -58,6 +60,8 @@ Page({
     that.setData({id, type, mediatype})
     if(type === '0'){
       this.getMedia(type, id)
+    } else {
+      this.getData()
     }
     
   },
@@ -79,7 +83,8 @@ Page({
       })
       if(this.data.mediatype === "0"){
         this.setData({
-          bgMusicSrc: res.media.audio
+          bgMusicSrc: res.media.audio,
+          showDuration: res.media.duration
         })
         console.log(this.data.bgMusicSrc)
         this.listenerButtonPlay()
@@ -93,27 +98,16 @@ Page({
   // 请求数据
   getData (id = this.data.id) {
     let that = this, media_type = this.data.mediatype
-    wx.request({
-      url: this.data.url+'/index/details/comdetails',
-      header: {
-        'content-type': 'application/json',
-      },
-      data: {
-        id: id,
-        // media_type: -1,
-        media_type: -1,
-        token: wx.getStorageSync('token')
-      },
-      success(res) {
-        console.log(res)
+    comdetails({id, media_type: -1, token: wx.getStorageSync('token')}).then(res => {
+      console.log(res)
         that.setData({
-          showdata: res.data.media.media,
-          data: res.data.media,
-          media_type: res.data.media.media[0].media_type,
+          showdata: res.media.media,
+          data: res.media,
+          media_type: res.media.media[0].media_type,
           listscope:[0,1]
         })
         // 获取视频
-        that.getMedia(res.data.media.media[0].media_type, res.data.media.media[0].id)
+        that.getMedia(1, res.media.media[0].id)
         // 初始化页面文字
         that.setData({
           page_font:{
@@ -139,14 +133,69 @@ Page({
         // 初始化页面数据
         that.setData({
           // 页数   一页10条数据
-          pageCount: Math.ceil(res.data.media.media.length / 10),
+          pageCount: Math.ceil(res.media.media.length / 10),
         })
         // 设置选集选项卡
         that.setSelectArr()
 
         that.sharecar()
-      }
+      // }
     })
+
+    // wx.request({
+    //   url: this.data.url+'/index/details/comdetails',
+    //   header: {
+    //     'content-type': 'application/json',
+    //   },
+    //   data: {
+    //     id: id,
+    //     // media_type: -1,
+    //     media_type: -1,
+    //     token: wx.getStorageSync('token')
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //     that.setData({
+    //       showdata: res.data.media.media,
+    //       data: res.data.media,
+    //       media_type: res.data.media.media[0].media_type,
+    //       listscope:[0,1]
+    //     })
+    //     // 获取视频
+    //     that.getMedia(res.data.media.media[0].media_type, res.data.media.media[0].id)
+    //     // 初始化页面文字
+    //     that.setData({
+    //       page_font:{
+    //         listen:[that.data.data.sales+'人已收听','ཉན་མཁན་མི'+that.data.data.sales+'ཡོད།'],
+    //         expect:['共 '+that.data.data.media.length+' 节课程','སློབ་ཚན'+that.data.data.media.length+'ཡོད།'],
+    //         detail:['详情','རྒྱས་བཤད།'],
+    //         program:['节目', 'ལེ་ཚན།'],
+    //         audition:['试听', 'ཚོད་ཉན་བྱེད།'],
+    //         buy:['立即购买','མྱུར་དུ་ཉོ།'],
+    //         play:['播放全部', 'མཉམ་གཏོང་།'],
+    //         selected:['选集','བདམས་སྒྲིག'],
+    //         order:['正序','རིམ་སྒྲིག'],
+    //         share:['分享','བརྒྱུད་སྐུར།'],
+    //         author:['作者介绍', 'ཁྲིད་མཁན་ངོ་སྤྲོད།'],
+    //         album:['专辑介绍','ནང་དོན་ངོ་སྤྲོད།'],
+    //         once:['立即播放','ད་ལྟ་ཉན།'],
+    //         vip_font:['开通会员后即可免费收听/观看', 'ཚོགས་མིར་ཐོ་འགོད་བྱས་རྗེས་རིན་མེད་ཉན་ཆོག'],
+    //         vip_btn:['立即开通', 'ཚོགས་མིར་ཐོ་འགོད་བྱེད།']
+    //       }
+    //     })
+    //     // 富文本转译
+    //     that.wxParse()
+    //     // 初始化页面数据
+    //     that.setData({
+    //       // 页数   一页10条数据
+    //       pageCount: Math.ceil(res.data.media.media.length / 10),
+    //     })
+    //     // 设置选集选项卡
+    //     that.setSelectArr()
+
+    //     that.sharecar()
+    //   }
+    // })
   },
   // 富文本转译
   wxParse () {
@@ -408,7 +457,10 @@ Page({
     bgMusic.onTimeUpdate(() => {
       // 当前时间
       let currentTime = bgMusic.currentTime
-      that.setData({currentTime})
+      that.setData({
+        currentTime, 
+        showCurrentTime: app.switchTime(Math.round(currentTime))
+      })
       let duration = bgMusic.duration
       if(that.data.duration !== duration){
         that.setData({duration})
