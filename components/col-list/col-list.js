@@ -12,7 +12,7 @@ Component({
     },
     title: {
       type: String,
-      value: false
+      value: ''
     },
     replace: {
       type: Boolean,

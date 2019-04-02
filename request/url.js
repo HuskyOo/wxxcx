@@ -20,5 +20,7 @@ export default {
     // 获取播放地址
     mediaurl: "/index/details/mediaurl",
     // 获取专辑详情
-    comdetails: "/index/details/comdetails"
+    comdetails: "/index/details/comdetails",
+    // 换一批
+    mediarand:"/index/details/mediarand"
 }
