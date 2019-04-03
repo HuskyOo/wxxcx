@@ -1,2 +1,2 @@
-import { index, myCourse, my, paddingpayment } from "./methods"
-export { index, myCourse, my, paddingpayment }
+import { index, myCourse, my, paddingpayment, albumDetail } from "./methods"
+export { index, myCourse, my, paddingpayment, albumDetail }

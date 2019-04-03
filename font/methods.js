@@ -34,5 +34,15 @@ function paddingpayment () {
     // console.log(lanIndex)
     return obj
 }
+function albumDetail () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.albumDetail) {
+        obj[key] = font.albumDetail[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
 
-module.exports = { index, myCourse, my, paddingpayment }
+module.exports = { index, myCourse, my, paddingpayment, albumDetail }

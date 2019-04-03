@@ -52,22 +52,22 @@
     <view  class="vip-font">
         <image src="../../images/vip-icon.png" style="width:22rpx;height:24rpx"/>
         <!-- <text>立即开通会员</text> -->
-        <text>{{page_font.vip_font[lan_index]}}</text>
+        <text>{{pageFont.vip_font}}</text>
     </view>
-    <text class="vip-btn" bindtap="jumpMember">{{page_font.vip_btn[lan_index]}}</text>
+    <text class="vip-btn" bindtap="jumpMember">{{pageFont.vip_btn}}</text>
 </view>
 
 <!-- 上面按钮(专辑) -->
 <view class="btns" wx:if="{{type == 1}}">
     <!-- <button class="btn" bindtap="tox">详情</button><button  class="btn">节目</button> -->
-    <view class="album-detail-btn {{showIndex === '0' ? 'album-class-btn' : ''}}" data-show="0" bindtap="changeShow"><text>{{page_font.detail[lan_index]}}</text></view>
-    <view class="album-detail-btn {{showIndex === '1' ? 'album-class-btn' : ''}}" data-show="1" bindtap="changeShow"><text>{{page_font.program[lan_index]}}</text></view>
+    <view class="album-detail-btn {{showIndex === '0' ? 'album-class-btn' : ''}}" data-show="0" bindtap="changeShow"><text>{{pageFont.detail}}</text></view>
+    <view class="album-detail-btn {{showIndex === '1' ? 'album-class-btn' : ''}}" data-show="1" bindtap="changeShow"><text>{{pageFont.program}}</text></view>
 </view>
 <!-- 上面按钮(单曲) -->
 <view class="btns" wx:else>
     <!-- <button class="btn" bindtap="tox">详情</button><button  class="btn">节目</button> -->
-    <view class="album-detail-btn {{showIndex === '0' ? 'album-class-btn' : ''}}" data-show="0" bindtap="changeShow"><text>内容介绍</text></view>
-    <view class="album-detail-btn {{showIndex === '1' ? 'album-class-btn' : ''}}" data-show="1" bindtap="changeShow"><text>讲师介绍</text></view>
+    <view class="album-detail-btn {{showIndex === '0' ? 'album-class-btn' : ''}}" data-show="0" bindtap="changeShow"><text>{{pageFont.album}}</text></view>
+    <view class="album-detail-btn {{showIndex === '1' ? 'album-class-btn' : ''}}" data-show="1" bindtap="changeShow"><text>{{pageFont.author}}</text></view>
 </view>
 
 <!-- 介绍 -->
@@ -93,16 +93,16 @@
         <view class="choise">
             <view bindtap="playAll">
                 <image style="width:30rpx;height:30rpx;margin-left:40rpx;margin-right:23rpx" src="../../images/bofangquanbu@2x.png"></image>
-                <text style="font-size:32rpx;color:#979797">{{page_font.play[lan_index]}}</text>
+                <text style="font-size:32rpx;color:#979797">{{pageFont.play}}</text>
             </view>
             <view style="display:flex;font-size:32rpx;color:#616161">
                 <view bindtap="handlesort">
                     <image style="width:29rpx;height:25rpx" src="../../images/zhengxu@2x.png"></image>
-                    <text style="margin-left:10rpx;margin-right:20rpx">{{page_font.order[lan_index]}}</text>
+                    <text style="margin-left:10rpx;margin-right:20rpx">{{pageFont.order}}</text>
                 </view>
                 <picker mode="selector" bindchange="handleSelect" range="{{pageArr}}" value="{{pageIndex}}">
                     <image style="width:20rpx;height:25rpx;vertical-align:baseline" src="../../images/xuanji@2x.png"></image>
-                    <text style="margin-left:10rpx;margin-right:20rpx;">{{page_font.selected[lan_index]}}</text>
+                    <text style="margin-left:10rpx;margin-right:20rpx;">{{pageFont.selected}}</text>
                 </picker>
             </view>
         </view>
@@ -157,12 +157,12 @@
         <view class='boundary-line' wx:if="{{media_type === '1'}}"></view>
         <!-- 介绍内容 -->
         <view class="content">
-            <text class="title">{{page_font.author[lan_index]}}</text>
+            <text class="title">{{pageFont.author}}</text>
             <view class="content">
                 <import src="../../wxParse/wxParse.wxml"/>
                 <template is="wxParse" data="{{wxParseData:author.nodes}}"/>
             </view>
-            <text class="title">{{page_font.album[lan_index]}}</text>
+            <text class="title">{{pageFont.album}}</text>
             <view class="content">
                 <import src="../../wxParse/wxParse.wxml"/>
                 <template is="wxParse" data="{{wxParseData:album.nodes}}"/>
@@ -174,14 +174,14 @@
 <!-- 作者介绍 专辑介绍(单曲) -->
 <scroll-view scroll-y="{{true}}" class="introduce" wx:else>
     <view class="content" wx:if="{{showIndex === '0'}}">
-        <text class="title">{{page_font.album[lan_index]}}</text>
+        <text class="title">{{pageFont.album}}</text>
         <view class="content">
             <import src="../../wxParse/wxParse.wxml"/>
             <template is="wxParse" data="{{wxParseData:album.nodes}}"/>
         </view>  
     </view>
     <view class="content" wx:if="{{showIndex === '1'}}">
-        <text class="title">{{page_font.author[lan_index]}}</text>
+        <text class="title">{{pageFont.author}}</text>
         <view class="content">
             <import src="../../wxParse/wxParse.wxml"/>
             <template is="wxParse" data="{{wxParseData:author.nodes}}"/>
