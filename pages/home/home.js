@@ -1,7 +1,8 @@
 // pages/home/home.js
 let app = getApp(), util = require('../../utils/util')
-import {zang, book, commonweal, allClassify} from "../../request/index"
+import {zang, book, commonweal, allClassify, mediaurl} from "../../request/index"
 import {index} from "../../font/index"
+let bgMusic = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -11,20 +12,7 @@ Page({
     url: app.globalData.pageUrl,
     is_auth:false,  //授权
     //导航栏内容
-    nav: [
-      // {
-      //   id:1,
-      //   title: "众筹"
-      // },
-      // {
-      //   id:2,
-      //   title: "课程"
-      // },
-      // {
-      //   id:3,
-      //   title: "问答"
-      // },
-    ],
+    nav: [],
     page_index: 1,  //导航栏
     zbanner: null,  //藏 轮播图
     grid: null,     //九宫格
@@ -36,16 +24,22 @@ Page({
     scrollTop: 0, //
     scroolAnimation: {},  //控制台动画
     scroolTimer: null,
+    controlShow: false,   //是否显示控制台  音频显示
+    controlInfo: null,    //控制台基本信息
     pageFont: {}, //页面文字
+    bgOpen: false,  //音乐是否为播放状态
+    showCurrentTime: '0:00',  //正在播放的时长
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.fontFamily()
-    this.auth()
     this.getData()
+    this.setData({
+      pageFont: index()
+    })
+    this.auth()
   },
   auth () {
     let that = this, token = wx.getStorageSync('token')
@@ -221,6 +215,111 @@ Page({
       scroolAnimation: this.scroolAnimation.export()
     })
   },
+  setBgMusic () {   //音乐播放设置
+    let history = wx.getStorageSync('history'), info = history[0].item[0], that = this, currentTime = wx.getStorageSync('currentTime')
+    console.log(info)
+    that.setData({
+      showCurrentTime: app.switchTime(Math.round(currentTime)) ? app.switchTime(Math.round(currentTime)) : '0:00'
+    })
+    if(info.media_type === "0"){
+      that.setData({
+        controlShow: true,
+        controlInfo: info
+      })
+      bgMusic.title = info.title,
+      bgMusic.coverImgUrl = that.data.url + info.cover
+      let state = bgMusic.paused
+      console.log(state)   //undefined  false(正在播放)  true暂停 停止
+      if(state === false) {
+        that.setData({
+          bgOpen: true
+        })
+        that.bgTimeUpdate()
+      } else {
+        that.setData({
+          bgOpen: false
+        })
+      }
+    } else {
+      that.setData({controlShow: false})
+    }
+  },
+  bgPause () {  //暂停音乐
+    bgMusic.pause()
+    this.setData({bgOpen:false})
+  },
+  bgPlay () {
+    let state = bgMusic.pause, that = this, currentTime = wx.getStorageSync('currentTime'), audioSrc = bgMusic.src, info = wx.getStorageSync("history")[0].item[0]
+    bgMusic.title = info.title,
+    bgMusic.coverImgUrl = that.data.url + info.cover
+    // if(state === 
+    console.log(audioSrc, wx.getStorageSync('audioSrc'))
+    that.setData({
+      bgOpen: true
+    })
+    if(!bgMusic.src){
+      bgMusic.src = wx.getStorageSync('audioSrc')
+    }
+    bgMusic.play()
+    bgMusic.seek(currentTime)
+    that.bgTimeUpdate()
+  },
+  bgNext () {
+    let type = wx.getStorageSync('history')[0].item[0].type, playId = wx.getStorageSync('playId'), playList = wx.getStorageSync('playList'), playIndex = null
+    if(type === "0"){
+      wx.showToast({
+        title: "歌曲已全部播放完毕"
+      })
+    } else {
+      for(var i=0; i<playList.length; i++){
+        if(playList[i].id === playId){
+          playIndex = i
+        }
+      }
+      if(playIndex !== null){
+        this.getMedia(playList[playIndex + 1].id)
+        wx.setStorageSync('playId', playList[playIndex + 1].id)
+      } else {
+        console.log(1, playIndex)
+        wx.showToast({
+          title: "歌曲已全部播放完毕"
+        })
+      }
+    }
+  },
+  bgTimeUpdate () {
+    let that = this
+    bgMusic.onTimeUpdate(() => {
+      let currentTime = bgMusic.currentTime, state = bgMusic.pause
+      if(currentTime !== 0){
+        that.setData({
+          showCurrentTime: app.switchTime(Math.round(currentTime))
+        })
+        wx.setStorageSync('currentTime',currentTime)
+      }
+    })
+  },
+  getMedia(id){
+    this.setData({
+      bgMusic: false
+    })
+    mediaurl({type: 1,id,token: wx.getStorageSync('token')}).then(res => {
+      console.log(res)
+      wx.setStorageSync("audioSrc", res.media.audio)
+      bgMusic.title = res.media.title
+      bgMusic.coverImgUrl = this.data.url + res.media.cover
+      bgMusic.src = res.media.audio
+      this.setData({
+        bgOpen: true
+      })
+    })
+  },
+  jumpAlbum () {
+    let history = wx.getStorageSync('history')[0].item[0]
+    wx.navigateTo({
+      url: `/pages/albumDetails/albumDetails?type=${history.type}&mediatype=${history.media_type}&id=${history.id}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -242,10 +341,15 @@ Page({
       this.animation.height(0).step()
       this.setData({animation: this.animation.export()})
     }
+    // 文字
     this.setData({
       pageFont: index()
     })
     // console.log(this.data.pageFont)
+    // 设置背景音乐
+    if(wx.getStorageSync('history').length > 0){
+      this.setBgMusic()
+    }
   },
 
   /**

@@ -5,7 +5,7 @@ var app = getApp();
 
 import { mediaurl, comdetails } from "../../request/index"
 // 背景音乐
-const bgMusic = wx.getBackgroundAudioManager()
+let bgMusic = wx.getBackgroundAudioManager()
 
 Page({
 
@@ -20,17 +20,19 @@ Page({
     lan_index:0,
     // 当前显示的页码 默认显示第一页
     pageIndex: 0,
+    // 介绍和歌单的切换
     showIndex: '1',
     // 页面文字
     page_font:null,
     playType: 0,
     playNum: 0,
-    shareshow: false,
+    shareshow: false, //分享的开关
     isOpen: false,  //背景音乐开关
     currentTime: 0,    //正在播放的时间
     duration: 0,       //音乐总时长
     showCurrentTime: '0:00',  //显示的正在播放的时间
     showDuration: '0:00',   //x显示的总时长
+    bgMusicSrc: wx.getStorageSync('audioSrc') || null
   },
 
   /**
@@ -86,7 +88,10 @@ Page({
           bgMusicSrc: res.media.audio,
           showDuration: res.media.duration
         })
+        wx.setStorageSync('audioSrc', res.media.audio)
         console.log(this.data.bgMusicSrc)
+        bgMusic.title = res.media.title
+        bgMusic.coverImgUrl = that.data.url + res.media.cover
         this.listenerButtonPlay()
       } else {
         this.setData({
@@ -97,7 +102,7 @@ Page({
   },
   // 请求数据
   getData (id = this.data.id) {
-    let that = this, media_type = this.data.mediatype
+    let that = this, media_type = this.data.mediatype, histroyId = wx.getStorageSync('history')[0].item[0].id, playId = wx.getStorageSync('playId')
     comdetails({id, media_type: -1, token: wx.getStorageSync('token')}).then(res => {
       console.log(res)
         that.setData({
@@ -106,8 +111,17 @@ Page({
           media_type: res.media.media[0].media_type,
           listscope:[0,1]
         })
-        // 获取视频
-        that.getMedia(1, res.media.media[0].id)
+        wx.setStorageSync('playList', res.media.media)
+        
+
+        // 获取播放地址
+        if(histroyId === that.data.id){
+          that.getMedia(1, playId)
+        } else {
+          that.getMedia(1, res.media.media[0].id)
+          wx.setStorageSync('playId', res.media.media[0].id)
+        }
+        
         // 初始化页面文字
         that.setData({
           page_font:{
@@ -443,11 +457,16 @@ Page({
   // 背景音乐播放
   listenerButtonPlay () {
     let that = this, bgMusicSrc = that.data.bgMusicSrc
-    bgMusic.title = "哈哈哈"
+    // bgMusic.title = "哈哈哈"
     console.log(bgMusicSrc)
     if(bgMusic.src !== bgMusicSrc){
       bgMusic.src = bgMusicSrc
+    } else {
+      console.log(1)
+      bgMusic.seek(wx.getStorageSync('currentTime'))
     }
+      
+    
     bgMusic.play()
     // 总时长
     that.setData({
@@ -457,10 +476,14 @@ Page({
     bgMusic.onTimeUpdate(() => {
       // 当前时间
       let currentTime = bgMusic.currentTime
-      that.setData({
-        currentTime, 
-        showCurrentTime: app.switchTime(Math.round(currentTime))
-      })
+      
+      if(currentTime !== 0){
+        that.setData({
+          currentTime, 
+          showCurrentTime: app.switchTime(Math.round(currentTime))
+        })
+        wx.setStorageSync('currentTime',currentTime)
+      }
       let duration = bgMusic.duration
       if(that.data.duration !== duration){
         that.setData({duration})

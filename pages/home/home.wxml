@@ -90,15 +90,17 @@
 		<!-- 问答 -->
 		<view class="asking" wx:if="{{page_index === 2}}"></view>
 
-		<view class="control" animation="{{scroolAnimation}}">
-			<view class="control-content">
-				<image src="/images/gong.png" class="control-avatar"/>
+		<!-- 音乐播放 -->
+		<view class="control" animation="{{scroolAnimation}}" wx:if="{{controlShow}}">
+			<view class="control-content" bindtap="jumpAlbum">
+				<image src="{{url}}{{controlInfo.cover}}" mode="aspectFill" class="control-avatar"/>
 				<view class="control-info">
-					<text class="control-title">青藏高原呐</text>
-					<text class="control-timer">0:00</text>
+					<text class="control-title">{{controlInfo.title}}</text>
+					<text class="control-timer">{{showCurrentTime}}</text>
 				</view>
-				<image src="/images/control_play.png" class="control-play"/>
-				<image src="/images/control_next.png" class="control-next"/>
+				<image src="/images/control_play.png" class="control-play" wx:if="{{bgOpen}}" catchtap="bgPause"/>
+				<image src="/images/control_pause.png" class="control-play" wx:else catchtap="bgPlay"/>
+				<image src="/images/control_next.png" class="control-next" catchtap="bgNext"/>
 			</view>
 		</view>
 	</my-scroll>
