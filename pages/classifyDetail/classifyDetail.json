@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "col-list": "/components/col-list/col-list",
+    "my-scroll": "/components/myscroll/myscroll"
+  }
 }

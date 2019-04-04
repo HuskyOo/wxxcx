@@ -1,9 +1,12 @@
 <!--pages/classifyDetail/classifyDetail.wxml-->
 <view class="classifyDetail">
     <scroll-view scroll-x="{{true}}" class="nav" wx:if="{{cate.length>0}}">
-        <text wx:for="{{cate}}" wx:key="item.id" class="{{index === oneClassIndex ? 'active' : ''}}">{{item.title}}</text>
+        <text wx:for="{{cate}}" wx:key="item.id" class="{{index === oneClassIndex ? 'active' : ''}}" data-chlid="{{item.chlid.length > 0 ? true : false}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="topNavChange">{{item.title}}</text>
     </scroll-view>
     <scroll-view scroll-x="{{true}}" class="nav" wx:if="{{cate[oneClassIndex].chlid.length > 0}}">
-        <text wx:for="{{cate[oneClassIndex].chlid}}" wx:key="item.id" class="{{index === twoClassIndex ? 'active' : ''}}">{{item.title}}</text>
+        <text wx:for="{{cate[oneClassIndex].chlid}}" wx:key="item.id" class="{{index === twoClassIndex ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="bottomNavChange">{{item.title}}</text>
     </scroll-view>
+    <my-scroll wx:if="{{showDetail}}">
+        <col-list list="{{detailData}}" style="margin-top:0"></col-list>
+    </my-scroll>
 </view>

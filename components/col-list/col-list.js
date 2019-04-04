@@ -15,8 +15,8 @@ Component({
       value: ''
     },
     replace: {
-      type: Boolean,
-      value: false
+      type: String,
+      value: ''
     },
     book: {
       type: Boolean,
@@ -25,6 +25,10 @@ Component({
     titlejump: {
       type: Boolean,
       vale: true
+    },
+    replaceparams: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -85,6 +89,9 @@ Component({
       wx.navigateTo({
         url: '/pages/bookdetail/bookdetail?id='+id,
       })
+    },
+    updata () {
+      this.triggerEvent('replace', this.data.replaceparams)
     }
   }
 })

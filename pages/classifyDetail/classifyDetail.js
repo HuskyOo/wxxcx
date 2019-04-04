@@ -11,6 +11,8 @@ Page({
     cate: [], // 分类数据
     oneClassIndex: 0,
     twoClassIndex: 0,
+    detailData: null,
+    showDetail: false,  //是否显示课程列表
   },
 
   /**
@@ -21,22 +23,42 @@ Page({
     this.getData(options.id)
   },
 
-  getData(id){
+  getData(id){  //获取导航栏及第一个下面的数据
     let that = this
     allClassify(id).then((res) => {
       console.log(res)
       that.setData({
         cate: res.cate
       })
-      if(res.cate[0].chlid[0]){
+      if(res.cate.length > 0 && res.cate[0].chlid[0]){
         id = res.cate[0].chlid[0].id
       } else if (res.cate[0]) {
         id = res.cate[0].id
       }
-      religionCate(id).then(res => {
-        console.log(res)
-      })
+      this.getDetail(id)
     })
+  },
+  getDetail(id){  //获取课程列表
+    religionCate(id).then(res => {
+      console.log(res)
+      this.setData({detailData: res.cate})
+      if(!this.data.showDetail){
+        this.setData({showDetail: true})
+      }
+    })
+  },
+  topNavChange(e){
+    // console.log(e)
+    let chlid = e.currentTarget.dataset.chlid, index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id
+    this.setData({oneClassIndex: index})
+    if(!chlid){
+      this.getDetail(id)
+    }
+  },
+  bottomNavChange (e) {
+    let index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id
+    this.setData({twoClassIndex: index})
+    this.getDetail(id)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

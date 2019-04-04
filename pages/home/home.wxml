@@ -62,7 +62,7 @@
 			
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{zhot}}" title="{{pageFont.hot[lan]}}"></col-list>
+			<col-list list="{{zhot}}" title="{{pageFont.hot[lan]}}" replaceparams="{{ {cateType: 2 ,cateId: 1} }}" replace="{{pageFont.replace[lan]}}" bindreplace="update"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
@@ -79,7 +79,7 @@
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{znew}}" title="{{pageFont.new[lan]}}"></col-list>
+			<col-list list="{{znew}}" title="{{pageFont.new[lan]}}" replace="{{pageFont.replace[lan]}}" replaceparams="{{ {cateType: 1 ,cateId: 1} }}" bindreplace="update"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>

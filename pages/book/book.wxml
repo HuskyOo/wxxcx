@@ -1,0 +1,3 @@
+<!--pages/book/book.wxml-->
+<bookcity book="{{book}}"></bookcity>
+

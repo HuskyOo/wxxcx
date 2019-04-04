@@ -30,7 +30,8 @@
     "pages/aboutus/aboutus",
     "pages/newCourse/newCourse",
     "pages/bookList/bookList",
-    "pages/classifyDetail/classifyDetail"
+    "pages/classifyDetail/classifyDetail",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -55,7 +56,7 @@
         "selectedIconPath": "./images/SelecteTushu.png"
       },
       {
-        "pagePath": "pages/buy/buy",
+        "pagePath": "pages/book/book",
         "text": "ཡིག་ཆ།",
         "iconPath": "./images/buy.png",
         "selectedIconPath": "./images/SelecteBuy.png"

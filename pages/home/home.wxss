@@ -241,11 +241,14 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 .control-title{
 	color: #eee;
 	font-weight: 500;
 	font-size: 34rpx;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .control-timer{
 	color: #aaa;

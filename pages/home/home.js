@@ -1,6 +1,6 @@
 // pages/home/home.js
 let app = getApp(), util = require('../../utils/util')
-import {zang, book, commonweal, allClassify, mediaurl} from "../../request/index"
+import {zang, book, commonweal, allClassify, mediaurl, mediarand} from "../../request/index"
 import {index} from "../../font/index"
 let bgMusic = wx.getBackgroundAudioManager()
 Page({
@@ -29,6 +29,7 @@ Page({
     pageFont: {}, //页面文字
     bgOpen: false,  //音乐是否为播放状态
     showCurrentTime: '0:00',  //正在播放的时长
+    continuousPlay: false,  //是否继续播放
   },
 
   /**
@@ -83,8 +84,10 @@ Page({
     })
     book().then((res) => {
       // console.log(res)
+      let book = res.news
+      book.length = 3
       this.setData({
-        book: res.news
+        book: book
       })
     })
     commonweal().then((res) => {
@@ -96,13 +99,8 @@ Page({
       })
     })
     allClassify().then((res) => {
-      // console.log(res)
-      // let arr2 = []
-      // arr2.length
       let arr = res.cate
       arr.forEach((item, i, arr) => {
-        // console.log(item,i)
-        // console.log(item.child.length)
         item.chlid.length = Math.ceil(item.chlid.length/3) * 3
       })
       this.setData({
@@ -112,26 +110,19 @@ Page({
   },
   swichNav (e) {
     var index = e.target.dataset.index;
-    // console.log(index)
     this.setData({
       page_index: index
     })
   },
   addMore () {
-    // this.setData({
-    //   addMore: !this.data.addMore
-    // })
     let addMore = this.data.addMore
     if(!addMore){
-      // console.log(addMore)
       this.animation.height('310rpx').step()
       this.unfoldAnimation.rotate(180).step()
     } else {
-      // console.log(addMore)
       this.animation.height(0).step()
       this.unfoldAnimation.rotate(0).step()
     }
-    
     this.setData({
       animation: this.animation.export(),
       unfoldAnimation: this.unfoldAnimation.export(),
@@ -205,11 +196,8 @@ Page({
         that.controlShow()
       }, 300)
     })
-    // console.log(that.data.scroolTimer)
-    
   },
   controlShow () {
-    // console.log(1)
     this.scroolAnimation.opacity(1).step()
     this.setData({
       scroolAnimation: this.scroolAnimation.export()
@@ -259,6 +247,7 @@ Page({
     })
     if(!bgMusic.src){
       bgMusic.src = wx.getStorageSync('audioSrc')
+      bgMusic.startTime = currentTime
     }
     bgMusic.play()
     bgMusic.seek(currentTime)
@@ -318,6 +307,18 @@ Page({
     let history = wx.getStorageSync('history')[0].item[0]
     wx.navigateTo({
       url: `/pages/albumDetails/albumDetails?type=${history.type}&mediatype=${history.media_type}&id=${history.id}`
+    })
+  },
+  update (e) {
+    // cateType 1最新 2热门
+    let cateId = e.detail.cateId, cateType = e.detail.cateType
+    mediarand({cateId, cateType}).then(res => {
+      console.log(res)
+      if(cateType === 1){
+        this.setData({znew: res.media})
+      } else {
+        this.setData({zhot: res.media})
+      }
     })
   },
   /**
