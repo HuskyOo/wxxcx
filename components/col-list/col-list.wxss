@@ -53,21 +53,23 @@
     display: flex;
     flex-direction: row;
     margin-top: 20rpx;
-    align-items: center;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .book-price text{
 	font-size: 28rpx;
-	color: #F76241;
+	color: #10c2b8;
 	margin-top: 0rpx
 }
 .book-mailing{
-    width: 260rpx;
+	/* width: 260rpx; */
+	padding: 0 30rpx;
     height: 30rpx;
-    border: 2rpx solid #FF623F;
+    border: 2rpx solid #10c2b8;
     font-size: 18rpx;
     text-align: center;
-    color: #FF623F;
+    color: #10c2b8;
     border-radius: 20rpx;
     /* margin-left: 54rpx */
 }
