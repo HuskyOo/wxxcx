@@ -50,13 +50,24 @@ Page({
   topNavChange(e){
     // console.log(e)
     let chlid = e.currentTarget.dataset.chlid, index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id
-    this.setData({oneClassIndex: index})
+    if(index === this.data.oneClassIndex){
+      return
+    }
+    this.setData({
+      oneClassIndex: index,
+      twoClassIndex: 0
+    })
     if(!chlid){
       this.getDetail(id)
+    } else {
+      this.getDetail(this.data.cate[index].chlid[this.data.twoClassIndex].id)
     }
   },
   bottomNavChange (e) {
     let index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id
+    if(index === this.data.twoClassIndex){
+      return
+    }
     this.setData({twoClassIndex: index})
     this.getDetail(id)
   },

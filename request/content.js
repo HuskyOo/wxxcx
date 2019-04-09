@@ -32,7 +32,7 @@ function sing () {
         http(url.sing, {}, (res) => {resolve(res.data)})
     })
 }
-function allClassify (id = 53) {
+function allClassify (id = 1) {
     return new Promise ((resolve, reject) => {
         http(url.allClassify, {id}, (res) => {resolve(res.data)})
     })

@@ -47,7 +47,7 @@ page{
 }
 .vip-btn{
     color: #fff;
-    background: #DFA261;
+    background: rgb(169, 250, 239);
     box-sizing: border-box;
     font-weight: bold;
     padding: 0 30rpx;
@@ -81,32 +81,25 @@ page{
     display: block;
     font-size: 28rpx
 }
+
+
 .btns{
     /* position:fixed; */
     top:400rpx;
     left:0;
     width:100%;
     display: flex;
-    justify-content: space-between
+    justify-content: space-around;
 }
-/* .btn{
-    width:375rpx;
-    height:106rpx;
-    color:#979797
-}
-.btn:hover {
-    background-color: rgb(255,98,63);
-    color: #fff
-} */
 .album-detail-btn{
     font-family: 'Himalaya-G';
-    width:50%;
+    width:30%;
     height:106rpx;
     text-align: center;
     /* font-size: 30rpx; */
     background: #fff;
     line-height: 106rpx;
-    border-bottom: 1rpx solid rgb(246,246,246);
+    /* border-bottom: 1rpx solid rgb(246,246,246); */
 }
 .LastBtns .album-class-btn text{
     display: block;
@@ -114,9 +107,10 @@ page{
     height: 100%;
 }
 .album-class-btn{
-    border-left: 1rpx solid rgb(246,246,246);
-    background-color: rgb(255,98,63);
-    color:#fff;
+    /* border-left: 1rpx solid rgb(246,246,246); */
+    /* background-color: #10c2b8; */
+    border-bottom: 4rpx solid #10c2b8;
+    color:#10c2b8;
 }
 .choise{
     /* position: fixed; */
@@ -278,7 +272,7 @@ button::after{
 	justify-content: space-between;
 }
 .slid view>text{
-	color:rgb(255,98,63);
+	color:#10c2b8;
 }
 
 .single{

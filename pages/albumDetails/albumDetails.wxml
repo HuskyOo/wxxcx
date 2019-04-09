@@ -24,15 +24,15 @@
 <view class="control" wx:if="{{mediatype === '0'}}">
     <!-- 按钮 -->
     <view class="play">
-        <image style="width:75rpx;height:84rpx" src="../../images/previous.png" bindtap="listenerButtonPrev"></image>
-        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src="../../images/history.png"></image>
-        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPause" wx:if="{{isOpen}}" src="../../images/bofang@2x.png"></image>
-        <image style="width:75rpx;height:84rpx" src="../../images/nextsong.png" bindtap="listenerButtonNext"></image>
+        <image style="width:70rpx;height:70rpx;margin-right:30rpx" src="/images/album_prev.png" bindtap="listenerButtonPrev"></image>
+        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src="/images/album_pause.png"></image>
+        <image style="width:120rpx;height:120rpx" class="audioOpen" bindtap="listenerButtonPause" wx:if="{{isOpen}}" src="/images/album_play.png"></image>
+        <image style="width:70rpx;height:70rpx;margin-left:30rpx" src="/images/album_next.png" bindtap="listenerButtonNext"></image>
     </view>
     <!-- 进度条 -->
     <view class='audiosBox'>
         <view class='slid'>
-            <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{currentTime}}" max="{{duration}}" activeColor="#F86343" backgroundColor="#EACFC8" block-color="#F34E3A"/>
+            <slider bindchange="sliderChange" block-size="12rpx" step="2" value="{{currentTime}}" max="{{duration}}" activeColor="#10c2b8" backgroundColor="#beCFC8" block-color="#10c2b8"/>
             <view>
                 <text class='times'>{{showCurrentTime}}</text>
                 <!-- 进度时长 -->
