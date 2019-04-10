@@ -68,6 +68,7 @@ Page({
   },
   getMedia(type, id){
     var that = this
+    wx.setStorageSync('playId', id)
     mediaurl({type, id, token: wx.getStorageSync('token')}).then(res => {
       console.log(res)
       that.setData({
@@ -361,9 +362,55 @@ Page({
     })
   },
   // 背景音乐上一首
-  listenerButtonPrev () {},
+  listenerButtonPrev () {
+    this.listenerButtonPause()
+    if (this.data.type === '0') {
+      wx.showToast({
+        title: '当前已是第一首',
+        icon: 'none',
+      })
+    } else {
+      let playId = wx.getStorageSync('playId'), playList = wx.getStorageSync('playList'), id = null
+      playList.forEach((item, index, arr) => {
+        if(item.id === playId && index > 0){
+          id = arr[index-1].id
+        }
+      })
+      if (id) {
+        this.getMedia(this.data.type, id)
+      } else {
+        wx.showToast({
+          title: '当前已是第一首',
+          icon: 'none'
+        });
+      }
+    }
+  },
   // 背景音乐下一首
-  listenerButtonNext () {},
+  listenerButtonNext () {
+    this.listenerButtonPause()
+    if (this.data.type === '0') {
+      wx.showToast({
+        title: '当前已是最后一首',
+        icon: 'none',
+      })
+    } else {
+      let playId = wx.getStorageSync('playId'), playList = wx.getStorageSync('playList'), id = null
+      playList.forEach((item, index, arr) => {
+        if(item.id === playId && index < arr.length - 1){
+          id = arr[index+1].id
+        }
+      })
+      if (id) {
+        this.getMedia(this.data.type, id)
+      } else {
+        wx.showToast({
+          title: '当前已是最后一首',
+          icon: 'none'
+        });
+      }
+    }
+  },
   // 背景音乐进度条
   sliderChange (e) {
     console.log(e.detail.value)

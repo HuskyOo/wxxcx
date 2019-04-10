@@ -29,7 +29,7 @@
             <text class="book-title">{{item.title}}</text>
             <view class='book-price'>
                 <text>￥{{item.money}}</text>
-                <view class='book-mailing'>སྐུར་གླ་མི་དགོས།</view>
+                <view class='book-mailing'>{{mailing}}</view>
             </view>
         </view>
     </view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "bookcity":"/components/bookcity/bookcity"
+    "bookcity": "/components/bookcity/bookcity",
+    "col-list": "/components/col-list/col-list"
   }
 }

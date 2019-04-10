@@ -1,6 +1,7 @@
 // pages/book/book.js
 let app = getApp()
 import { book } from "../../request/index"
+import { bookFont } from "../../font/index"
 Page({
 
   /**
@@ -36,7 +37,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      pageFont: bookFont()
+    })
   },
 
   /**

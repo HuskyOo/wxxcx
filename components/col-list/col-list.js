@@ -29,6 +29,10 @@ Component({
     replaceparams: {
       type: Object,
       value: {}
+    },
+    mailing: {
+      type: String,
+      value: ''
     }
   },
 

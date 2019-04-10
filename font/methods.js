@@ -44,5 +44,15 @@ function albumDetail () {
     // console.log(lanIndex)
     return obj
 }
+function bookFont () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.bookFont) {
+        obj[key] = font.bookFont[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
 
-module.exports = { index, myCourse, my, paddingpayment, albumDetail }
+module.exports = { index, myCourse, my, paddingpayment, albumDetail, bookFont }

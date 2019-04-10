@@ -1,3 +1,13 @@
 <!--pages/book/book.wxml-->
-<bookcity book="{{book}}"></bookcity>
+<!-- <bookcity book="{{book}}"></bookcity> -->
+<view>
+    <col-list list="{{book.hots}}" title="{{pageFont.hot}}" mailing="{{pageFont.mailing}}" book></col-list>
 
+    <!-- 分界线 -->
+    <view class='boundary-line'></view>
+    <col-list list="{{book.news}}" title="{{pageFont.new}}" mailing="{{pageFont.mailing}}" book></col-list>
+
+    <!-- 分界线 -->
+    <view class='boundary-line'></view>
+    <col-list list="{{book.per}}" title="{{pageFont.per}}" mailing="{{pageFont.mailing}}" book></col-list>
+</view>
