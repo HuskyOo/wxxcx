@@ -155,7 +155,7 @@
 }
 
 .book-information{
-	margin-left: 10rpx;
+	/* margin-left: 10rpx; */
 	/* background-color: turquoise; */
 	/* border-bottom: 4rpx solid #F6F6F6; */
 	width: 100%;
@@ -194,12 +194,13 @@
 
 .book-two image{
 	width: 20rpx;
-	height: 20rpx
+	height: 20rpx;
+	margin-right: 10rpx;
 }
 
 .book-two text{
 	font-size: 24rpx;
-	margin-left: 10rpx;
+	
 	color: #616161
 }
 

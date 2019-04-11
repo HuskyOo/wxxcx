@@ -4,7 +4,7 @@ import http from "./http"
 import url from "./url"
 function zang () {
     return new Promise ((resolve, reject) => {
-        http(url.zang, {}, (res) => {resolve(res.data)})
+        http(url.zang, {token: wx.getStorageSync('token')}, (res) => {resolve(res.data)})
     })
 }
 function chinese () {

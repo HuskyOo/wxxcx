@@ -7,6 +7,6 @@
         <text wx:for="{{cate[oneClassIndex].chlid}}" wx:key="item.id" class="{{index === twoClassIndex ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="bottomNavChange">{{item.title}}</text>
     </scroll-view>
     <my-scroll wx:if="{{showDetail}}">
-        <col-list list="{{detailData}}" style="margin-top:0"></col-list>
+        <col-list list="{{detailData}}" style="margin-top:0" free="{{pageFont.free}}"></col-list>
     </my-scroll>
 </view>

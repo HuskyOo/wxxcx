@@ -205,7 +205,7 @@ Page({
   },
   setBgMusic () {   //音乐播放设置
     let history = wx.getStorageSync('history'), info = history[0].item[0], that = this, currentTime = wx.getStorageSync('currentTime')
-    console.log(info)
+    // console.log(info)
     that.setData({
       showCurrentTime: app.switchTime(Math.round(currentTime)) ? app.switchTime(Math.round(currentTime)) : '0:00'
     })

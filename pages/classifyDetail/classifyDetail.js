@@ -1,6 +1,7 @@
 // pages/classifyDetail/classifyDetail.js
 var app = getApp();
 import { allClassify, religionCate } from '../../request/index'
+import { classifyDetail } from '../../font/index'
 Page({
 
   /**
@@ -82,7 +83,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      pageFont: classifyDetail()
+    })
   },
 
   /**

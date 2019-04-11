@@ -33,6 +33,10 @@ Component({
     mailing: {
       type: String,
       value: ''
+    },
+    free: {
+      type: String,
+      value: ''
     }
   },
 
