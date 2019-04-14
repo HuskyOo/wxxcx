@@ -21,7 +21,7 @@ page{
 }
 .indent .header{
   color: #fff;
-  background: #ff623f;
+  background: #10c2b8;
   height: 180rpx;
   display: flex;
   align-items: center;
@@ -56,6 +56,19 @@ page{
   flex-direction: column;
   padding: 10rpx 0;
 }
+
+.remark{
+  background: #f5f5f5;
+  margin-bottom: 20rpx;
+  width: 100%;
+  padding: 5rpx;
+  border: 30rpx solid #fff;
+  height: 200rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #333;
+}
+
 .content .user-info{
   display: flex;
   justify-content: space-between;
@@ -101,7 +114,7 @@ page{
 }
 .content .info .pric{
   font-size: 28rpx;
-  color: #e73b2d;
+  color: #10c2b8;
 }
 .content .number{
   display: flex;
@@ -143,7 +156,7 @@ page{
   font-size: 28rpx;
 }
 .calculate .total .pric{
-  color: #e73b2d;
+  color: #10c2b8;
 }
 .timer{
   color: #999;
@@ -166,9 +179,9 @@ page{
   /* box-sizing: border-box; */
   width: 160rpx;
   height: 60rpx;
-  border: 3rpx solid #eb5f2a;
+  border: 3rpx solid #10c2b8;
   font-size: 28rpx;
-  color: #eb5f2a;
+  color: #10c2b8;
   text-align: center;
   line-height: 57rpx;
   border-radius: 5rpx;

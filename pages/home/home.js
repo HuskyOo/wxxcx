@@ -1,7 +1,7 @@
 // pages/home/home.js
 let app = getApp(), util = require('../../utils/util')
 import {zang, book, commonweal, allClassify, mediaurl, mediarand} from "../../request/index"
-import {index} from "../../font/index"
+import { index, components} from "../../font/index"
 let bgMusic = wx.getBackgroundAudioManager()
 Page({
 
@@ -30,6 +30,7 @@ Page({
     bgOpen: false,  //音乐是否为播放状态
     showCurrentTime: '0:00',  //正在播放的时长
     continuousPlay: false,  //是否继续播放
+    comFont: '',
   },
 
   /**
@@ -129,6 +130,15 @@ Page({
       addMore: !addMore
     })
   },
+  navjump (e) {
+    var url = e.currentTarget.dataset.nav
+    // console.log(e)
+    if(url && url !== '#' && url !== 'live'){
+      wx.navigateTo({
+        url
+      })
+    }
+  },
   jumpLive () {},
   jumpClassifyDetail (e) {
     console.log()
@@ -185,6 +195,7 @@ Page({
         data: 0
       });
     }
+    this.setComFont()
   },
   handleControl (e) {
     let that = this
@@ -321,6 +332,16 @@ Page({
       }
     })
   },
+  setComFont () {
+    let comFont = components(), font = {}, lan = wx.getStorageSync('lan');
+    for (let key in comFont) {
+      font[key] = comFont[key][lan]
+    }
+    this.setData({
+      comFont: font
+    })
+    // return font
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -343,6 +364,7 @@ Page({
       this.setData({animation: this.animation.export()})
     }
     // 文字
+    this.setComFont()
     this.setData({
       pageFont: index()
     })
@@ -351,6 +373,10 @@ Page({
     if(wx.getStorageSync('history').length > 0){
       this.setBgMusic()
     }
+
+    let str = '***'
+    let arr = str.split('***')
+    console.log(arr)
   },
 
   /**

@@ -1,5 +1,6 @@
 // pages/indent/indent.js
 var app = getApp()
+import { indent } from "../../font/index"
 Page({
 
   /**
@@ -49,7 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({pageFont: indent()})
   },
 
   /**

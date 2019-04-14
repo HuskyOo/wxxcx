@@ -17,7 +17,7 @@ page{
 }
 .introduce .price{
   font-size: 36rpx;
-  color: #ff5052;
+  color: #10c2b8;
 }
 .introduce .title{
   font-size:32rpx;
@@ -64,7 +64,7 @@ page{
   position: fixed;
   bottom: 0;
   color:#fff;
-  background: #ff623f;
+  background: #10c2b8;
   width: 100%;
   border-radius: 0;
   border:none;
@@ -108,7 +108,7 @@ page{
   /* justify-content: space-around; */
 }
 .info .pric{
-  color: #ff5052;
+  color: #10c2b8;
 }
 .info .title{
   font-weight: normal;

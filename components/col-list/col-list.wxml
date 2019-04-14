@@ -29,7 +29,8 @@
             <text class="book-title">{{item.title}}</text>
             <view class='book-price'>
                 <text>￥{{item.money}}</text>
-                <view class='book-mailing'>{{mailing}}</view>
+                <!-- <view class='book-mailing'>{{comfont.mailing}}</view> -->
+                <text >{{comfont.sales}}  {{item.sales}}</text>
             </view>
         </view>
     </view>
@@ -37,7 +38,7 @@
     <view class='replace' wx:if="{{replace}}">
         <view class='replace-button' data-catetype="2" bindtap="updata">
             <image src='../../images/replace.png'></image>
-            <text>{{replace}}</text>
+            <text>{{comfont.replace}}</text>
         </view>
     </view>
 </view>
@@ -60,6 +61,9 @@
                     <image src="/images/set.png" />
                     <text>{{item.media_count}}</text>
                 </view>
+                <view class="video-icon" wx:if="{{item.media_type === '1'}}">
+                    <image src="/images/album_video.png" />
+                </view>
                 <image src='{{url}}{{item.cover}}' mode="aspectFill"></image>
             </view>
             <view class='book-information'>
@@ -69,7 +73,7 @@
                 </view>
                 <view class='book-two interview-two'>
                     <view >
-                        <text >{{item.money === 0 ? free : '¥'+item.money}}</text>
+                        <text >{{item.is_buy && item.is_buy ===1 ? comfont.isBuy : (item.money === 0 ? comfont.free : '¥'+item.money)}}</text>
                     </view>
                     <view>
                         <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
@@ -89,7 +93,7 @@
     <view class='replace' wx:if="{{replace}}">
         <view class='replace-button' data-catetype="2" bindtap="updata">
             <image src='../../images/replace.png'></image>
-            <text>{{replace}}</text>
+            <text>{{comfont.replace}}</text>
         </view>
     </view>
 </view>

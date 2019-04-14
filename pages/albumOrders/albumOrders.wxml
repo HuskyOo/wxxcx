@@ -1,8 +1,9 @@
 <!-- pages/albumOrders/albumOrders.wxml 专辑订单 -->
+<wxs module="filtMoney" src="../../filter/money.wxs"></wxs>
 <view class="boundary-line-to"></view>
 <view class="albumOrder-type">
     <view style="color:rgb(49,49,49)">
-        <text>{{page_font.name[lan_index]}}</text>
+        <text>{{pageFont.name}}</text>
     </view>
     <view style="color:rgb(97,97,97)">
         <text>{{data.title}}</text>
@@ -10,34 +11,37 @@
 </view>
 <view class="albumOrder-type">
     <view style="color:rgb(49,49,49)">
-        <text>{{page_font.episodes[lan_index]}}</text>
+        <text>{{pageFont.episodes}}</text>
     </view>
     <view style="color:rgb(97,97,97)">
-        <text>{{page_font.expect[lan_index]}}</text>
+        <!-- <text>{{pageFont.expect}}</text> -->
+        <text>{{filtMoney.filtFont(pageFont.expect,data.media.length)}}</text>
         <!-- <text>预计更新{{data.media.length}}集(已更新{{data.media.length}}集)</text> -->
     </view>
 </view>
 <view class="albumOrder-type">
     <view style="color:rgb(49,49,49)">
-        <text>{{page_font.price[lan_index]}}</text>
+        <text>{{pageFont.price}}</text>
     </view>
-    <view style="color:rgb(255,98,63)">
-        <text wx:if="{{lan_index === 1}}">སྒོར {{data.money}}</text>
-        <text wx:else>{{data.money}}元</text>
+    <view style="color:#10c2b8">
+        <!-- <text wx:if="{{lan_index === 1}}">སྒོར {{data.money}}</text>
+        <text wx:else>{{data.money}}元</text> -->
+        <text>{{filtMoney.filtFont(pageFont.money,data.money)}}</text>
     </view>
 </view>
 <view class="albumOrder-type">
     <view style="color:rgb(49,49,49)">
-        <text>{{page_font.reality[lan_index]}}</text>
+        <text>{{pageFont.reality}}</text>
     </view>
-    <view style="color:rgb(255,98,63)">
-        <text wx:if="{{lan_index === 1}}">སྒོར {{data.money}}</text>
-        <text wx:else>{{data.money}}元</text>
+    <view style="color:#10c2b8">
+        <!-- <text wx:if="{{lan_index === 1}}">སྒོར {{data.money}}</text>
+        <text wx:else>{{data.money}}元</text> -->
+        <text>{{filtMoney.filtFont(pageFont.money,data.money)}}</text>
     </view>
 </view>
 <view class="albumOrder-care">
-    <text>{{page_font.ex[lan_index]}}</text>
+    <text>{{pageFont.ex}}</text>
 </view>
 <view class="buy">
-    <button bindtap="jumpBuy">{{page_font.pay[lan_index]}}</button>
+    <button bindtap="jumpBuy">{{pageFont.pay}}</button>
 </view>

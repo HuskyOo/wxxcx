@@ -34,8 +34,9 @@
 			<view>
 				<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
 					<block wx:for="{{zbanner}}" wx:key="item.id">
-						<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx">
+						<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx; position:ralative">
 							<image src="{{url}}{{item.img}}" mode="aspectFill" style="width:100%;height:263rpx" />
+							<button open-type="contact" class="banner-contact" wx:if="{{item.url === 'live'}}"></button>
 						</swiper-item>
 					</block>
 				</swiper>
@@ -48,7 +49,7 @@
 					<text>{{item.title}}</text>
 				</view>
 			</view>
-			<view class="grid" animation="{{animation}}">
+			<!-- <view class="grid" animation="{{animation}}">
 				<view wx:for="{{classify}}" wx:key="{{item.id}}" id="{{item.id}}" class="grid-item" bindtap="jumpClassifyDetail" wx:if="{{index>=10}}">
 					<image src="{{url}}{{item.img}}" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
@@ -58,11 +59,11 @@
 				<text wx:if="{{addMore}}">{{pageFont.fewer[lan]}}</text>
 				<text wx:else>{{pageFont.unfold[lan]}}</text>
 				<image src="/images/unfold.png" animation="{{unfoldAnimation}}" />
-			</view>
+			</view> -->
 			
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{zhot}}" title="{{pageFont.hot[lan]}}" replaceparams="{{ {cateType: 2 ,cateId: 1} }}" replace="{{pageFont.replace[lan]}}" free="{{pageFont.free[lan]}}" bindreplace="update"></col-list>
+			<col-list list="{{zhot}}" title="{{pageFont.hot[lan]}}" replace replaceparams="{{ {cateType: 2 ,cateId: 1} }}" comfont="{{comFont}}" bindreplace="update"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
@@ -75,15 +76,16 @@
 					<text class='advertising-title'>{{zad.title}}</text>
 					<text class='advertising-introduction'>{{zad.sub_title}}</text>
 				</view>
+				<button open-type="contact" class="banner-contact" wx:if="{{zad.url === 'live'}}"></button>
 			</view>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{znew}}" title="{{pageFont.new[lan]}}" replace="{{pageFont.replace[lan]}}" replaceparams="{{ {cateType: 1 ,cateId: 1} }}"  free="{{pageFont.free[lan]}}" bindreplace="update"></col-list>
+			<col-list list="{{znew}}" title="{{pageFont.new[lan]}}" comfont="{{comFont}}" replace replaceparams="{{ {cateType: 1 ,cateId: 1} }}" bindreplace="update"></col-list>
 
 			<!-- 分界线 -->
 			<view class='boundary-line'></view>
-			<col-list list="{{book}}" title="{{pageFont.shop[lan]}}" book mailing="{{pageFont.mailing[lan]}}"></col-list>
+			<col-list list="{{book}}" title="{{pageFont.shop[lan]}}" book  comfont="{{comFont}}"></col-list>
 		</view>
 
 

@@ -23,6 +23,6 @@
 .buy button{
     width:576rpx;
     border-radius:53rpx;
-    background-color:rgb(255,98,63);
+    background-color:#10c2b8;
     color: #fff
 }

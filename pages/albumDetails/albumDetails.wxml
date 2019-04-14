@@ -72,12 +72,24 @@
 
 <!-- 介绍 -->
 <view class="albumInfo">
-    <text >{{data.title}}</text>
-    <text >{{data.sub_title}}</text>
-    <view >
-        <text >{{data.money}}</text>
-        <text >{{data.sales}}</text>
+    <view class="info">
+        <text class="album-title">{{data.title}}</text>
+        <text class="album-subtitle">{{data.sub_title}}</text>
+        <view class="album-control">
+            <text >{{data.is_buy === 1 ? pageFont.isBuy : data.money === 0 ? pageFont.free : '¥'+ data.money}}</text>
+            <view >
+                <image src='/images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
+                <image src='/images/peoplenumber.png' wx:else></image>
+                <text >{{data.sales}}</text>
+            </view>
+            <view >
+                <image src="/images/set_black.png" />
+                <text >{{data.media.length}}</text>
+            </view>
+            
+        </view>
     </view>
+    <image src="/images/share.png" bindtap="shareshow"/>
 </view>
 
 <!-- 分割线 -->
@@ -91,8 +103,9 @@
     <!-- 歌曲内容列表 -->
     <view wx:if="{{showIndex === '1'}}">
         <view class="choise">
-            <view bindtap="playAll">
-                <image style="width:30rpx;height:30rpx;margin-left:40rpx;margin-right:23rpx" src="../../images/bofangquanbu@2x.png"></image>
+            <!-- <view bindtap="playAll"> -->
+            <view wx:if="{{mediatype === '0'}}" bindtap="playAll">
+                <image style="width:30rpx;height:30rpx;margin-right:23rpx" src="../../images/bofangquanbu@2x.png"></image>
                 <text style="font-size:32rpx;color:#979797">{{pageFont.play}}</text>
             </view>
             <view style="display:flex;font-size:32rpx;color:#616161">
@@ -107,7 +120,7 @@
             </view>
         </view>
         <scroll-view scroll-y="{{true}}" class='book-content album-content' bindscrolltoupper="prev" bindscrolltolower="next" style="{{data.is_buy === 0 ? '' : 'height:550rpx'}}">
-            <view class='book-list' wx:for="{{showdata}}" wx:key="{{item.album_id}}" id="{{item.id}}" data-free="{{item.is_free}}" data-index="{{index}}" data-type="{{item.media_type}}" wx:if="{{index+1 >= listscope[0]*10+1 && index+1 <= listscope[1]*10}}" bindtap="jumpDetail">
+            <view class='book-list' wx:for="{{showdata}}" wx:key="{{item.album_id}}" id="{{item.id}}" data-free="{{item.is_free}}" data-buy="{{data.is_buy}}" data-index="{{index}}" data-type="{{item.media_type}}" wx:if="{{index+1 >= listscope[0]*10+1 && index+1 <= listscope[1]*10}}" bindtap="jumpDetail">
                 <view class="book-number" style="color:#979797">
                     {{sort === 0 ? index+1 : showdata.length-index}}
                 </view>
@@ -118,7 +131,6 @@
                     </view>
                     <view class='book-two interview-two'>
                         <view>
-                            <!-- <image src='../../images/peoplenumber.png'></image> -->
                             <image src='../../images/shiting@2x.png' wx:if="{{item.media_type === '0'}}"></image>
                             <image src='../../images/peoplenumber.png' wx:else></image>
                             <text style="color:#494949;font-size:17rpx">{{data.sales}}</text>
@@ -127,9 +139,11 @@
                             <image src='../../images/shijian@2x.png'></image>
                             <text style="color:#494949;font-size:17rpx">{{item.duration}}</text>
                         </view>
-                        <view class="suo_icon" wx:if="{{item.is_free === '0' && data.is_buy === 0}}"><image src="../../images/suo@3x.png" class="suo" mode="aspectFit"/>
-                        </view>
+                        
                     </view>
+                </view>
+                <view class="suo_icon" wx:if="{{item.is_free === '0' && data.is_buy === 0}}">
+                    <image src="../../images/suo.png" class="suo" mode="aspectFit"/>
                 </view>
             </view>
         </scroll-view>
@@ -189,25 +203,24 @@
     </view>
 </scroll-view>
 <!-- 高度填充 -->
-<!-- <view class='highly-filled'></view> -->
+<view class='highly-filled' wx:if="{{data.is_buy === 0}}"></view>
 
 <!-- 下面按钮 -->
-<!-- <view class="LastBtns">
-    <view class="album-detail-btn share">
-        <button  bindtap="shareshow">
-            <image style="width:29rpx;height:33rpx;margin-right:10rpx;" src="../../images/fenxiang@2x.png" />
-            <text >{{page_font.share[lan_index]}}</text>
-        </button>
-        <view bindtap="testListen" wx:if="{{data.is_buy === 0}}">
-            <image style="width:45rpx;height:37rpx" src="../../images/erji_1.png" />
-            <text>{{page_font.audition[lan_index]}}</text>
+<view class="LastBtns" wx:if="{{data.is_buy === 0}}">
+    <view class="share">
+        <view class="listen" bindtap="shareshow">
+            <image src="/images/share.png" />
+            <text >{{pageFont.share}}</text>
+        </view>
+        <view bindtap="playAll">
+            <image src="/images/shiting@3x.png" />
+            <text>{{pageFont.audition}}</text>
         </view>
     </view>
-    <view class="album-detail-btn album-class-btn">
-        <text wx:if="{{data.is_buy === 0}}" bindtap="tobuy">¥{{data.money}} {{page_font.buy[lan_index]}}</text>
-        <text wx:else bindtap="playAll">{{page_font.once[lan_index]}}</text>
+    <view class="buy">
+        <text bindtap="tobuy">¥{{data.money}} {{pageFont.buy}}</text>
     </view>
-</view> -->
+</view>
 
 
 <share shareShow="{{shareshow}}" cover="{{data.cover}}" pageurl="{{pageUrl}}" title="{{data.title}}" subtitle="{{data.sub_title}}" lan="{{lan}}" bindshareHide="back"></share>

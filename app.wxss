@@ -185,7 +185,7 @@
   position: absolute;
   top:0;
   left: 0;
-  /* background: #ff623f; */
+  /* background: #10c2b8; */
   width: 30rpx;
   height: 30rpx;
 
@@ -234,7 +234,7 @@
 }
 
 .book-title{
-  font-family: 'Himalaya-G';
+  /* font-family: 'Himalaya-G'; */
   font-size: 30rpx;
   color: #313131;
   margin-top: 5rpx;
@@ -249,7 +249,7 @@
 
 .book-two{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -290,12 +290,13 @@
 
 .replace-button text{
   font-size: 26rpx;
-  color: #FF623F;
+  color: #10c2b8;
   margin-left: 18rpx
 }
 
 /* 广告位 */
 .advertising{
+  position: relative;
   margin-left: 20rpx;
   margin-top: 24rpx;
   margin-bottom: 30rpx;

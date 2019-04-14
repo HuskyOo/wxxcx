@@ -11,12 +11,11 @@
   </swiper>
   <!-- 介绍 -->
   <view class="page-padding introduce">
-    <text class="price">¥{{book.money}}</text>
     <text class="title">{{book.title}}</text>
     <view class="sell">
-      <text>སྐུར་གླ། 0.00</text>
-      <text>བཙོངས་གྲངས། {{book.sales}}</text>
-      <text> </text>
+      <text class="price">¥{{book.money}}</text>
+      <text>{{pageFont.sendEmail}}</text>
+      <text>{{pageFont.sales}} {{book.sales}}</text>
     </view>
   </view>
   <!-- 认证 -->
@@ -38,7 +37,7 @@
   <view class='boundary-line'></view>
   <!-- 详情 -->
   <view class="page-padding detail">
-    <text class="title">ཚོང་རྫས་ངོ་སྤྲོད།</text>
+    <text class="title">{{pageFont.detailTitle}}</text>
     <view>
       <import src="../../wxParse/wxParse.wxml"/>
       <template is="wxParse" data="{{wxParseData:detail.nodes}}"/>
@@ -58,19 +57,19 @@
         </view>
       </view>
       <view class="sale-num">
-        <text style="color:#999;margin-right:20rpx">གྲངས་ཀ</text>
+        <text style="color:#999;margin-right:20rpx">{{pageFont.number}}</text>
         <image src="../../images/sub.png" catchtap="sub"/>
         <input type="number" value="{{saleNum}}" bindblur="handleNum"/>
         <image src="../../images/add.png" catchtap="add"/>
       </view>
       <view class="once">
-        <button class="btn" catchtap="isBuy">རིམ་པ་རྗེས་མ།</button>
+        <button class="btn" catchtap="isBuy">{{pageFont.account}}</button>
       </view>
     </view>
   </view>
   <!-- 立即购买 -->
   <view class="once" wx:if="{{!show}}">
-    <button class="btn" catchtap="isShow">ད་ལྟ་ཉོ།</button>
+    <button class="btn" catchtap="isShow">{{pageFont.onceBuy}}</button>
   </view>
   
 </view>

@@ -3,14 +3,14 @@
 <!-- 订单 -->
 <view class="indent">
   <view class="addAddress" bindtap="getAddress" wx:if="{{!getdress}}">
-    <text>སྐུར་སའི་ས་གནས་འབྲི་ས།(ས་གནས་ངེས་པར་རྒྱ་ཡིག་འབྲི་དགོས།)</text>
+    <text>{{pageFont.selectAddress}}</text>
     <image src="../../images/jiantou.png" />
   </view>
   <view class="receiving" wx:else>
     <image src="../../images/localtion.png" />
     <view class="content">
       <view class="user-info">
-        <text >收货人: {{dressData.userName}}</text>
+        <text >{{pageFont.consignee}} {{dressData.userName}}</text>
         <text >{{dressData.telNumber}}</text>
       </view>
       <text class="address">
@@ -18,6 +18,7 @@
       </text>
     </view>
   </view>
+  <textarea placeholder="{{pageFont.remark}}" class="remark" bindinput="handleRemark" maxlength="80"></textarea>
   <view class="product">
     <!-- <text class="title">嘿嘿嘿</text> -->
     <view class="content">
@@ -38,12 +39,12 @@
       <text class="info">རིན་གོང་།</text>
       <text class="pric">¥{{buyInfo.money*buyInfo.saleNum}}</text>
     </view> -->
-    <view>
+    <!-- <view>
       <text class="info">སྐུར་གླ།</text>
       <text class="pric">¥00.00</text>
-    </view>
+    </view> -->
     <view class="total">
-      <text class="info">རིན་གོང་།</text>
+      <text class="info">{{pageFont.total}}</text>
       <text class="pric">¥{{buyInfo.money*buyInfo.saleNum}}</text>
     </view>
   </view>
@@ -52,7 +53,7 @@
     <text>下单时间: 2017-03-15 11:41:23</text>
   </view> -->
   <view class="sure" bindtap="isBuy">
-    <text>རིན་སྤྲོད།</text>
+    <text>{{pageFont.sure}}</text>
   </view>
 </view>
 

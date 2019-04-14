@@ -7,17 +7,17 @@
     <view class="buy-list" wx:for="{{buyList}}" wx:if="{{page_index == 0 ? true : item.status == page_index}}" wx:key="{{item.order_id}}" data-id="{{item.order_id}}" bindtap="goDetail">
         <view class="buy-list-header">
             <text class="buy-list-name">{{item.goods_title}}</text>
-            <text class="buy-list-name" wx:if="{{item.status == 1}}">རིན་སྤྲད་མེད་པ།</text>
-            <text class="buy-list-name" wx:elif="{{item.status == 2}}">བསྐུར་རྩིས་ཡོད་པ།</text>
-            <text class="buy-list-name" wx:elif="{{item.status == 3}}">སྐུར་འཚག་པ།</text>
-            <text class="buy-list-name" wx:else>ཉོ་ཚོང་ལེགས་འགྲུབ་བྱུང་ཡོད།</text>
+            <text class="buy-list-name" wx:if="{{item.status == 1}}">{{pageFont.daifukuan}}</text>
+            <text class="buy-list-name" wx:elif="{{item.status == 2}}">{{pageFont.daifahuo}}</text>
+            <text class="buy-list-name" wx:elif="{{item.status == 3}}">{{pageFont.yifahuo}}</text>
+            <text class="buy-list-name" wx:else>{{pageFont.orderSuccess}}</text>
         </view>
         <view class="buy-list-content">
             <image src="{{url}}{{item.img}}" class="buy-list-image" />
             <view class="buy-list-description">
                 <view class="buy-list-description-left">
                     <text class="buy-list-title">{{item.title}}</text>
-                    <text wx:if="{{item.goods_type === '0'}}" class="buy-list-kind">སྐུར་གླ་མི་དགོས།</text>
+                    <text wx:if="{{item.goods_type === '0'}}" class="buy-list-kind">{{pageFont.mailing}}</text>
                    <!--  <text class="buy-list-freight">运险费  {{item.freight}}</text> -->
                 </view>
                 <view class="buy-list-description-right">
@@ -28,14 +28,14 @@
         </view>
         <view class="buy-list-footer">
             <view class="list-footer-information">
-                <text class="footer-kind">བསྡོམས་པས{{item.goods_num ? item.goods_num : 1}}ཡོད།  རིན་གོང་བསྡོམས་འབོར།</text>
+                <text class="footer-kind">{{filtMoney.filtFont(pageFont.proNum,item.goods_num ? item.goods_num : 1)}}  {{pageFont.total}}</text>
                 <text class="footer-price"> ￥{{item.money}}</text>
             </view>
             <view class="footer-list-btn">
-                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delete" wx:if="{{item.status == 4}}">ཉོ་ཐོ་སུབ་པ།</text>
-                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delete" wx:if="{{item.status == 1}}">ཉོ་ཐོ་སུབ་པ།</text>
-                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="payment" wx:if="{{item.status == 1}}"> རིན་སྤྲད།</text>
-                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delivery" wx:if="{{item.status == 3}}">ལག་ཏུ་འབྱོར་ཟིན།</text>
+                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delete" wx:if="{{item.status == 4}}">{{pageFont.cancelOrder}}</text>
+                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delete" wx:if="{{item.status == 1}}">{{pageFont.cancelOrder}}</text>
+                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="payment" wx:if="{{item.status == 1}}">{{pageFont.goPay}}</text>
+                <text class="delete-btn" data-id="{{item.order_id}}" catchtap="delivery" wx:if="{{item.status == 3}}">{{pageFont.sureOrder}}</text>
             </view>
         </view>
     </view>

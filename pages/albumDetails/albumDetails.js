@@ -68,12 +68,29 @@ Page({
   },
   getMedia(type, id){
     var that = this
-    wx.setStorageSync('playId', id)
     mediaurl({type, id, token: wx.getStorageSync('token')}).then(res => {
       console.log(res)
-      that.setData({
-        data:res.media
+      this.setData({
+        author_describe: res.media.author_describe,
+        good_describe: res.media.good_describe
       })
+      this.wxParse()
+      if(this.data.type === "0"){
+        that.setData({
+          data:res.media
+        })
+      }
+      if(res.media.is_buy === 0 && res.media.is_free === '0'){
+        wx.showToast({
+          title: this.data.pageFont.noBuyToast, //提示的内容,
+          icon: 'none', //图标,
+          duration: 2000, //延迟时间,
+          mask: true, //显示透明蒙层，防止触摸穿透,
+          success: res => {}
+        });
+        return
+      }
+      wx.setStorageSync('playId', id)
       if(this.data.mediatype === "0"){
         this.setData({
           bgMusicSrc: res.media.audio,
@@ -88,11 +105,8 @@ Page({
           videoSrc: res.media.audio
         })
       }
-      this.setData({
-        author_describe: res.media.author_describe,
-        good_describe: res.media.good_describe
-      })
-      this.wxParse()
+     
+      
     })
   },
   // 请求数据
@@ -194,7 +208,29 @@ Page({
   },
   // 点击播放
   jumpDetail (e) {
-    let type = this.data.type, mediatype = this.data.mediatype, id = e.currentTarget.id
+    let type = this.data.type, mediatype = this.data.mediatype, id = e.currentTarget.id, free = e.currentTarget.dataset.free, buy = e.currentTarget.dataset.buy
+    console.log(e)
+    if (buy === 0 && free === '0') {
+      wx.showModal({
+        title: this.data.pageFont.hint, //提示的标题,
+        content: this.data.pageFont.hintContent, //提示的内容,
+        showCancel: true, //是否显示取消按钮,
+        cancelText: this.data.pageFont.cancel, //取消按钮的文字，默认为取消，最多 4 个字符,
+        cancelColor: '#000000', //取消按钮的文字颜色,
+        confirmText: this.data.pageFont.sure, //确定按钮的文字，默认为取消，最多 4 个字符,
+        confirmColor: '#3CC51F', //确定按钮的文字颜色,
+        success: res => {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+            // wx.navigateTo({ url: '/pages/albumOrders/albumOrders' });
+            this.tobuy()
+          } else if (res.cancel) {
+            // console.log('用户点击取消')
+          }
+        }
+      });
+      return
+    }
     // console.log(id)
     this.getMedia(type, id)
   },
@@ -219,18 +255,10 @@ Page({
     var that = this
     // 判断用户是否购买该专辑 0-->未购买
     if(that.data.data.is_buy !== 0){
-      if(that.data.lan_index === 1){
         wx.showToast({
-          title: 'ཆེད་བསྒྲིགས་འདི་ཁྱེད་ཀྱིས་ཉོས་ཡོད།',
+          title: this.data.pageFont.bought,
           icon: 'none'
         })
-      } else {
-        wx.showToast({
-          title: '您已购买该专辑',
-          icon: 'none'
-        })
-
-      }
     }else{
       wx.setStorage({
         key:'album',
@@ -249,34 +277,8 @@ Page({
   },
   // 播放全部
   playAll: function(){
-    var that = this
-    //判断该专辑是否全部购买
-    if(that.data.data.is_buy !== 0){
-      //设置缓存
-      that.setSto(0)
-      // 判断第一个单曲的类别 跳转视频播放或音频播放
-      if (that.data.data.media[0].media_type === '1') {
-        wx.navigateTo({
-          url: '../video/video?lan='+that.data.lan+'&type=1&id='+that.data.data.media[0].id
-        })
-      }else{
-        wx.navigateTo({
-          url: '../singleDetails/singleDetails?lan='+that.data.lan+'&type=1&id='+that.data.data.media[0].id
-        })
-      }
-    } else {
-      if(that.data.lan_index === 1){
-        wx.showToast({
-          title: 'ཆེད་བསྒྲིགས་འདི་ད་དུང་ཉོས་མེད།',
-          icon: 'none'
-        })
-      } else {
-        wx.showToast({
-          title: '您还没购买该专辑',
-          icon: 'none'
-        })
-      }
-    }
+    var id = this.data.data.media[0].id
+    this.getMedia(this.data.type, id)
   },
   // 试听
   testListen () {
@@ -366,7 +368,7 @@ Page({
     this.listenerButtonPause()
     if (this.data.type === '0') {
       wx.showToast({
-        title: '当前已是第一首',
+        title: this.data.pageFont.firstAlbum,
         icon: 'none',
       })
     } else {
@@ -380,7 +382,7 @@ Page({
         this.getMedia(this.data.type, id)
       } else {
         wx.showToast({
-          title: '当前已是第一首',
+          title: this.data.pageFont.firstAlbum,
           icon: 'none'
         });
       }
@@ -391,7 +393,7 @@ Page({
     this.listenerButtonPause()
     if (this.data.type === '0') {
       wx.showToast({
-        title: '当前已是最后一首',
+        title: this.data.pageFont.lastAlbum,
         icon: 'none',
       })
     } else {
@@ -405,7 +407,7 @@ Page({
         this.getMedia(this.data.type, id)
       } else {
         wx.showToast({
-          title: '当前已是最后一首',
+          title: this.data.pageFont.lastAlbum,
           icon: 'none'
         });
       }
@@ -451,17 +453,10 @@ save () {
     filePath: that.data.shareImg,
     success: res => {
       console.log(res)
-      if(that.data.lan_index === 1){
-        wx.showToast({
-          title: 'པར་རིས་ཉར་ཚགས་བྱས་ཡོད།',
-          icon: 'none'
-        })
-      } else {
-        wx.showToast({
-          title: '图片已保存',
-          icon: 'none'
-        })
-      }
+      wx.showToast({
+        title: this.data.pageFont.imgSave,
+        icon: 'none'
+      })
       that.back()
     }
   })

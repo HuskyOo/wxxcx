@@ -1,6 +1,7 @@
 // pages/bookorder/bookorder.js
 var app = getApp()
 var util = require('../../utils/util')
+import { bookorder } from '../../font/index'
 Page({
 
   /**
@@ -8,7 +9,8 @@ Page({
    */
   data: {
     url: app.globalData.pageUrl,
-    getdress: false
+    getdress: false,
+    remark: ''
   },
 
   /**
@@ -40,7 +42,8 @@ Page({
           mobile: that.data.dressData.telNumber,
           user: that.data.dressData.userName,
           zipcode: that.data.dressData.postalCode,
-          goods_num: that.data.buyInfo.saleNum
+          goods_num: that.data.buyInfo.saleNum,
+          remark: that.data.remark
         },
         success: res => {
           console.log(res)
@@ -120,6 +123,11 @@ Page({
     //   }
     // })
   },
+  handleRemark (e) {
+    let remark = e.detail.value
+    this.setData({remark})
+    // console.log(remark)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -131,7 +139,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      pageFont: bookorder()
+    })
   },
 
   /**

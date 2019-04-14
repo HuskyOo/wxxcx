@@ -132,6 +132,20 @@
 	color: #fff;
 	font-size: 24rpx;
 }
+.video-icon{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.book-image .video-icon image{
+	width: 50rpx;
+	height: 50rpx;
+}
 
 
 /* .book-image .album */
@@ -217,7 +231,8 @@
 	vertical-align: middle;
 	width: 190rpx;
 	height: 60rpx;
-	background-color: rgb(169, 250, 239);
+	/* background-color: rgb(169, 250, 239); */
+	background-color: #f5f5f5;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50rpx

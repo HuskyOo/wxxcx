@@ -3,16 +3,16 @@
 <view class="indent">
   <view class="header">
     <image src="../../images/sure_1.png" />
-    <text wx:if="{{indent.status === 1}}">རིན་སྤྲད་མེད་པའི་ཉོ་ཐོ།</text>
-    <text wx:elif="{{indent.status === 2}}">བསྐུར་མེད་པའི་ཉོ་ཐོ།</text>
-    <text wx:elif="{{indent.status === 3}}">སྐུར་ཟིན་པའི་ཉོ་ཐོ།</text>
-    <text wx:else>ཉོ་ཐོ་སྤྲད་ཟིན།</text>
+    <text wx:if="{{indent.status === 1}}">{{pageFont.orderNoPay}}</text>
+    <text wx:elif="{{indent.status === 2}}">{{pageFont.waitSend}}</text>
+    <text wx:elif="{{indent.status === 3}}">{{pageFont.delivery}}</text>
+    <text wx:else>{{pageFont.finish}}</text>
   </view>
   <view class="receiving" wx:if="{{indent.goods_type === '0'}}">
     <image src="../../images/localtion.png" />
     <view class="content">
       <view class="user-info">
-        <text >སྐུར་སའི་མི། {{indent.user}}</text>
+        <text >{{pageFont.user}} {{indent.user}}</text>
         <text >{{indent.mobile}}</text>
       </view>
       <text class="address">
@@ -40,22 +40,22 @@
       <text class="info">商品总价</text>
       <text class="pric">¥{{indent.money}}</text>
     </view> -->
-    <view>
+    <!-- <view>
       <text class="info">སྐུར་གླ།</text>
       <text class="pric">¥0.00</text>
-    </view>
+    </view> -->
     <view class="total">
-      <text class="info">རིན་གོང་།</text>
+      <text class="info">{{pageFont.total}}</text>
       <text class="pric">¥{{indent.money}}</text>
     </view>
   </view>
   <view class="timer">
     <view class="copyNum" wx:if="{{indent.delivery_name}}">
       <text>{{indent.delivery_name}}: {{indent.delivery_sn}}</text>
-      <text class="copy-btn" bindtap="copy">འདྲ་བཤུ་བྱེད།</text>
+      <text class="copy-btn" bindtap="copy">{{pageFont.copy}}</text>
     </view>
-    <text>ཉོ་ཐོའི་ཨང་རྟགས། {{indent.order_sn}}</text>
-    <text>ཉོས་པའི་དུས་ཚོད། {{indent.time}}</text>
-    <text wx:if="{{indent.delivery_time}}">མཇུག་རྫོགས་པའི་དུས་ཚོད། {{indent.delivery_time}}</text>
+    <text>{{pageFont.orderNum}} {{indent.order_sn}}</text>
+    <text>{{pageFont.buyTime}} {{indent.time}}</text>
+    <text wx:if="{{indent.delivery_time}}">{{pageFont.finishTime}} {{indent.delivery_time}}</text>
   </view>
 </view>

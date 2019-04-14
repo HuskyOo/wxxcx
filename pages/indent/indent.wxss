@@ -7,7 +7,7 @@ page{
 }
 .indent .header{
   color: #fff;
-  background: #ff623f;
+  background: #10c2b8;
   height: 180rpx;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@ page{
 }
 .content .info .pric{
   font-size: 28rpx;
-  color: #e73b2d;
+  color: #10c2b8;
 }
 .content .number{
   display: flex;
@@ -129,7 +129,7 @@ page{
   font-size: 28rpx;
 }
 .calculate .total .pric{
-  color: #e73b2d;
+  color: #10c2b8;
 }
 .timer{
   color: #999;
@@ -148,8 +148,8 @@ page{
   align-items: center;
 }
 .copy-btn{
-  color: #ff623f;
-  border: 2rpx solid #ff623f;
+  color: #10c2b8;
+  border: 2rpx solid #10c2b8;
   height: 50rpx;
   line-height: 50rpx;
   text-align: center;

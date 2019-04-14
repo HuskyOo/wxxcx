@@ -46,8 +46,8 @@ Page({
     console.log(e.currentTarget.dataset.id)
     var id =  e.currentTarget.dataset.id
     wx.showModal({
-      title: 'ཉོ་ཐོ་སུབ་པ།',
-      content: 'ཉོ་ཐོ་འདི་སུབ་བམ།',
+      title: this.data.pageFont.cancelOrder,
+      content: this.data.pageFont.isCancelOrder,
       success: res => {
         console.log(res)
         if(res.confirm){
@@ -58,7 +58,7 @@ Page({
               console.log(res)
               if(res.data.code === 1){
                 wx.showToast({
-                  title: 'སུབ་འཚག་པ།',
+                  title: this.data.pageFont.delSuccess,
                   icon: 'none'
                 })
                 that.getData()
@@ -138,7 +138,7 @@ Page({
         // console.log(res)
         if(res.data.code === 1){
           wx.showToast({
-            title: 'ཚོང་རྫས་ཁྱེད་ཀྱི་ལག་ཏུ་འབྱོར་ཡོད།',
+            title: this.data.pageFont.finish,
             icon: 'none'
           }),
           that.getData()

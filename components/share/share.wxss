@@ -34,7 +34,7 @@
   height: 50rpx;
 }
 .save-btn{
-  background: #FE533C;
+  background: #10c2b8;
   color: #fff;
   font-size: 30rpx;
   padding: 15rpx 150rpx;

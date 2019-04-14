@@ -44,7 +44,7 @@ function buy () {
 }
 function religionCate (id) {
     return new Promise ((resolve, reject) => {
-        http(url.religionCate, {id}, (res) => {resolve(res.data)})
+        http(url.religionCate, {id, token: wx.getStorageSync('token')}, (res) => {resolve(res.data)})
     })
 }
 function mediaurl (params) {
@@ -59,7 +59,7 @@ function comdetails (params) {
 }
 function mediarand (params) {
     return new Promise ((resolve, reject) => {
-        http(url.mediarand, params, (res) => {resolve(res.data)})
+        http(url.mediarand, {token: wx.getStorageSync('token'), ...params}, (res) => {resolve(res.data)})
     })
 }
 

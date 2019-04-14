@@ -4,6 +4,10 @@ function index () {
     util.fontFamily()
     return font.index
 }
+function components () {
+    util.fontFamily()
+    return font.components
+}
 function myCourse () {
     util.fontFamily()
     let lanIndex = wx.getStorageSync('lan');
@@ -44,6 +48,16 @@ function albumDetail () {
     // console.log(lanIndex)
     return obj
 }
+function albumOrder () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.albumOrder) {
+        obj[key] = font.albumOrder[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
 function bookFont () {
     util.fontFamily()
     let lanIndex = wx.getStorageSync('lan');
@@ -64,5 +78,35 @@ function classifyDetail () {
     // console.log(lanIndex)
     return obj
 }
+function bookdetail () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.bookdetail) {
+        obj[key] = font.bookdetail[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
+function bookorder () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.bookorder) {
+        obj[key] = font.bookorder[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
+function indent () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.indent) {
+        obj[key] = font.indent[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
 
-module.exports = { index, myCourse, my, paddingpayment, albumDetail, bookFont, classifyDetail }
+module.exports = { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent }

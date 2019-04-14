@@ -1,6 +1,7 @@
 // pages/albumOrders/albumOrders.js
 var util = require('../../utils/util')
 var app = getApp()
+import { albumOrder } from '../../font/index'
 Page({
 
   /**
@@ -28,7 +29,8 @@ Page({
         goods_id: that.data.data.id,
         money: that.data.data.money,
         goods_type: 1,
-        token: wx.getStorageSync('token')
+        token: wx.getStorageSync('token'),
+        remark: '',
       },
       success: res => {
         console.log(res)
@@ -94,7 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({pageFont: albumOrder()})
   },
 
   /**

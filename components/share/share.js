@@ -1,5 +1,6 @@
 // components/share/share.js
 var app = getApp()
+import { components } from '../../font/index'
 Component({
   /**
    * 组件的属性列表
@@ -37,13 +38,13 @@ Component({
   data: {
     url: app.globalData.pageUrl,
     showShare:false,
-    page_font:{
-      close: ['关闭', 'སྒོ་རྒྱག'],
-      share: ['分享给朋友', 'གྲོགས་པོར་བསྐུར།'],
-      save: ['保存为图片', 'ཁྱབ་བསྒྲགས་སྤེལ།'],
-      saveLoc: ['保存到本地', 'པར་རིས་ཉར་ཚགས་བྱེད།'],
-      imgSave: ['图片已保存','པར་རིས་ཉར་ཚགས་བྱས་ཡོད།'],
-    },
+    // page_font:{
+    //   close: ['关闭', 'སྒོ་རྒྱག'],
+    //   share: ['分享给朋友', 'གྲོགས་པོར་བསྐུར།'],
+    //   save: ['保存为图片', 'ཁྱབ་བསྒྲགས་སྤེལ།'],
+    //   saveLoc: ['保存到本地', 'པར་རིས་ཉར་ཚགས་བྱེད།'],
+    //   imgSave: ['图片已保存','པར་རིས་ཉར་ཚགས་བྱས་ཡོད།'],
+    // },
     font_index: 0
   },
 
@@ -53,6 +54,7 @@ Component({
         font_index: 1
       })
     }
+    this.setData({comFont: components()})
   },
   /**
    * 组件的方法列表

@@ -4,6 +4,24 @@ var money = {
     return num.toFixed(2)
   }
 }
+var font = {
+  filtFont: function (str, arr) {
+    if(str && arr){
+      var strArr = str.split('***');
+      var dataArr = arr + ','
+      var newStr = '';
+      dataArr = dataArr.split(',');
+      for (var i=0; i<strArr.length; i++) {
+        newStr += strArr[i] + dataArr[i]
+        console.log(strArr[i],dataArr[i])
+      }
+      return newStr
+    }
+  }
+}
+
+
 module.exports = {
-  filtMoney: money.filtMoney
+  filtMoney: money.filtMoney,
+  filtFont: font.filtFont
 }

@@ -1,6 +1,7 @@
 // components/col-list/col-list.js
 let app = getApp();
 var util = require('../../utils/util')
+import { components } from '../../font/index'
 Component({
   /**
    * 组件的属性列表
@@ -15,8 +16,8 @@ Component({
       value: ''
     },
     replace: {
-      type: String,
-      value: ''
+      type: Boolean,
+      value: false
     },
     book: {
       type: Boolean,
@@ -37,6 +38,10 @@ Component({
     free: {
       type: String,
       value: ''
+    },
+    comfont: {
+      type: Object,
+      value: ''
     }
   },
 
@@ -47,7 +52,15 @@ Component({
     url: app.globalData.pageUrl
   },
   ready () {
-    util.fontFamily()
+    // util.fontFamily()
+    if (!this.data.comfont) {
+      let lan = wx.getStorageSync('lan'), font = components(), comfont = {}
+      for (let key in font) {
+        comfont[key] = font[key][lan]
+      }
+      // console.log(comfont)
+      this.setData({comfont})
+    }
   },
 
   /**

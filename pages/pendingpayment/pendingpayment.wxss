@@ -24,8 +24,8 @@ page{
 }
 
 .buy-header-active{
-    border-bottom: 4rpx solid #FF623F;
-    color: #FF623F
+    border-bottom: 4rpx solid #10c2b8;
+    color: #10c2b8
 }
 
 
@@ -98,7 +98,7 @@ page{
     line-height: 36rpx;
     border-radius: 16rpx;
     background-color: #FFEFEB;
-    color: #F76241;
+    color: #10c2b8;
     font-size: 20rpx;
     margin-top: 23rpx;
 }
@@ -146,7 +146,7 @@ page{
 
 .footer-price{
     font-size: 28rpx;
-    color: #E73B2D
+    color: #10c2b8
 }
 
 .footer-list-btn{
@@ -158,9 +158,9 @@ page{
 .delete-btn{
     padding: 4rpx 25rpx;
     border-radius: 20rpx;
-    border: 1rpx solid #FF623F;
+    border: 1rpx solid #10c2b8;
     font-size: 24rpx;
-    color: #F76241;
+    color: #10c2b8;
     text-align: center;
     margin-left: 15rpx;
 }

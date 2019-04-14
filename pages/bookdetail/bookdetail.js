@@ -2,6 +2,7 @@
 var app = getApp()
 var WxParse = require('../../wxParse/wxParse')
 var util = require('../../utils/util')
+import { bookdetail } from '../../font/index'
 Page({
 
   /**
@@ -143,6 +144,7 @@ Page({
    */
   onShow: function () {
     this.noShow()
+    this.setData({pageFont: bookdetail()})
   },
 
   /**
