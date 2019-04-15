@@ -99,8 +99,8 @@ page{
   font-family: 'Himalaya-G';
   margin: 0rpx 18rpx;
   border-bottom: 1rpx solid #E8E8E8;
-  height: 71rpx;
-  line-height: 71rpx;
+  height: 90rpx;
+  /* line-height: 71rpx; */
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -49,15 +49,6 @@ Page({
         id = options.id
     // type: 1专辑 0单曲    mediatype: 1视频 0音频
     that.setData({id, type, mediatype})
-    if(type === '0'){
-      this.getMedia(type, id)
-      this.setData({
-        showIndex: '0'
-      })
-    } else {
-      this.getData()
-    }
-    
   },
   // 介绍和歌单的切换
   changeShow (e) {
@@ -66,7 +57,7 @@ Page({
       showIndex: n
     })
   },
-  getMedia(type, id){
+  getMedia(type, id, play = false){
     var that = this
     mediaurl({type, id, token: wx.getStorageSync('token')}).then(res => {
       console.log(res)
@@ -99,7 +90,10 @@ Page({
           bgMusicCoverImgUrl: this.data.url + res.media.cover,
         })
         wx.setStorageSync('audioSrc', res.media.audio)
-        this.listenerButtonPlay()
+        // 播放
+        if (play) {
+          this.listenerButtonPlay()
+        }
       } else {
         this.setData({
           videoSrc: res.media.audio
@@ -352,7 +346,9 @@ Page({
         that.setData({duration})
         console.log(duration)
       }
-      
+      bgMusic.onEnded(() => {
+        that.listenerButtonNext()
+      })
     })
     
   },
@@ -379,7 +375,7 @@ Page({
         }
       })
       if (id) {
-        this.getMedia(this.data.type, id)
+        this.getMedia(this.data.type, id, true)
       } else {
         wx.showToast({
           title: this.data.pageFont.firstAlbum,
@@ -404,7 +400,7 @@ Page({
         }
       })
       if (id) {
-        this.getMedia(this.data.type, id)
+        this.getMedia(this.data.type, id, true)
       } else {
         wx.showToast({
           title: this.data.pageFont.lastAlbum,
@@ -482,6 +478,18 @@ save () {
     this.setData({
       pageFont: albumDetail()
     })
+    if(this.data.type === '0'){
+      this.getMedia(this.data.type, this.data.id)
+      this.setData({
+        showIndex: '0'
+      })
+    } else {
+      this.getData()
+    }
+    let state = bgMusic.paused
+    if (state === false) {
+      this.listenerButtonPlay()
+    }
   },
 
   /**

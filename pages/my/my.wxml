@@ -36,6 +36,27 @@
   <view class='features-list' bindtap="jumpMember">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
+      <text>{{pageFont.contact}}</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+  <view class='features-list' bindtap="jumpMember">
+    <view>
+      <image src='../../images/member.png' class='features-list-icon'></image>
+      <text>{{pageFont.recruit}}</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+  <view class='features-list' bindtap="jumpMember">
+    <view>
+      <image src='../../images/member.png' class='features-list-icon'></image>
+      <text>{{pageFont.explain}}</text>
+    </view>
+    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+  </view>
+  <view class='features-list' bindtap="jumpMember">
+    <view>
+      <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.member}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>

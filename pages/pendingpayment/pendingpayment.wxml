@@ -17,7 +17,7 @@
             <view class="buy-list-description">
                 <view class="buy-list-description-left">
                     <text class="buy-list-title">{{item.title}}</text>
-                    <text wx:if="{{item.goods_type === '0'}}" class="buy-list-kind">{{pageFont.mailing}}</text>
+                    <!-- <text wx:if="{{item.goods_type === '0'}}" class="buy-list-kind">{{pageFont.mailing}}</text> -->
                    <!--  <text class="buy-list-freight">运险费  {{item.freight}}</text> -->
                 </view>
                 <view class="buy-list-description-right">

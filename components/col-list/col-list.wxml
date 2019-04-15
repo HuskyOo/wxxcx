@@ -30,7 +30,10 @@
             <view class='book-price'>
                 <text>￥{{item.money}}</text>
                 <!-- <view class='book-mailing'>{{comfont.mailing}}</view> -->
-                <text >{{comfont.sales}}  {{item.sales}}</text>
+                <view >
+                    <text style="color: #333;font-size:20rpx">{{comfont.sales}}</text>
+                    <text >{{item.sales}}</text>
+                </view>
             </view>
         </view>
     </view>
@@ -72,7 +75,7 @@
                     <text class='book-introduction'>{{item.sub_title}}</text>
                 </view>
                 <view class='book-two interview-two'>
-                    <view >
+                    <view class="money">
                         <text >{{item.is_buy && item.is_buy ===1 ? comfont.isBuy : (item.money === 0 ? comfont.free : '¥'+item.money)}}</text>
                     </view>
                     <view>

@@ -205,7 +205,9 @@
 	justify-content: space-between;
 	align-items: center;
 }
-
+.book-two .money text{
+	color: #10c2b8
+}
 .book-two image{
 	width: 20rpx;
 	height: 20rpx;

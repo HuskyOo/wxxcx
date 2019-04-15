@@ -37,7 +37,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData()
     this.setData({
       pageFont: index()
     })
@@ -62,6 +61,7 @@ Page({
             // console.log(2)
             wx.showTabBar()
             // that.getdata()
+            this.getData()
           }
         }
       }
@@ -268,7 +268,7 @@ Page({
     let type = wx.getStorageSync('history')[0].item[0].type, playId = wx.getStorageSync('playId'), playList = wx.getStorageSync('playList'), playIndex = null
     if(type === "0"){
       wx.showToast({
-        title: "歌曲已全部播放完毕"
+        title: this.data.pageFont.lastAlbum[this.data.lan]
       })
     } else {
       for(var i=0; i<playList.length; i++){
@@ -278,11 +278,11 @@ Page({
       }
       if(playIndex !== null){
         this.getMedia(playList[playIndex + 1].id)
-        wx.setStorageSync('playId', playList[playIndex + 1].id)
+        
       } else {
         console.log(1, playIndex)
         wx.showToast({
-          title: "歌曲已全部播放完毕"
+          title: this.data.pageFont.lastAlbum[this.data.lan]
         })
       }
     }
@@ -297,6 +297,9 @@ Page({
         })
         wx.setStorageSync('currentTime',currentTime)
       }
+      bgMusic.onEnded(() => {
+        that.bgNext()
+      })
     })
   },
   getMedia(id){
@@ -308,10 +311,17 @@ Page({
       wx.setStorageSync("audioSrc", res.media.audio)
       bgMusic.title = res.media.title
       bgMusic.coverImgUrl = this.data.url + res.media.cover
-      bgMusic.src = res.media.audio
-      this.setData({
-        bgOpen: true
-      })
+      if(res.media.is_buy === 1 || res.media.is_free === '1'){
+        bgMusic.src = res.media.audio
+        wx.setStorageSync('playId', res.media.id)
+        this.setData({
+          bgOpen: true
+        })
+      } else {
+        wx.showToast({
+          title: this.data.pageFont.noBuyToast[this.data.lan]
+        })
+      }
     })
   },
   jumpAlbum () {
@@ -353,6 +363,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // if (this.data.lan) {
+    //   this.getData()
+    // }
     // 动画
     this.animation = wx.createAnimation()
     this.unfoldAnimation = wx.createAnimation({});
@@ -373,10 +386,6 @@ Page({
     if(wx.getStorageSync('history').length > 0){
       this.setBgMusic()
     }
-
-    let str = '***'
-    let arr = str.split('***')
-    console.log(arr)
   },
 
   /**

@@ -32,7 +32,7 @@
 		<view class="cou" wx:if="{{page_index === 1}}">
 			<!-- 轮播图 -->
 			<view>
-				<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}">
+				<swiper class='carousel' height="264rpx" autoplay="{{true}}"  circular="{{true}}" indicator-dots="{{true}}" indicator-color="#ffffff" indicator-active-color="#10c2b8">
 					<block wx:for="{{zbanner}}" wx:key="item.id">
 						<swiper-item data-nav="{{item.url}}" bindtap="navjump" style="height:263rpx; position:ralative">
 							<image src="{{url}}{{item.img}}" mode="aspectFill" style="width:100%;height:263rpx" />

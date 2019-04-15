@@ -14,7 +14,7 @@
     <text class="title">{{book.title}}</text>
     <view class="sell">
       <text class="price">¥{{book.money}}</text>
-      <text>{{pageFont.sendEmail}}</text>
+      <!-- <text>{{pageFont.sendEmail}}</text> -->
       <text>{{pageFont.sales}} {{book.sales}}</text>
     </view>
   </view>
@@ -37,7 +37,7 @@
   <view class='boundary-line'></view>
   <!-- 详情 -->
   <view class="page-padding detail">
-    <text class="title">{{pageFont.detailTitle}}</text>
+    <view class="title">{{pageFont.detailTitle}}</view>
     <view>
       <import src="../../wxParse/wxParse.wxml"/>
       <template is="wxParse" data="{{wxParseData:detail.nodes}}"/>

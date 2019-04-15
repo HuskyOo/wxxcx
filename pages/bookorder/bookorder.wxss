@@ -13,7 +13,7 @@ page{
   box-sizing: border-box;
   padding: 20rpx 30rpx;
   margin-bottom: 20rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
 }
 .addAddress image{
   width: 20rpx;

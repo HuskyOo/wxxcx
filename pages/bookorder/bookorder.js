@@ -10,7 +10,16 @@ Page({
   data: {
     url: app.globalData.pageUrl,
     getdress: false,
-    remark: ''
+    remark: '',
+    dressData: {
+      provinceName: '',
+      cityName: '',
+      countyName: '',
+      detailInfo: '',
+      telNumber: '',
+      userName: '',
+      postalCode: ''
+    }
   },
 
   /**
@@ -30,7 +39,7 @@ Page({
   },
   isBuy () {
     var that = this
-    if(that.data.getdress){
+    if(that.data.getdress || that.data.remark){
       wx.request({
         url: that.data.url + '/index/pay/index',
         data: {
@@ -70,7 +79,7 @@ Page({
       })
     }else{
       wx.showToast({
-        title: 'སྐུར་སའི་ས་གནས་འབྲི་རོགས།',
+        title: that.data.pageFont.selAddToast,
         icon: 'none'
       })
     }

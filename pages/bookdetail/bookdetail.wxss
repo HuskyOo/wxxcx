@@ -52,6 +52,7 @@ page{
 .detail .title{
   font-size: 30rpx;
   color: #313131;
+  padding: 30rpx;
 }
 .once{
   height: 98rpx;
