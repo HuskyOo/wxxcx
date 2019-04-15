@@ -120,13 +120,13 @@
             </view>
         </view>
         <scroll-view scroll-y="{{true}}" class='book-content album-content' bindscrolltoupper="prev" bindscrolltolower="next" style="{{data.is_buy === 0 ? '' : 'height:550rpx'}}">
-            <view class='book-list' wx:for="{{showdata}}" wx:key="{{item.album_id}}" id="{{item.id}}" data-free="{{item.is_free}}" data-buy="{{data.is_buy}}" data-index="{{index}}" data-type="{{item.media_type}}" wx:if="{{index+1 >= listscope[0]*10+1 && index+1 <= listscope[1]*10}}" bindtap="jumpDetail">
+            <view class="book-list {{playId == item.id ? 'active' : ''}}" wx:for="{{showdata}}" wx:key="{{item.album_id}}" id="{{item.id}}" data-free="{{item.is_free}}" data-buy="{{data.is_buy}}" data-index="{{index}}" data-type="{{item.media_type}}" wx:if="{{index+1 >= listscope[0]*10+1 && index+1 <= listscope[1]*10}}" bindtap="jumpDetail">
                 <view class="book-number" style="color:#979797">
                     {{sort === 0 ? index+1 : showdata.length-index}}
                 </view>
                 <view class='book-information' style="height:100rpx">
                     <view class='book-one'>
-                        <text class='book-title' style="color:#494949;font-size:30rpx">{{item.title}}</text>
+                        <text class='book-title' style="font-size:30rpx">{{item.title}}</text>
                         <!-- <text class='book-introduction'>{{item.sub_title}}</text> -->
                     </view>
                     <view class='book-two interview-two'>

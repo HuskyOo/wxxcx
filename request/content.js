@@ -34,7 +34,7 @@ function sing () {
 }
 function allClassify (id = 1) {
     return new Promise ((resolve, reject) => {
-        http(url.allClassify, {id}, (res) => {resolve(res.data)})
+        http(url.allClassify, {id, token: wx.getStorageSync('token')}, (res) => {resolve(res.data)})
     })
 }
 function buy () {

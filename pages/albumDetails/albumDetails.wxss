@@ -174,6 +174,9 @@
     padding: 0 10rpx;
     border-bottom:1rpx solid #f5f5f5;
 }
+.book-list.active .book-title{
+    color: #10c2b8;
+}
 .book-two.interview-two{
     position: relative;
     overflow: hidden;

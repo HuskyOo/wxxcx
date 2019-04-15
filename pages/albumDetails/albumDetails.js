@@ -33,7 +33,8 @@ Page({
     duration: 0,       //音乐总时长
     showCurrentTime: '0:00',  //显示的正在播放的时间
     showDuration: '0:00',   //x显示的总时长
-    bgMusicSrc: wx.getStorageSync('audioSrc') || null
+    bgMusicSrc: wx.getStorageSync('audioSrc') || null,
+    playId: 0
   },
 
   /**
@@ -81,6 +82,9 @@ Page({
         });
         return
       }
+      this.setData({
+        playId: id
+      })
       wx.setStorageSync('playId', id)
       if(this.data.mediatype === "0"){
         this.setData({
@@ -226,7 +230,7 @@ Page({
       return
     }
     // console.log(id)
-    this.getMedia(type, id)
+    this.getMedia(type, id, true)
   },
   // 设置缓存
   setSto (index) {
