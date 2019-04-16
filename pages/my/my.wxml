@@ -8,7 +8,14 @@
       <open-data type="userAvatarUrl"></open-data>
     </view>
   </view>
-  <view class='header-name'><open-data type="userNickName"></open-data></view>
+  <view class='header-name'>
+    <open-data type="userNickName"></open-data>
+    <text>{{pageFont.memberInfo}}</text>
+  </view>
+  <view class="vip-btn" bindtap="jumpMember">
+    <image src="../../images/vip-icon.png" />
+    <text>{{pageFont.open}}</text>
+  </view>
 </view>
 
 <!-- 订单 -->
@@ -33,34 +40,34 @@
 
 <!-- 功能选项 -->
 <view class='features'>
-  <view class='features-list' bindtap="jumpMember">
+  <view class='features-list'>
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.contact}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list' bindtap="jumpMember">
+  <view class='features-list'>
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.recruit}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list' bindtap="jumpMember">
+  <view class='features-list'>
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.explain}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list' bindtap="jumpMember">
+  <!-- <view class='features-list' bindtap="jumpMember">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.member}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
-  </view>
+  </view> -->
   <!-- <view class='features-list' bindtap="jumpHis">
     <view>
       <image src='../../images/lishijilu.png' class='features-list-icon'></image>

@@ -20,8 +20,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.fontFamily()
-    this.getData()
   },
 
   getData () {
@@ -76,7 +74,8 @@ Page({
         },
       ],
     })
-    console.log(this.data.pageFont)
+    // console.log(this.data.pageFont)
+    this.getData()
   },
 
   /**

@@ -10,10 +10,11 @@ Page({
   data: {
     url: app.globalData.pageUrl,
     cate: [], // 分类数据
-    oneClassIndex: 0,
+    oneClassIndex: 'all',
     twoClassIndex: 0,
     detailData: null,
-    showDetail: false,  //是否显示课程列表
+    showDetail: false,  //是否显示课程列表,
+    all: [],
   },
 
   /**
@@ -29,14 +30,19 @@ Page({
     allClassify(id).then((res) => {
       console.log(res)
       that.setData({
-        cate: res.cate
+        cate: res.cate,
+        all: res.all,
+        detailData: res.all,
+        showDetail: true
       })
       if(res.cate.length > 0 && res.cate[0].chlid[0]){
         id = res.cate[0].chlid[0].id
       } else if (res.cate[0]) {
         id = res.cate[0].id
       }
-      this.getDetail(id)
+      if (this.data.oneClassIndex !== 'all') {
+        this.getDetail(id)
+      }
     })
   },
   getDetail(id){  //获取课程列表
@@ -50,14 +56,20 @@ Page({
   },
   topNavChange(e){
     // console.log(e)
-    let chlid = e.currentTarget.dataset.chlid, index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id
+    let chlid = e.currentTarget.dataset.chlid, index = e.currentTarget.dataset.index, id = e.currentTarget.dataset.id, all=this.data.all
     if(index === this.data.oneClassIndex){
       return
     }
+    
     this.setData({
       oneClassIndex: index,
       twoClassIndex: 0
     })
+    if (index === 'all') {
+      console.log(all)
+      this.setData({detailData: all})
+      return
+    }
     if(!chlid){
       this.getDetail(id)
     } else {

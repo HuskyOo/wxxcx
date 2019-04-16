@@ -7,8 +7,12 @@ page{
   height: 250rpx;
   background-size: cover;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 80rpx;
   align-items: center;
+  flex-wrap: nowrap;
   background-image: url('https://www.chonlong.cn/wx/imagebackgroun.jpg');
 }
 
@@ -20,6 +24,7 @@ page{
   /* border-radius: 50%; */
   margin-top: 47rpx;
   position: relative;
+  flex-shrink: 0;
   
 }
 .header-image>image{
@@ -33,7 +38,31 @@ page{
 .header-name{
   font-size: 28rpx;
   margin-top: 14rpx;
-  color: #FFFFFF
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 20rpx;
+}
+.vip-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #10c2b8;
+  width: 400rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+}
+.vip-btn image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+}
+.vip-btn text{
+  color: #fff;
+  font-weight: 500;
+  font-size: 30rpx;
 }
 
 /* 订单 */

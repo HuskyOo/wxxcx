@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/my/my",
     "pages/bookorder/bookorder",
     "pages/bookdetail/bookdetail",
     "pages/store/store",
@@ -21,7 +22,6 @@
     "pages/albumOrders/albumOrders",
     "pages/history/history",
     "pages/buy/buy",
-    "pages/my/my",
     "pages/pendingpayment/pendingpayment",
     "pages/hotCourse/hotCourse",
     "pages/historyrecord/historyrecord",
