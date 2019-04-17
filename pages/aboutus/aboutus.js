@@ -1,5 +1,6 @@
 // pages/aboutUs/aboutUs.js
 var app = getApp()
+var WxParse = require('../../wxParse/wxParse');
 Page({
 
   /**
@@ -7,22 +8,17 @@ Page({
    */
   data: {
     title: "穹窿银城",
-    content: ""
+    content: "",
+    info: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.request({
-      url: app.globalData.pageUrl + '/index/index/aboutus',
-      success: res => {
-        that.setData({
-          content: res.data.aboutus
-        })
-      }
-    })
+    let info = decodeURIComponent(options.info)
+    console.log(info, options.info)
+    WxParse.wxParse('info', 'html', info, this, 0)
   },
 
   /**

@@ -72,6 +72,12 @@ Page({
           data:res.media
         })
       }
+
+      // 设置播放的标题和图片
+      bgMusic.title = res.media.title
+      bgMusic.coverImgUrl = this.data.url + res.media.cover
+
+      // 若是没购买直接返回
       if(res.media.is_buy === 0 && res.media.is_free === '0'){
         wx.showToast({
           title: this.data.pageFont.noBuyToast, //提示的内容,
@@ -82,10 +88,31 @@ Page({
         });
         return
       }
+
+      // 若是从一个栏目进来的则跳到播放的那首
+      let playId = wx.getStorageSync('playId')
+      if(playId == id){
+        let state = bgMusic.paused
+        if (state === false) {
+          this.listenerButtonPlay()
+          // return
+        } else {
+          let currentTime =  wx.getStorageSync('currentTime')
+          this.setData({
+            currentTime: currentTime,
+            showCurrentTime: app.switchTime(Math.round(currentTime))
+          })
+          this.listenerButtonPause()
+        }
+      }
+
+      // 设置播放那首
       this.setData({
         playId: id
       })
       wx.setStorageSync('playId', id)
+
+
       if(this.data.mediatype === "0"){
         this.setData({
           bgMusicSrc: res.media.audio,
@@ -119,16 +146,7 @@ Page({
         })
         wx.setStorageSync('playList', res.media.media)
         
-
-        // 获取播放地址
-        if(histroyId === that.data.id){
-          that.getMedia(1, playId)
-        } else {
-          that.getMedia(1, res.media.media[0].id)
-          wx.setStorageSync('playId', res.media.media[0].id)
-        }
-
-        // 初始化页面数据
+      // 初始化页面数据
         that.setData({
           // 页数   一页10条数据
           pageCount: Math.ceil(res.media.media.length / 10),
@@ -137,6 +155,16 @@ Page({
         that.setSelectArr()
 
         that.sharecar()
+        
+        // 获取播放地址
+        if(histroyId == that.data.id){
+          that.getMedia(1, playId)
+        } else {
+          that.getMedia(1, res.media.media[0].id)
+          // wx.setStorageSync('playId', res.media.media[0].id)
+        }
+
+        
       // }
     })
   },
@@ -206,7 +234,7 @@ Page({
   },
   // 点击播放
   jumpDetail (e) {
-    let type = this.data.type, mediatype = this.data.mediatype, id = e.currentTarget.id, free = e.currentTarget.dataset.free, buy = e.currentTarget.dataset.buy
+    let type = this.data.type, mediatype = this.data.mediatype, id = parseInt(e.currentTarget.id), free = e.currentTarget.dataset.free, buy = e.currentTarget.dataset.buy
     console.log(e)
     if (buy === 0 && free === '0') {
       wx.showModal({
@@ -276,7 +304,7 @@ Page({
   // 播放全部
   playAll: function(){
     var id = this.data.data.media[0].id
-    this.getMedia(this.data.type, id)
+    this.getMedia(this.data.type, id, true)
   },
   // 试听
   testListen () {
@@ -391,6 +419,7 @@ Page({
   // 背景音乐下一首
   listenerButtonNext () {
     this.listenerButtonPause()
+    console.log(this.data.type)
     if (this.data.type === '0') {
       wx.showToast({
         title: this.data.pageFont.lastAlbum,
@@ -404,8 +433,10 @@ Page({
         }
       })
       if (id) {
+        console.log(4)
         this.getMedia(this.data.type, id, true)
       } else {
+        console.log(3)
         wx.showToast({
           title: this.data.pageFont.lastAlbum,
           icon: 'none'
@@ -490,10 +521,11 @@ save () {
     } else {
       this.getData()
     }
-    let state = bgMusic.paused
-    if (state === false) {
-      this.listenerButtonPlay()
-    }
+    // let state = bgMusic.paused
+    // if()
+    // if (state === false) {
+    //   this.listenerButtonPlay()
+    // }
   },
 
   /**

@@ -62,5 +62,10 @@ function mediarand (params) {
         http(url.mediarand, {token: wx.getStorageSync('token'), ...params}, (res) => {resolve(res.data)})
     })
 }
+function aboutus (params) {
+    return new Promise ((resolve, reject) => {
+        http(url.aboutus, {}, (res) => {resolve(res.data)})
+    })
+}
 
-export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl, comdetails, mediarand }
+export { zang, chinese, book, commonweal, interview, sing, allClassify, buy, religionCate, mediaurl, comdetails, mediarand, aboutus }

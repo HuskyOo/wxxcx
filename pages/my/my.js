@@ -1,6 +1,7 @@
 var app = getApp()
 var util = require('../../utils/util')
 import { my } from '../../font/index'
+import { aboutus } from '../../request/index'
 Page({
 
   /**
@@ -53,9 +54,12 @@ Page({
     })
   },
   // 关于我们
-  jumpAbout () {
+  jumpAbout (e) {
+    console.log(e)
+    let info = encodeURIComponent(e.currentTarget.dataset.info)
+    console.log(info)
     wx.navigateTo({
-      url: '../aboutus/aboutus',
+      url: '/pages/aboutus/aboutus?info=' + info,
     })
   },
   // 我的公益
@@ -157,6 +161,39 @@ Page({
     //   })
     // }
   },
+  getAbout () {
+    aboutus().then(res => {
+      // console.log(res)
+      let data = res.aboutus
+      data.forEach((item, index, arr) => {
+        switch (item.name) {
+          case 'about_us':
+            this.setData({
+              about_us: item.value
+            });
+          break;
+          case 'live':
+            this.setData({
+              live: item.value
+            });
+          break;
+          case 'contact':
+            this.setData({
+              contact: item.value
+            });
+          break;
+          case 'recruit':
+            this.setData({
+              recruit: item.value
+            });
+          break;
+        }
+      })
+      this.setData({
+        about: res.aboutus
+      })
+    })
+  },
 
 
   /**
@@ -164,6 +201,7 @@ Page({
    */
   onLoad: function (options) {
     util.fontFamily()
+    this.getAbout()
   },
 
   /**

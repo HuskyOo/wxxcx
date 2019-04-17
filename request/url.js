@@ -22,5 +22,6 @@ export default {
     // 获取专辑详情
     comdetails: "/index/details/comdetails",
     // 换一批
-    mediarand:"/index/details/mediarand"
+    mediarand: "/index/details/mediarand",
+    aboutus: "/index/index/aboutus",
 }

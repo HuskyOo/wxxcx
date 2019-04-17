@@ -40,21 +40,21 @@
 
 <!-- 功能选项 -->
 <view class='features'>
-  <view class='features-list'>
+  <view class='features-list' data-info="{{contact}}" bindtap="jumpAbout">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.contact}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list'>
+  <view class='features-list' data-info="{{recruit}}" bindtap="jumpAbout">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.recruit}}</text>
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </view>
-  <view class='features-list'>
+  <view class='features-list' data-info="{{live}}" bindtap="jumpAbout">
     <view>
       <image src='../../images/member.png' class='features-list-icon'></image>
       <text>{{pageFont.explain}}</text>
@@ -82,7 +82,7 @@
     </view>
     <image src='../../images/jiantou.png' class='features-list-arrow'></image>
   </button> -->
-  <view class='features-list' bindtap="jumpAbout">
+  <view class='features-list' data-info="{{about_us}}" bindtap="jumpAbout">
     <view >
       <image src='../../images/guanyuwmen.png' class='features-list-icon'></image>
       <text>{{pageFont.about}}</text>
