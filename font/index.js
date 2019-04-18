@@ -1,2 +1,2 @@
-import { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent } from "./methods"
-export { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent }
+import { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent, member } from "./methods"
+export { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent, member }

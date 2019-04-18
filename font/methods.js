@@ -108,5 +108,15 @@ function indent () {
     // console.log(lanIndex)
     return obj
 }
+function member () {
+    util.fontFamily()
+    let lanIndex = wx.getStorageSync('lan');
+    let obj = {}
+    for (let key in font.member) {
+        obj[key] = font.member[key][lanIndex]
+    }
+    // console.log(lanIndex)
+    return obj
+}
 
-module.exports = { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent }
+module.exports = { index, components, myCourse, my, paddingpayment, albumDetail, albumOrder, bookFont, classifyDetail, bookdetail, bookorder, indent, member }

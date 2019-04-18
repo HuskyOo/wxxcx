@@ -60,6 +60,14 @@
 	background: none
 }
 
+.wx-swiper-dot{
+    width:5rpx;
+    /* display: inline-flex; */
+    height: 5rpx;
+    /* margin-left: 20rpx; */
+    /* justify-content:space-between; */
+}
+
 
 /* 九宫格 */
 .grid{

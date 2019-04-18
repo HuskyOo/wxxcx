@@ -31,8 +31,7 @@
                 <text>￥{{item.money}}</text>
                 <!-- <view class='book-mailing'>{{comfont.mailing}}</view> -->
                 <view >
-                    <text style="color: #333;font-size:20rpx">{{comfont.sales}}</text>
-                    <text >{{item.sales}}</text>
+                    <text style="color: #333;font-size:20rpx">{{comfont.sales}}{{item.sales}}</text>
                 </view>
             </view>
         </view>

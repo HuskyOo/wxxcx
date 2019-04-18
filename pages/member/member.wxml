@@ -2,16 +2,16 @@
 <view class="member">
   <image src="../../images/member-bg.png" />
   <view class="mem-content">
-    <text class="mem-tit">VIP ཚོགས་མི།</text>
+    <text class="mem-tit">{{pageFont.vip}}</text>
     <image src="../../images/card.png" wx:if="{{vip !== '2' && money != 0}}"/>
     <image src="../../images/card-active.png" wx:else />
     
     <view class="mem-btn" bindtap="buy" wx:if="{{vip !== '2' && money != 0}}">
       <text style="font-size:26rpx">¥{{money}}</text>
-      <text style="margin-left:15rpx;margin-top:10rpx;">ཚོགས་མིར་ཐོ་འགོད་བྱེད།</text>
+      <text style="margin-left:15rpx;margin-top:10rpx;">{{pageFont.noDredge}}</text>
     </view>
     <view class="mem-btn" style="background:#afafaf" wx:else>
-      <text style="margin-top:10rpx;">ཚོགས་མིར་གྱུར་ཡོད།</text>
+      <text style="margin-top:10rpx;">{{pageFont.isDredge}}</text>
     </view>
   </view>
 </view>

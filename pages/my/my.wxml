@@ -10,12 +10,13 @@
   </view>
   <view class='header-name'>
     <open-data type="userNickName"></open-data>
-    <text>{{pageFont.memberInfo}}</text>
+    <text style="font-size: 20rpx">{{pageFont.memberInfo}}</text>
   </view>
-  <view class="vip-btn" bindtap="jumpMember">
+  <!-- <view class="vip-btn" bindtap="jumpMember">
     <image src="../../images/vip-icon.png" />
     <text>{{pageFont.open}}</text>
-  </view>
+  </view> -->
+  <image class="vip-btn" src="/images/vip_btn.png" bindtap="jumpMember" />
 </view>
 
 <!-- 订单 -->
@@ -42,24 +43,24 @@
 <view class='features'>
   <view class='features-list' data-info="{{contact}}" bindtap="jumpAbout">
     <view>
-      <image src='../../images/member.png' class='features-list-icon'></image>
+      <image src='/images/contact.png' class='features-list-icon'></image>
       <text>{{pageFont.contact}}</text>
     </view>
-    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+    <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
   <view class='features-list' data-info="{{recruit}}" bindtap="jumpAbout">
     <view>
-      <image src='../../images/member.png' class='features-list-icon'></image>
+      <image src='/images/recruit.png' class='features-list-icon'></image>
       <text>{{pageFont.recruit}}</text>
     </view>
-    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+    <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
   <view class='features-list' data-info="{{live}}" bindtap="jumpAbout">
     <view>
-      <image src='../../images/member.png' class='features-list-icon'></image>
+      <image src='/images/live.png' class='features-list-icon'></image>
       <text>{{pageFont.explain}}</text>
     </view>
-    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+    <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
   <!-- <view class='features-list' bindtap="jumpMember">
     <view>
@@ -84,9 +85,9 @@
   </button> -->
   <view class='features-list' data-info="{{about_us}}" bindtap="jumpAbout">
     <view >
-      <image src='../../images/guanyuwmen.png' class='features-list-icon'></image>
+      <image src='/images/about.png' class='features-list-icon'></image>
       <text>{{pageFont.about}}</text>
     </view>
-    <image src='../../images/jiantou.png' class='features-list-arrow'></image>
+    <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
 </view>

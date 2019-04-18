@@ -50,6 +50,7 @@ Page({
         id = options.id
     // type: 1专辑 0单曲    mediatype: 1视频 0音频
     that.setData({id, type, mediatype})
+    // wx.setStorageSync('album_id', id)
   },
   // 介绍和歌单的切换
   changeShow (e) {
@@ -74,8 +75,23 @@ Page({
       }
 
       // 设置播放的标题和图片
-      bgMusic.title = res.media.title
-      bgMusic.coverImgUrl = this.data.url + res.media.cover
+      if(this.data.mediatype === "0"){
+        this.setData({
+          bgMusicSrc: res.media.audio,
+          showDuration: res.media.duration,
+          bgMusicTitle: res.media.title,
+          bgMusicCoverImgUrl: this.data.url + res.media.cover,
+        })
+        wx.setStorageSync('audioSrc', res.media.audio)
+        // 播放
+        if (play) {
+          this.listenerButtonPlay()
+        }
+      } else {
+        this.setData({
+          videoSrc: res.media.audio
+        })
+      }
 
       // 若是没购买直接返回
       if(res.media.is_buy === 0 && res.media.is_free === '0'){
@@ -92,6 +108,7 @@ Page({
       // 若是从一个栏目进来的则跳到播放的那首
       let playId = wx.getStorageSync('playId')
       if(playId == id){
+        console.log(playId, id)
         let state = bgMusic.paused
         if (state === false) {
           this.listenerButtonPlay()
@@ -111,32 +128,11 @@ Page({
         playId: id
       })
       wx.setStorageSync('playId', id)
-
-
-      if(this.data.mediatype === "0"){
-        this.setData({
-          bgMusicSrc: res.media.audio,
-          showDuration: res.media.duration,
-          bgMusicTitle: res.media.title,
-          bgMusicCoverImgUrl: this.data.url + res.media.cover,
-        })
-        wx.setStorageSync('audioSrc', res.media.audio)
-        // 播放
-        if (play) {
-          this.listenerButtonPlay()
-        }
-      } else {
-        this.setData({
-          videoSrc: res.media.audio
-        })
-      }
-     
-      
     })
   },
   // 请求数据
   getData (id = this.data.id) {
-    let that = this, histroyId = wx.getStorageSync('history')[0].item[0].id, playId = wx.getStorageSync('playId')
+    let that = this, histroyId = wx.getStorageSync('history')[0].item[0].id, playId = wx.getStorageSync('playId'), album_id = wx.getStorageSync('album_id')
     comdetails({id, media_type: -1, token: wx.getStorageSync('token')}).then(res => {
       // console.log(res)
         that.setData({
@@ -157,11 +153,12 @@ Page({
         that.sharecar()
         
         // 获取播放地址
-        if(histroyId == that.data.id){
+        if(album_id == that.data.id){
           that.getMedia(1, playId)
         } else {
           that.getMedia(1, res.media.media[0].id)
           // wx.setStorageSync('playId', res.media.media[0].id)
+          wx.setStorageSync('album_id', that.data.id)
         }
 
         

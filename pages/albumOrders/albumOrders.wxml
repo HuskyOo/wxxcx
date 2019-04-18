@@ -15,7 +15,7 @@
     </view>
     <view style="color:rgb(97,97,97)">
         <!-- <text>{{pageFont.expect}}</text> -->
-        <text>{{filtMoney.filtFont(pageFont.expect,data.media.length)}}</text>
+        <text>{{filtMoney.filtFont(pageFont.expect,data.media.length ? data.media.length : 1)}}</text>
         <!-- <text>预计更新{{data.media.length}}集(已更新{{data.media.length}}集)</text> -->
     </view>
 </view>

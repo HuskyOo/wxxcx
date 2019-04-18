@@ -1,6 +1,7 @@
 // pages/member/member.js
 var app = getApp()
 var util = require('../../utils/util')
+import { member } from "../../font/index"
 Page({
 
   /**
@@ -74,6 +75,9 @@ Page({
           money: res.data.vipmoney
         })
       }
+    })
+    this.setData({
+      pageFont: member()
     })
   },
 

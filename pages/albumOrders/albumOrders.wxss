@@ -1,13 +1,17 @@
 /* pages/albumOrders/albumOrders.wxss */
 .albumOrder-type{
-    font-family: 'Himalaya-G';
+    
     height:120rpx;
     padding:0 30rpx;
     font-size:30rpx;
     line-height: 120rpx;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1rpx solid rgb(238,238,238)
+    border-bottom: 1rpx solid rgb(238,238,238);
+    box-sizing: border-box;
+}
+.albumOrder-type > view:first-child{
+    font-family: 'Himalaya-G';
 }
 .albumOrder-care{
     font-family: 'Jomolhari';

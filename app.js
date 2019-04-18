@@ -19,7 +19,7 @@ App({
     if(!lan){
       wx.setStorage({
         key: 'lan',
-        data: 0
+        data: 1
       });
     }
     //判断用户是否登录

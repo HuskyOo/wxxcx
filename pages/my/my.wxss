@@ -1,19 +1,19 @@
 /* 头部头像姓名 */
-page{
+/* page{
   font-family: 'Jomolhari';
-}
+} */
 .header{
   width: 100%;
-  height: 250rpx;
+  height: 280rpx;
   background-size: cover;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 80rpx;
+  /* padding: 0 50rpx; */
   align-items: center;
   flex-wrap: nowrap;
-  background-image: url('https://www.chonlong.cn/wx/imagebackgroun.jpg');
+  background-image: url('https://www.chonlong.cn/wx/image/blackBg.png');
 }
 
 .header-image{
@@ -46,15 +46,16 @@ page{
   margin-left: 20rpx;
 }
 .vip-btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #10c2b8;
-  width: 400rpx;
-  height: 60rpx;
-  border-radius: 30rpx;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background: #10c2b8; */
+  flex-shrink: 0;
+  width: 200rpx;
+  height: 75rpx;
+  /* border-radius: 30rpx; */
 }
-.vip-btn image{
+/* .vip-btn image{
   width: 40rpx;
   height: 40rpx;
   margin-right: 5rpx;
@@ -63,7 +64,7 @@ page{
   color: #fff;
   font-weight: 500;
   font-size: 30rpx;
-}
+} */
 
 /* 订单 */
 .order-header{
@@ -104,7 +105,7 @@ page{
   padding-top: 45rpx;
   padding-bottom: 41rpx;
   justify-content:space-around;
-
+  font-family: 'Jomolhari';
 }
 
 .order-option-list{
@@ -125,7 +126,7 @@ page{
 }
 
 .features-list{
-  font-family: 'Himalaya-G';
+  /* font-family: 'Himalaya-G'; */
   margin: 0rpx 18rpx;
   border-bottom: 1rpx solid #E8E8E8;
   height: 90rpx;
@@ -134,10 +135,13 @@ page{
   justify-content: space-between;
   align-items: center;
 }
-
+.features-list>view{
+  display: flex;
+  align-items: center;
+}
 .features-list-icon{
-  width: 24rpx;
-  height: 24rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-left: 10rpx
 }
 
@@ -145,7 +149,7 @@ page{
   font-size: 28rpx;
   color: #313131;
   margin-left: 20rpx;
-  font-weight: 600
+  /* font-weight: 600 */
 }
 
 .features-list-arrow{
