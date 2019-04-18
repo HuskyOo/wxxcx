@@ -70,29 +70,20 @@ Page({
       this.wxParse()
       if(this.data.type === "0"){
         that.setData({
-          data:res.media
+          data:res.media,
+          
         })
       }
-
-      // 设置播放的标题和图片
       if(this.data.mediatype === "0"){
         this.setData({
           bgMusicSrc: res.media.audio,
-          showDuration: res.media.duration,
           bgMusicTitle: res.media.title,
           bgMusicCoverImgUrl: this.data.url + res.media.cover,
+          showDuration: res.media.duration
         })
         wx.setStorageSync('audioSrc', res.media.audio)
-        // 播放
-        if (play) {
-          this.listenerButtonPlay()
-        }
-      } else {
-        this.setData({
-          videoSrc: res.media.audio
-        })
       }
-
+      
       // 若是没购买直接返回
       if(res.media.is_buy === 0 && res.media.is_free === '0'){
         wx.showToast({
@@ -112,7 +103,7 @@ Page({
         let state = bgMusic.paused
         if (state === false) {
           this.listenerButtonPlay()
-          // return
+          return
         } else {
           let currentTime =  wx.getStorageSync('currentTime')
           this.setData({
@@ -128,6 +119,32 @@ Page({
         playId: id
       })
       wx.setStorageSync('playId', id)
+
+
+      // 设置播放的标题和图片
+      if(this.data.mediatype === "0"){
+        this.setData({
+          bgMusicSrc: res.media.audio,
+          bgMusicTitle: res.media.title,
+          bgMusicCoverImgUrl: this.data.url + res.media.cover,
+        })
+        wx.setStorageSync('audioSrc', res.media.audio)
+        // 播放
+        if (play) {
+          this.listenerButtonPlay()
+          return
+        }
+      } else {
+        this.setData({
+          videoSrc: res.media.audio
+        })
+      }
+      
+     
+
+      
+
+      
     })
   },
   // 请求数据
@@ -347,6 +364,9 @@ Page({
     console.log(bgMusicSrc)
     if(bgMusic.src !== bgMusicSrc){
       bgMusic.src = bgMusicSrc
+      this.setData({
+        isOpen: true
+      })
     } else {
       console.log(1)
       bgMusic.seek(wx.getStorageSync('currentTime'))

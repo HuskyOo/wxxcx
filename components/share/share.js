@@ -45,7 +45,7 @@ Component({
     //   saveLoc: ['保存到本地', 'པར་རིས་ཉར་ཚགས་བྱེད།'],
     //   imgSave: ['图片已保存','པར་རིས་ཉར་ཚགས་བྱས་ཡོད།'],
     // },
-    font_index: 0
+    lan: wx.getStorageSync('lan')
   },
 
   ready () {
@@ -54,7 +54,9 @@ Component({
         font_index: 1
       })
     }
-    this.setData({comFont: components()})
+    this.setData({comFont: components(), lan: wx.getStorageSync('lan')})
+    console.log(this.data.comFont, this.data.lan)
+    console.log(1)
   },
   /**
    * 组件的方法列表
@@ -99,7 +101,7 @@ Component({
                       // context.setFillStyle('#fff')
                       context.drawImage(bgurl, 0, 0, 375, 500)
                       // 画图片
-                      context.drawImage(path,113,35,150,150)
+                      context.drawImage(path,0,0,375,227)
                       // context.draw()
                       console.log(path)
                       // 文本居中
@@ -192,7 +194,7 @@ Component({
         success: res => {
           console.log(res)
           wx.showToast({
-            title: that.data.page_font.imgSave[that.data.font_index],
+            title: that.data.comFont.imgSave[that.data.lan],
             icon: 'none'
           })
           that.onShareAppMessage()

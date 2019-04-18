@@ -10,7 +10,7 @@
   </view>
   <view class='header-name'>
     <open-data type="userNickName"></open-data>
-    <text style="font-size: 20rpx">{{pageFont.memberInfo}}</text>
+    <text style="font-size: 24rpx">{{pageFont.memberInfo}}</text>
   </view>
   <!-- <view class="vip-btn" bindtap="jumpMember">
     <image src="../../images/vip-icon.png" />

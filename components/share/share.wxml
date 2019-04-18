@@ -6,19 +6,19 @@
         </view>
         <canvas style="width: 375px;height: 500px;position:fixed;z-index:-6666;opacity:0; left:9999rpx" canvas-id="sharecan"/>
         <image src="{{shareImg}}" style="width:100%; height:100%" mode="aspectFill"/>
-        <text class="save-btn" bindtap="save">{{comFont.saveLoc}}</text>
+        <text class="save-btn" bindtap="save">{{comFont.saveLoc[lan]}}</text>
     </view>
     <view class="btm-box" wx:else>
         <view  class="btns">
             <button open-type="share" class="share-btn" bindtap="onShareAppMessage">
                 <image src="../../images/wechart.png" />
-                <text >{{comFont.share}}</text>
+                <text >{{comFont.share[lan]}}</text>
             </button>
             <view class="photo-btn" bindtap="createImg">
                 <image src="../../images/photo.png" />
-                <text >{{comFont.save}}</text>
+                <text >{{comFont.save[lan]}}</text>
             </view>
         </view>
-        <text class="close" bindtap="close">{{comFont.close}}</text>
+        <text class="close" bindtap="close">{{comFont.close[lan]}}</text>
     </view>
 </view>

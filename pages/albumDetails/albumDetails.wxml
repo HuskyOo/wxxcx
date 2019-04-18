@@ -106,7 +106,7 @@
             <!-- <view bindtap="playAll"> -->
             <view wx:if="{{mediatype === '0'}}" bindtap="playAll">
                 <image style="width:30rpx;height:30rpx;margin-right:23rpx" src="../../images/bofangquanbu@2x.png"></image>
-                <text style="font-size:32rpx;color:#979797">{{pageFont.play}}</text>
+                <text style="font-size:32rpx;color:#616161">{{pageFont.play}}</text>
             </view>
             <view style="display:flex;font-size:32rpx;color:#616161">
                 <view bindtap="handlesort">
