@@ -3,7 +3,7 @@
 <!-- 头部头像姓名 -->
 <view class='header'>
   <view class='header-image'>
-    <image src="../../images/vip-icon.png" wx:if="{{vip === '2'}}" />
+    <image src="https://www.chonlong.cn/vip_btn.png" wx:if="{{vip === '2'}}" />
     <view style="border-radius:50%;overflow: hidden; width:105rpx;height:105rpx">
       <open-data type="userAvatarUrl"></open-data>
     </view>
@@ -43,21 +43,21 @@
 <view class='features'>
   <view class='features-list' data-info="{{contact}}" bindtap="jumpAbout">
     <view>
-      <image src='/images/contact.png' class='features-list-icon'></image>
+      <image src='https://www.chonlong.cn/contact.png' class='features-list-icon'></image>
       <text>{{pageFont.contact}}</text>
     </view>
     <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
   <view class='features-list' data-info="{{recruit}}" bindtap="jumpAbout">
     <view>
-      <image src='/images/recruit.png' class='features-list-icon'></image>
+      <image src='https://www.chonlong.cn/recruit.png' class='features-list-icon'></image>
       <text>{{pageFont.recruit}}</text>
     </view>
     <image src='/images/jiantou.png' class='features-list-arrow'></image>
   </view>
   <view class='features-list' data-info="{{live}}" bindtap="jumpAbout">
     <view>
-      <image src='/images/live.png' class='features-list-icon'></image>
+      <image src='https://www.chonlong.cn/live.png' class='features-list-icon'></image>
       <text>{{pageFont.explain}}</text>
     </view>
     <image src='/images/jiantou.png' class='features-list-arrow'></image>
@@ -85,7 +85,7 @@
   </button> -->
   <view class='features-list' data-info="{{about_us}}" bindtap="jumpAbout">
     <view >
-      <image src='/images/about.png' class='features-list-icon'></image>
+      <image src='https://www.chonlong.cn/about.png' class='features-list-icon'></image>
       <text>{{pageFont.about}}</text>
     </view>
     <image src='/images/jiantou.png' class='features-list-arrow'></image>
