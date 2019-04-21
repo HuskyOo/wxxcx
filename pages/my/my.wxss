@@ -52,7 +52,7 @@
   /* background: #10c2b8; */
   flex-shrink: 0;
   width: 200rpx;
-  height: 75rpx;
+  height: 160rpx;
   margin-right: 30rpx;
   /* border-radius: 30rpx; */
 }

@@ -3,7 +3,7 @@
 <!-- 头部头像姓名 -->
 <view class='header'>
   <view class='header-image'>
-    <image src="https://www.chonlong.cn/vip_btn.png" wx:if="{{vip === '2'}}" />
+    <image src="/images/member.png" wx:if="{{vip === '2'}}" />
     <view style="border-radius:50%;overflow: hidden; width:105rpx;height:105rpx">
       <open-data type="userAvatarUrl"></open-data>
     </view>
@@ -16,7 +16,7 @@
     <image src="../../images/vip-icon.png" />
     <text>{{pageFont.open}}</text>
   </view> -->
-  <image class="vip-btn" src="/images/vip_btn.png" bindtap="jumpMember" />
+  <image class="vip-btn" src="https://www.chonlong.cn/vip_btn.png" bindtap="jumpMember" />
 </view>
 
 <!-- 订单 -->
