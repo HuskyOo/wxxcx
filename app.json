@@ -51,9 +51,9 @@
       },
       {
         "pagePath": "pages/my-course/my-course",
-        "text": "ངའི་སློབ་ཁྲིད།",
-        "iconPath": "./images/tushu.png",
-        "selectedIconPath": "./images/SelecteTushu.png"
+        "text": "ཉོས་ཟིན་པ།",
+        "iconPath": "./images/course_buy.png",
+        "selectedIconPath": "./images/course_buy_select.png"
       },
       {
         "pagePath": "pages/book/book",

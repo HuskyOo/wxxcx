@@ -31,6 +31,7 @@ Page({
     showCurrentTime: '0:00',  //正在播放的时长
     continuousPlay: false,  //是否继续播放
     comFont: '',
+    top: 0,
   },
 
   /**
@@ -198,15 +199,26 @@ Page({
     this.setComFont()
   },
   handleControl (e) {
-    let that = this
-    clearTimeout(that.data.scroolTimer)
-    that.scroolAnimation.opacity(0).step()
-    that.setData({
-      scroolAnimation: that.scroolAnimation.export(),
-      scroolTimer: setTimeout(() => {
-        that.controlShow()
-      }, 300)
+    let that = this, scrollTop = e.detail.detail.scrollTop, top = this.data.top
+    if(scrollTop - top <= 0){
+      that.scroolAnimation.opacity(0).step()
+      
+    } else {
+      that.scroolAnimation.opacity(1).step()
+    }
+    this.setData({
+      top: scrollTop,
+      scroolAnimation: that.scroolAnimation.export()
     })
+    // console.log(e.detail.detail.scrollTop)
+    // clearTimeout(that.data.scroolTimer)
+    
+    // that.setData({
+    //   scroolAnimation: that.scroolAnimation.export(),
+    //   scroolTimer: setTimeout(() => {
+    //     that.controlShow()
+    //   }, 300)
+    // })
   },
   controlShow () {
     this.scroolAnimation.opacity(1).step()

@@ -1,28 +1,28 @@
 <!--pages/my-course/my-course.wxml-->
 <view class="my-course">
 	<!-- 上方导航栏 -->
-	<view class="course-nav">
+	<!-- <view class="course-nav">
 		<view wx:for="{{navList}}" wx:key="item.id" id="{{item.id}}" class="nav-item {{item.id == navIndex ? 'active' : ''}}" bindtap="switchNav">
 			<image src="{{item.id == navIndex ? item.activeImg : item.img}}" />
 			<text >{{item.title}}</text>
 		</view>
-	</view>
+	</view> -->
 	<!-- 分界线 -->
-	<view class='boundary-line'></view>
+	<!-- <view class='boundary-line'></view> -->
 
 	<!-- 下方内容 -->
 	<view class="bottom-box">
 		<!-- 历史 -->
-		<view wx:if="{{navIndex == 1}}">
+		<!-- <view wx:if="{{navIndex == 1}}">
 			<col-list wx:for="{{history}}" titlejump="{{false}}" wx:key="index" title="{{item.title}}" list="{{item.item}}"></col-list>
 			<view class="none" wx:if="{{history.length < 1}}">
 				<image src="" />
 				<text>{{pageFont.nohistory}}</text>
 			</view>
-		</view>
+		</view> -->
 		
 		<!-- 已购买 -->
-		<view wx:if="{{navIndex == 2}}">
+		<!-- <view wx:if="{{navIndex == 2}}"> -->
 			
 			<col-list list="{{buy.single}}"></col-list>
 			<!-- 没有物品 -->
@@ -30,16 +30,16 @@
 				<image src="../../images/none.png" />
 				<text>{{pageFont.nobuy}}</text>
 			</view>
-		</view>
+		<!-- </view> -->
 		
 
 		<!-- 收藏 -->
-		<view wx:if="{{navIndex == 3}}">
+		<!-- <view wx:if="{{navIndex == 3}}"> -->
 			<!-- <col-list list=""></col-list> -->
-			<view class="none">
+			<!-- <view class="none">
 				<image src="" />
 				<text>{{pageFont.unopen}}</text>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </view>
